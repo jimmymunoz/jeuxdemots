@@ -8,19 +8,9 @@ use Zend\View\Model\ViewModel;
 use Zend\View\Model\JsonModel;
 use Zend\Json\Json;
 
-class IndexController extends AbstractActionController
+class SearchController extends AbstractActionController
 {
     public function indexAction()
-    {
-    	return new ViewModel();
-    }
-
-    /**
-     * [searchAction description]
-     * http://jeuxdemots.localhost/application/index/search?word=chat
-     * @return [type] [description]
-     */
-    public function searchAction()
     {
     	
     	return new ViewModel();
@@ -31,7 +21,7 @@ class IndexController extends AbstractActionController
      * http://jeuxdemots.localhost/application/index/search?word=chat
      * @return [type] [description]
      */
-    public function searchWordResdAction()
+    public function searchAction()
     {
     	//$repositoryNode = $em->getRepository('\Application\Entity\Node');
     	//https://github.com/jadell/neo4jphp/wiki/Cypher-and-gremlin-queries

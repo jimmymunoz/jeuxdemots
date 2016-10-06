@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>Jeux de mots </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- 1. Load libraries -->
+    <!-- IE required polyfill -->
+  
+
+    <!-- 2. Load our 'modules' -->
+    <script src='./app.component.ts'></script>
+    <script src='app/app.module.js'></script>
+    <script src='app/main.js'></script>
+
+  </head>
+<body>
+<h3 class="col-md-4 col-md-offset-4">{{Jeux  de mot }}</h3>
+
+    <div class="row" style="padding-top:100px">
+        <form role="form" class="col-md-4 col-md-offset-4" act>
+           <form (ngSubmit)="getTitle()" role="form" class="col-md-2 col-md-offset-5" >
+          <div class="form-group">
+
+            <input type="text" id="nom"  ngControle="mot">
+          </div>
+          <button type="submit" class="btn btn-primary">Rechercher</button>
+        </form>
+    </div>
+</body>
+</html>
