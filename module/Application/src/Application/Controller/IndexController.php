@@ -24,15 +24,61 @@ class IndexController extends AbstractActionController
     public function searchAction()
     {
     	
-    	return new ViewModel();
+    	$word = $this->params()->fromQuery('word');
+    	$result = null;
+    	if( $word != "" ){
+
+	    	$em = $this->getServiceLocator()->get('neo4j.entitymanager.ogm_default');
+			$result = $em->cypherQuery('
+				MATCH (p)-[r:r_associated]->(q) 
+				WHERE p.name = {name}
+				RETURN q LIMIT 25', array(
+				    'name' => $word,
+				)
+			);
+    	}
+		
+		$dataResult = array(
+			"success" => false,
+			"message" => "",
+			"data" => array(
+				'definition' => array(
+					"def1",
+					"def2",
+					"def3",
+					"def4",
+					"def5",
+				),
+				'r_associated' => array(),
+			)
+		);
+		if( $result != null ){
+			foreach ($result as $row) {
+			    //echo $row['q']->getProperty('name') . "<br/>";
+			    $dataResult['r_associated'][] = $row['q']->getProperty('name');
+			}
+		}
+		/*
+		// Example query: "START n=node(1) MATCH (x)-[:KNOWS]->(n) RETURN x, COUNT(n) AS y
+		// column 'x' is a node object, column 'y' is a scalar value
+		foreach ($result as $row) {
+		    echo $row['x']->getProperty('name') . ": " . $row['y'] ."\n";
+		}
+		 */
+		//$users = $query->getResult();
+    	//$chat = $repositoryNode->findOneBy( array('name' => 'chat') );
+    	//$chat = $repositoryNode->findOneByName('chat');
+    	//var_dump($result);
+    	$jsonObject = new JsonModel($dataResult);
+        return $jsonObject;
     }
 
     /**
      * [searchAction description]
-     * http://jeuxdemots.localhost/application/index/search?word=chat
+     * http://jeuxdemots.localhost/application/index/searchwordrest?word=chat
      * @return [type] [description]
      */
-    public function searchWordResdAction()
+    public function searchwordrestAction()
     {
     	//$repositoryNode = $em->getRepository('\Application\Entity\Node');
     	//https://github.com/jadell/neo4jphp/wiki/Cypher-and-gremlin-queries
