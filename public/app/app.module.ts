@@ -1,18 +1,24 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
+import { HttpModule }    from '@angular/http';
 
 import { Form }  from './app.component';
-import { ListDefinitionComponent }  from './list-definition.component';
+import { ListSearchResultDetailComponent }  from './list-search-result-detail-component';
+import { WordService }    from './word.service';
 
 @NgModule({
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
   declarations: [
     Form,
-    ListDefinitionComponent
+    ListSearchResultDetailComponent
+  ],
+  providers: [
+    WordService,
   ],
   bootstrap: [ Form ]
 })

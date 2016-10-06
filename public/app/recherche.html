@@ -1,8 +1,13 @@
 <div>
-<input [(ngModel)]="word"/>
-<button (click)="save()">Search</button>
+	<input [(ngModel)]="word"/>
+	<button (click)="save()">Search</button>
 </div>
-<list-definition-component> ffff</list-definition-component>
+
+					
+	<list-search-result-detail-component [listResult]="results"></list-search-result-detail-component>
+
+						
+			
 
 
 
