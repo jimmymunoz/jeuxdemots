@@ -1,0 +1,9 @@
+[submodule "vendor/opensoftstudio/neo4j-ogm-module"]
+	path = vendor/opensoftstudio/neo4j-ogm-module
+	url = ../../opensoftstudio/neo4j-ogm-module.git
+[submodule "vendor/everyman/neo4jphp"]
+	path = vendor/everyman/neo4jphp
+	url = ../../jadell/neo4jphp.git
+[submodule "vendor/hirevoice/neo4jphp-ogm"]
+	path = vendor/hirevoice/neo4jphp-ogm
+	url = ../../lphuberdeau/Neo4j-PHP-OGM.git
