@@ -12,26 +12,8 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-<<<<<<< HEAD
-    	return new ViewModel();
-=======
-    	/*
-    	
-    	$word = "chat";
-    	$em = $this->getServiceLocator()->get('neo4j.entitymanager.ogm_default');
-    	$result = $em->cypherQuery('
-			MATCH (p)-[r:r_associated]->(q) 
-			WHERE p.name = {name}
-			RETURN q LIMIT 25', array(
-			    'name' => $word,
-			)
-		);
-		foreach ($result as $row) {
-		    echo $row['q']->getProperty('name') . "<br/>";
-		}
-    	 */
+
 		return new ViewModel();
->>>>>>> origin/master
     }
 
     /**
