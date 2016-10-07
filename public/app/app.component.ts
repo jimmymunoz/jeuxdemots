@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NgForm }    from '@angular/common';
-import { Words } from './words';
-
-
+import { Word } from './words';
+import { ResultDetail } from './result-detail';
+import { WordService }   from './word.service';
 
 
 @Component({
@@ -12,10 +12,25 @@ import { Words } from './words';
 })
 export class Form {
 	title = 'Mot a rechercher ';
-	word = "";
+	word = "bonjour";
+	results = {};
+
+
+	constructor(
+	    private wordService: WordService,
+	    //private router: Router
+	) { }
+
 
 	save(): void {
-	   console.log(this.word);
+	   	this.getSearchResult();	
+	}
+	getSearchResult(): void {
+		this.wordService
+		    .searchResults()
+		    .then(
+		    	results => this.results = results
+		    );
 	}
 }
 
