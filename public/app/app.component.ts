@@ -3,42 +3,34 @@ import { NgForm }    from '@angular/common';
 import { Word } from './words';
 import { ResultDetail } from './result-detail';
 import { WordService }   from './word.service';
+import { ListSearchResultDetailComponent }  from './list-search-result-detail-component';
 
+//import { SearchWordComponet }   from './recherche-form';
 
 @Component({
   selector: 'my-app',
-  templateUrl: 'app/recherche.html'
- 
+  templateUrl: 'app/html/layout.html',
+  directives: [ListSearchResultDetailComponent]
 })
-export class Form {
-	title = 'Mot a rechercher ';
-	word = "bonjour";
-	results = {};
 
+export class AppComponent {
+    public resultsParent : any;
+    public myFriend : String;
+    //myFriend = 'asasas';
+    /*
+     */
+    wordService: WordService
+    
+    constructor(
+        private wordService: WordService 
+    ){ 
+    	this.myFriend = 'Hello!!';
+	    this.resultsParent  = {
+	    	"data": []
+	    };
+    }
 
-	constructor(
-	    private wordService: WordService,
-	    //private router: Router
-	) { }
-
-
-	save(): void {
-	   	this.getSearchResult();	
-	}
-	getSearchResult(): void {
-		this.wordService
-		    .searchResults()
-		    .then(
-		    	results => this.results = results
-		    );
-	}
+    fireMyEvent(evt){
+    	//this.myevent.next();
+    }
 }
-
-
-
-
-/*
-Copyright 2016 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/

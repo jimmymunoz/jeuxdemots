@@ -1,0 +1,38 @@
+<div class="col-md-12 col-xs-12">
+  <div class="x_panel">
+    <div class="">
+        <h1> {{title}} <small>({{word}})</small></h1> 
+        <div class="col-sm-5">
+          <div class="input-group">
+            <input  ng2-auto-complete
+              placeholder="Start typing a Word"     
+              [(ngModel)]="word" 
+              [source]="wordService.findWords"  
+              [list-formatter]="leftAligned"
+              (ngModelChange)="completeCallBack($event)"
+              path-to-data="data"
+              min-chars="3" 
+              type="text"
+              class="form-control"
+              style="min-width: 300px; z-index: 1;" 
+            />
+            <span class="input-group-btn">
+              <button (click)="getSearchResult()" class="btn btn-default btn-primary" type="button">Search</button>
+            </span>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="col-md-12">
+  <list-search-result-detail-component [listResult]="resultsParent"></list-search-result-detail-component>
+</div>
+
+    
+						
+			
+
+
+

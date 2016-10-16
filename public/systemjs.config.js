@@ -9,7 +9,10 @@
     // DEMO ONLY! REAL CODE SHOULD NOT TRANSPILE IN THE BROWSER
     transpiler: 'ts',
     typescriptOptions: {
-      tsconfig: true
+      tsconfig: true,
+      tsconfig: true,
+      emitDecoratorMetadata: true
+
     },
     meta: {
       'typescript': {
@@ -41,7 +44,7 @@
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
       'ts':                        'npm:plugin-typescript@4.0.10/lib/plugin.js',
       'typescript':                'npm:typescript@2.0.2/lib/typescript.js',
-
+      'ng2-auto-complete' : 'node_modules/ng2-auto-complete/dist'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -56,6 +59,8 @@
         main: './index.js',
         defaultExtension: 'js'
       }
+      ,'ng2-auto-complete' : {main: 'ng2-auto-complete.umd.js', defaultExtension: 'js'}
+      //,'ng2-auto-complete' : {main: 'index.d.ts', defaultExtension: 'ts'}
     }
   });
 })(this);

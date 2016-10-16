@@ -9,21 +9,21 @@ Apache:
 
 /Applications/XAMPP/xamppfiles/etc/extra/httpd-vhosts.conf
 
-    #Jeux de mots
-    <VirtualHost viajemos.localhost>
-        DocumentRoot "/Applications/XAMPP/xamppfiles/htdocs/jeuxdemots/zendfk/public"
-        ServerName jeuxdemots.localhost
-        ServerAlias www.jeuxdemots.localhost
-        <Directory /path/to/zf2-app/public>
-                DirectoryIndex index.php
-                AllowOverride All
-                Order allow,deny
-                Allow from all
-                <IfModule mod_authz_core.c>
-                Require all granted
-                </IfModule>
-            </Directory>
-    </VirtualHost>
+#Jeux de mots
+<VirtualHost jeuxdemots.localhost>
+    DocumentRoot "/Applications/XAMPP/xamppfiles/htdocs/jeuxdemots/zendfk/public"
+    ServerName jeuxdemots.localhost
+    ServerAlias www.jeuxdemots.localhost
+    <Directory /path/to/zf2-app/public>
+            DirectoryIndex index.php
+            AllowOverride All
+            Order allow,deny
+            Allow from all
+            <IfModule mod_authz_core.c>
+            Require all granted
+            </IfModule>
+        </Directory>
+</VirtualHost>
 
 ->
 http://jeuxdemots.localhost
@@ -67,9 +67,9 @@ SET n = row,
     n.id = toInt(row.rtid),
     n.name = (row.name),
     n.nom_etendu = toInt(row.nom_etendu),
-    n.info = toInt(row.info)
+    n.info = toInt(row.info);
 
-CREATE INDEX ON :RelationType(id)
+CREATE INDEX ON :RelationType(id);
     
 
 

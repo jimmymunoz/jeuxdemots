@@ -2,31 +2,28 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
-
-import { Form }  from './app.component';
+import { AppComponent }  from './app.component';
+import { SearchWordComponet }  from './search-word-component';
 import { ListSearchResultDetailComponent }  from './list-search-result-detail-component';
 import { WordService }    from './word.service';
+import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
+
 
 @NgModule({
   imports: [
     BrowserModule,
+    HttpModule,
     FormsModule,
-    HttpModule
+    Ng2AutoCompleteModule
   ],
   declarations: [
-    Form,
-    ListSearchResultDetailComponent
+    SearchWordComponet,
+    ListSearchResultDetailComponent,
+    AppComponent
   ],
   providers: [
     WordService,
   ],
-  bootstrap: [ Form ]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
-
-
-/*
-Copyright 2016 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/
