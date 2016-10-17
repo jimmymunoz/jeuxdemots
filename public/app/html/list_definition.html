@@ -26,7 +26,7 @@
       
     </li>
     <li *ngFor="let key of keys(listResult.data)">
-      <div class="block">
+      <div *ngIf="listResult.data[key].length" class="block">
         <div class="tags">
           <a href="" class="tag">
             <span>{{key}}</span>
@@ -37,10 +37,14 @@
               <a>{{key}}</a>
           </h2>
           <div class="byline">
-            <span>13 hours ago</span> by <a>Jane Smith</a>
+            <span>Total</span>  <a>{{listResult.data[key].length}}</a>
+            <a href="">sortByName</a>
           </div>
-          <p class="excerpt"> {{listResult.data[key] | json}} … <a>Read&nbsp;More</a>
-          </p>
+          	<span *ngFor="let term of listResult.data[key] | orderby: ['-w']" >
+          		<a data-toggle="tooltip" data-placement="top" title="Weight: {{term.w}}" href="searchMethod('')">
+          			{{term.name}}
+          		</a>
+          	</span>
         </div>
       </div>
     </li>

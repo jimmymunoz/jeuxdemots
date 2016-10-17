@@ -1,5 +1,7 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, Pipe } from '@angular/core';
 import { ResultDetail } from './result-detail';
+import { OrderBy } from './orderby';
+
 
 
 @Component({
@@ -10,9 +12,10 @@ import { ResultDetail } from './result-detail';
       display: block; border: 1px solid #ccc;
     }
   `],
-    inputs: ['myname', 'listResult'],
-    outputs: ['myevent']
-  
+  inputs: ['myname', 'listResult'],
+  outputs: ['myevent'],
+  pipes: [ OrderBy ]
+
 })
 /*
  <div class="">

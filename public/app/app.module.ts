@@ -7,6 +7,7 @@ import { SearchWordComponet }  from './search-word-component';
 import { ListSearchResultDetailComponent }  from './list-search-result-detail-component';
 import { WordService }    from './word.service';
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
+import { OrderBy } from './orderby';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
   declarations: [
     SearchWordComponet,
     ListSearchResultDetailComponent,
-    AppComponent
+    AppComponent,
+    OrderBy
   ],
   providers: [
     WordService,
