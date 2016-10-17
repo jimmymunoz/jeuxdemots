@@ -73,16 +73,36 @@ class Word
 			'que_peut_faire' => array(),
 			'que_peut_on_faire' => array(),
 			'que_peut_on_faire' => array(),
+			'que_peut_produire' => array(),
 			'de_quoi_nourrir' => array(),
 			'causes_associes' => array(),
+			'moins-intense' => array(),
+			'apres_mettre_sa_ceinture' => array(),
+			'comme-predicat' => array(),
+			'valeur_temp_dur_periode' => array(),
 			'consequences_associes' => array(),
 			'contraires' => array(),
-			'sentiments_emotions' => array(),
+			'contraires' => array(),
+			'action_verbe' => array(),
 			'roles' => array(),
+			'avec_quoi' => array(),
+			'form_incorrect' => array(),
+			'comme_instrument' => array(),
 			'avant_temporel' => array(),
+			'Qui_quoi_peut_manger' => array(),
+			'role_agentifs' => array(),
+			'comment_peut_on' => array(),
 			'comme_sujet' => array(),
 			'comme_objet' => array(),
+			'matiere' => array(),
+			'ce_qui_produit' => array(),
+			'ce_qui_soppose' => array(),
+			'a_quoi_proche' => array(),
+			
+			'adjectif_adverbe' => array(),
+				'nom_de_propriete' => array(),
 			'comme_tete_syntaxique' => array(),
+
 		);
 		if( $result != null ){
 			foreach ($result as $row) {
@@ -108,7 +128,8 @@ class Word
 			    		$dataResult['synonimes'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_isa':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+			    		$dataResult['generiques'][] = $row['q']->getProperty('name');
+
 			    		break;
 			    	case 'r_anto':
 			    		$dataResult['contraires'][] = $row['q']->getProperty('name');
@@ -126,19 +147,19 @@ class Word
 			    		$dataResult['locution_term_composes'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_agent':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+			    		$dataResult['Qui_quoi_peut_manger'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_patient':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+			    		//$dataResult['Qui_quoi_peut_manger'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_flpot':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');  ca  sert arien  FL_Numero
 			    		break;
 			    	case 'r_lieu':
 			    		$dataResult['lieux_trouver'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_instr':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+			    		$dataResult['avec_quoi'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_carac':
 			    		$dataResult['caracteristiques'][] = $row['q']->getProperty('name');
@@ -150,16 +171,16 @@ class Word
 			    		$dataResult['plus_intence'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_antimagn':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+			    		$dataResult['moins-intense'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_family':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+			    		$dataResult['term_etymologiquement'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_carac_1':
 			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_agent_1':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+			    		$dataResult['que_peut_on_faire'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_instr_1':
 			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
@@ -174,7 +195,7 @@ class Word
 			    		$dataResult['lieux_trouver'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_chunk_pred':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+			    		$dataResult['comme-predicat'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_lieu_action':
 			    		$dataResult['que_peut_on_faire'][] = $row['q']->getProperty('name');
@@ -184,10 +205,10 @@ class Word
 			    		$dataResult['sentiments_emotions'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_error':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+			    		$dataResult['form_incorrect'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_manner':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+			    		$dataResult['comment_peut_on'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_meaning':
 			    		$dataResult['gloses'][] = $row['q']->getProperty('name');
@@ -199,10 +220,12 @@ class Word
 			    		$dataResult['roles'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_agentif_role':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+
+
+			    	$dataResult['role_agentifs'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_verbe_action':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+			    		$dataResult['action_verbe'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_causatif':
 			    		$dataResult['causes_associes'][] = $row['q']->getProperty('name');
@@ -217,40 +240,50 @@ class Word
 			    		$dataResult['comme_objet'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_chunk_instr':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+
+
+			    	$dataResult['comme_instrument'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_aki':
 			    		$dataResult['synonimes'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_time':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+
+			    		$dataResult['valeur_temp_dur_periode'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_prev':
 			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+			    	//  ca n'existe pas dans la  base
+
 			    		break;
 			    	case 'r_succ':
 			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+			    	//  ca n'existe pas dans la  base
 			    		break;
 			    	case 'r_inhib':
 			    		$dataResult['inhib'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_object_mater':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+
+			    		$dataResult['matiere'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_successeur_time':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+
+			    		$dataResult['apres_mettre_sa_ceinture'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_make':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+
+			    		$dataResult['que_peut_produire'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_product_of':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+
+			    	$dataResult['ce_qui_produit'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_against':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+			    		$dataResult['a_quoi_proche'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_against_1':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+			    	$dataResult['ce_qui_soppose'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_implication':
 			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
@@ -439,18 +472,18 @@ class Word
 						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
 						break;
 					case 'r_nomprop_adj':
-						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+					$dataResult['nom_de_propriete'][] = $row['q']->getProperty('name');
 						break;
 					case 'r_adj_adv':
+					$dataResult['adjectif_adverbe'][] = $row['q']->getProperty('name');
+						break;
+					case 'r_predecesseur_logic'://cette relation nexsite 
 						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
 						break;
-					case 'r_predecesseur_logic':
+					case 'r_successeur_logic':// nexsite pas
 						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
 						break;
-					case 'r_successeur_logic':
-						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
-						break;
-					case 'r_link':
+					case 'r_link': //cette relation nexsite pas
 						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
 						break;
 			    	default:
