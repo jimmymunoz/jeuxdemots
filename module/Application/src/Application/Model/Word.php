@@ -76,6 +76,7 @@ class Word
 			'de_quoi_nourrir' => array(),
 			'causes_associes' => array(),
 			'consequences_associes' => array(),
+			'contraires' => array(),
 			'sentiments_emotions' => array(),
 			'roles' => array(),
 			'avant_temporel' => array(),
@@ -110,7 +111,7 @@ class Word
 			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_anto':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+			    		$dataResult['contraires'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_hypo':
 			    		$dataResult['specifiques'][] = $row['q']->getProperty('name');
