@@ -69,6 +69,7 @@ class Word
 			'ayant_caracteristique' => array(),
 			'couleurs_pour' => array(),
 			'lieux_trouver' => array(),
+			'adjectif' => array(),
 			'lieux_faire' => array(),
 			'que_peut_faire' => array(),
 			'que_peut_on_faire' => array(),
@@ -84,11 +85,16 @@ class Word
 			'contraires' => array(),
 			'contraires' => array(),
 			'action_verbe' => array(),
+			
+			'masculin_equivalent' => array(),
+			'action_pouvant_etre_faites_rapidement' => array(),
 			'roles' => array(),
 			'avec_quoi' => array(),
 			'form_incorrect' => array(),
 			'comme_instrument' => array(),
+			
 			'avant_temporel' => array(),
+			'implication_agentives_de_messe' => array(),
 			'Qui_quoi_peut_manger' => array(),
 			'role_agentifs' => array(),
 			'comment_peut_on' => array(),
@@ -99,7 +105,23 @@ class Word
 			'ce_qui_soppose' => array(),
 			'a_quoi_proche' => array(),
 			
+			'quantificateurs' => array(),
+			'implication_ assosiee' => array(),
+			'est_souvent_accompagne' => array(),
+			'ce_qui_est_lie_a' => array(),
+			'descend_de' => array(),
+			'apres_banlieure_dortoir' => array(),
 			'adjectif_adverbe' => array(),
+			'quoi_peut_on_ouvrir_compte' => array(),
+			'propriete_pertinent_pour' => array(),	
+			'qui_peu_utiliser' => array(),
+			
+			'participe_passe' => array(),
+			'termes_etymologiquement_apparente' => array(),
+			'equivalent_semantique' => array(),
+			'co_hyponymes' => array(),
+
+
 				'nom_de_propriete' => array(),
 			'comme_tete_syntaxique' => array(),
 
@@ -286,31 +308,31 @@ class Word
 			    	$dataResult['ce_qui_soppose'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_implication':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+			    		$dataResult['implication_ assosiee'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_quantificateur':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+			    		$dataResult['quantificateurs'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_masc':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+			    	$dataResult['masculin_equivalent'][] = $row['q']->getProperty('name');
 			    		break;
 		    		case 'r_fem':
 			    		$dataResult['femenin_equivalent'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_equiv':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+			    		$dataResult['equivalent_semantique'][] = $row['q']->getProperty('name');
 			    		break;
 		    		case 'r_manner_1':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+			    	$dataResult['action_pouvant_etre_faites_rapidement'][] = $row['q']->getProperty('name');
 			    		break;
 		    		case 'r_agentive_implication':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+			    		$dataResult['implication_agentives_de_messe'][] = $row['q']->getProperty('name');
 			    		break;
 		    		case 'r_instance':
 			    		$dataResult['instances'][] = $row['q']->getProperty('name');
 			    		break;
 		    		case 'r_verb_real':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+			    		$dataResult['termes_etymologiquement_apparente'][] = $row['q']->getProperty('name');
 			    		break;
 		    		case 'r_termgroup':
 			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
@@ -391,85 +413,85 @@ class Word
 						$dataResult['moins_gros'][] = $row['q']->getProperty('name');
 						break;
 					case 'r_accomp':
-						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+						$dataResult['est_souvent_accompagne'][] = $row['q']->getProperty('name');
 						break;
-					case 'r_predecesseur_space':
+					case 'r_predecesseur_space'://cite dort =)campagne
 						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
 						break;
 					case 'r_successeur_space':
-						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+						$dataResult['apres_banlieure_dortoir'][] = $row['q']->getProperty('name');
 						break;
 					case 'r_beneficiaire':
+						$dataResult['quoi_peut_on_ouvrir_compte'][] = $row['q']->getProperty('name');
+						break;
+					case 'r_descend_de':// rhipidistien
+						$dataResult['descend_de'][] = $row['q']->getProperty('name');
+						break;
+					case 'r_social_tie'://Olivia De Havilland
 						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
 						break;
-					case 'r_descend_de':
+					case 'r_tributary'://le mot Seine
 						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
 						break;
-					case 'r_social_tie':
-						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
-						break;
-					case 'r_tributary':
-						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
-						break;
-					case 'r_sentiment_1':
+					case 'r_sentiment_1':// anxiété je  trouve pas le q
 						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
 						break;
 					case 'r_linked_with':
-						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+					$dataResult['ce_qui_est_lie_a'][] = $row['q']->getProperty('name');
 						break;
-					case 'r_domain_subst':
+					case 'r_domain_subst':// association idde
 						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
 						break;
 					case 'r_prop':
+						$dataResult['propriete_pertinent_pour'][] = $row['q']->getProperty('name');
+						break;
+					case 'r_foncteur':// les truc de _FL:15
 						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
 						break;
-					case 'r_foncteur':
+					case 'r_comparison':// nexiste pas 
 						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
 						break;
-					case 'r_comparison':
+					case 'r_but':// nexiste pas 
 						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
 						break;
-					case 'r_but':
+					case 'r_processus_gt_patient':// nexiste pas 
 						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
 						break;
-					case 'r_processus_gt_patient':
+					case 'r_but_1':// nexiste pas 
 						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
 						break;
-					case 'r_but_1':
+					case 'r_own':// voisin nexiste pas
 						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
 						break;
-					case 'r_own':
+					case 'r_own_1':// avec lemot voisine
 						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
 						break;
-					case 'r_own_1':
+					case 'r_compl_agent':// nexiste pas 
 						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
 						break;
-					case 'r_compl_agent':
+					case 'r_activ_voice':// nexiste pas 
 						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
 						break;
-					case 'r_activ_voice':
-						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
-						break;
-					case 'r_cooccurrence':
+					case 'r_cooccurrence'://
 						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
 						break;
 					case 'r_make_use_of':
-						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+						$dataResult['qui_peu_utiliser'][] = $row['q']->getProperty('name');
 						break;
-					case 'r_is_used_by':
+					case 'r_is_used_by':// pas  troubve mot  grill
 						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
 						break;
 					case 'r_verb_ppas':
-						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+						$dataResult['participe_passe'][] = $row['q']->getProperty('name');
 						break;
-					case 'r_verb_aux':
+					case 'r_verb_aux'://nexiste pas  dans la base 
 						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
 						break;
 					case 'r_cohypo':
-						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+						$dataResult['co_hyponymes'][] = $row['q']->getProperty('name');
 						break;
 					case 'r_adj_nomprop':
-						//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+						$dataResult['adjectif'][] = $row['q']->getProperty('name');
 						break;
 					case 'r_nomprop_adj':
 					$dataResult['nom_de_propriete'][] = $row['q']->getProperty('name');
