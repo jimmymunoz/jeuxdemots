@@ -13,7 +13,7 @@ export class WordService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
   //private searchUrl = 'csv_example.json';  // URL to web api
-  private searchUrl = '/application/index/search';  // URL to web api
+  private searchUrl = 'application/index/search';  // URL to web api
 
   constructor(private http: Http) { }
 
@@ -33,10 +33,10 @@ export class WordService {
   }
 
   //findUrl: string = "http://jeuxdemots.localhost/application/index/autocompleteword";
-  findUrl: string = "/application/index/autocompleteword";
+  findUrl: string = "application/index/autocompleteword";
   
   findWords = (startsWith: string): Observable<any[]> => {
-        return this.http.get(`${this.findUrl}?word=${startsWith}`)
+      return this.http.get(`${this.findUrl}?word=${startsWith}`)
         //return this._http.get(`${this.marvelBase}characters?nameStartsWith=${startsWith}&apikey=${this.marvelPublicKey}`)
         .map(h => h.json())
         .catch(e => console.error(e));

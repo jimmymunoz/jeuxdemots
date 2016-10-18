@@ -8,6 +8,7 @@ import { ListSearchResultDetailComponent }  from './list-search-result-detail-co
 import { WordService }    from './word.service';
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import { OrderBy } from './orderby';
+import { PopoverModule }  from "ng2-popover";
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { OrderBy } from './orderby';
     BrowserModule,
     HttpModule,
     FormsModule,
-    Ng2AutoCompleteModule
+    Ng2AutoCompleteModule,
+    PopoverModule
   ],
   declarations: [
     SearchWordComponet,

@@ -461,30 +461,41 @@ class Word
 			    }
 			}
 		}
-		$dataResult = $this->orderResultData($dataResult);
-		//print_r($dataResult);
-		//die();
-		return $dataResult;
+
+
+		$newDataResult = $this->addExtraProperties($dataResult);
+		return $newDataResult;
 	}
 
-	public function getWeigthtFromResultArray($resarray)
-	{
-		$arrWeight = array();
-		foreach ($resarray as  $value) {
-			$arrWeight[] = $value['w'];
-		}
-		return $arrWeight;
-	}
+	
 
-
-	public function orderResultData($dataResult)
+	/**
+	 * Adds extra properties to use in front-end.
+	 *
+	 * @param      <type>  $dataResult  The data result
+	 *
+	 * @return     array   ( description_of_the_return_value )
+	 */
+	private function addExtraProperties($dataResult)
 	{
+		$newDataResult = array();
+
 		foreach ($dataResult as $key => $value) {
+
+			//New array with others values to use in front-end
+			$newDataResult[$key] = array(
+				'display_value' => $key,
+				'sort_field' => "w",// w -> weight, name -> name 
+				'sort_dir' => "-",// + -> asc, - -> desc
+				'data' => $value,
+			);
+
 			switch ($key) {
-				//Weight
+				//Custom:
 				case 'themes_domaines':
-					$arrWeight = $this->getWeigthtFromResultArray($value);
-					array_multisort($arrWeight, SORT_DESC, $dataResult[$key]);
+					$newDataResult[$key]['display_value'] = "Thèmes et Domaines";
+					$newDataResult[$key]['sort_field'] = "name";
+					$newDataResult[$key]['sort_dir'] = "+";
 					break;
 				//Default:
 				case 'r_pos':
@@ -535,7 +546,7 @@ class Word
 					break;
 			}
 		}
-		return $dataResult;
+		return $newDataResult;
 	}
 
 	public function autocompleteWord($strSearch)

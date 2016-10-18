@@ -12,7 +12,7 @@
         <li *ngFor="let key of keys(listResult.data)">
            <b>{{key}}</b>
            <div>
-             {{listResult.data[key] | json}}
+             {{listResult.data[key].data | json}}
            </div>
         </li>
       </ul>
@@ -20,33 +20,46 @@
   </div>
 </div>
   	-->
-<div class="x_content">
-  <ul class="list-unstyled timeline">
-    <li>
-      
-    </li>
-    <li *ngFor="let key of keys(listResult.data)">
-      <div *ngIf="listResult.data[key].length" class="block">
-        <div class="tags">
-          <a href="" class="tag">
-            <span>{{key}}</span>
-          </a>
-        </div>
-        <div class="block_content">
-          <h2 class="title">
-              <a>{{key}}</a>
-          </h2>
-          <div class="byline">
-            <span>Total</span>  <a>{{listResult.data[key].length}}</a>
-            <a href="">sortByName</a>
-          </div>
-          	<span *ngFor="let term of listResult.data[key] | orderby: ['-w']" >
-          		<a data-toggle="tooltip" data-placement="top" title="Weight: {{term.w}}" href="searchMethod('')">
-          			{{term.name}}
-          		</a>
-          	</span>
-        </div>
-      </div>
-    </li>
-  </ul>
+<div class="col-md-12 col-xs-12">
+  <div class="x_panel">
+	<div class="x_content">
+	  <ul class="list-unstyled timeline">
+	    <li>
+	      
+	    </li>
+	    <li *ngFor="let key of keys(listResult.data)">
+	      <div *ngIf="listResult.data[key].data.length" class="block">
+	        <div class="tags">
+	          <a href="" class="tag">
+	            <span>{{key}}</span>
+	          </a>
+	        </div>
+	        <div class="block_content">
+	          <h2 class="title">
+	              <a>{{listResult.data[key].display_value}}</a>
+	          </h2>
+	          <div class="byline">
+	            <span>Total</span>  <a>{{listResult.data[key].data.length}}</a>
+	            <a>Ranger par: </a> 
+	            <select [(ngModel)]="listResult.data[key].sort_field" >
+	            	<option value="w">Weight</option>
+	            	<option value="name">Name</option>
+	            </select>
+	            <select [(ngModel)]="listResult.data[key].sort_dir" >
+	            	<option value="+">Ascendant</option>
+	            	<option value="-">Descendant</option>
+	            </select>
+	          </div>
+	          	<!-- Sort By pipe: concatenate 2 params and call OrderBy -->
+	          	<span *ngFor="let term of listResult.data[key].data | orderby: [listResult.data[key].sort_dir + listResult.data[key].sort_field]" >
+	          		<a popover="Weight: {{term.w}}" popoverTitle="{{term.name}}" [popoverOnHover]="true" (click)="searchNewWord(term.name)">
+	          			{{term.name}}
+	          		</a>
+	          	</span>
+	        </div>
+	      </div>
+	    </li>
+	  </ul>
+	</div>
+  </div>
 </div>

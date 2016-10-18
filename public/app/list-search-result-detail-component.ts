@@ -1,8 +1,8 @@
 import { Component, Input, Output, EventEmitter, Pipe } from '@angular/core';
 import { ResultDetail } from './result-detail';
-import { OrderBy } from './orderby';
-
-
+import { OrderBy } from './orderby'; //http://www.fueltravel.com/blog/migrating-from-angular-1-to-2-part-1-pipes/
+import { PopoverModule } from "ng2-popover"; //https://github.com/pleerock/ng2-popover
+import { WordService }   from './word.service';
 
 @Component({
   selector: 'list-search-result-detail-component',
@@ -12,7 +12,7 @@ import { OrderBy } from './orderby';
       display: block; border: 1px solid #ccc;
     }
   `],
-  inputs: ['myname', 'listResult'],
+  inputs: ['myname', 'listResult', 'word'],
   outputs: ['myevent'],
   pipes: [ OrderBy ]
 
@@ -38,8 +38,12 @@ import { OrderBy } from './orderby';
       </div>
     </div>
  */
+
+//{ "eid": "46164", "typeNode": "n_term", "t": "1", "w": "52", "name": "carnivores", "nf": "" }
+
 export class ListSearchResultDetailComponent {
   public myname : String;
+  public word : String;
   public myevent : EventEmitter = new EventEmitter();
   public listResult : any;
   //@Input()
@@ -47,12 +51,27 @@ export class ListSearchResultDetailComponent {
   //@Input()
   //listResult : listResult;
   titre = "Result Details";
+  orderByDir = "-";//Descending
+  orderByField = "w";//weight
   
-  constructor(){
+  constructor(
+    private wordService: WordService
+  ){
+
     console.log("List result : " + this.listResult);
-    console.log("myname : " + this.myname);
   }
   
+  searchNewWord(newword: String){
+    console.log(this.word);
+    this.word = newword;
+    console.log(this.word);
+    this.wordService
+        .searchResults(newword)
+        .then(
+          listResult => this.listResult = listResult
+        );
+  }
+
   keys(object: {}) {
     if(! object ){
         object = [];
