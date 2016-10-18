@@ -48,6 +48,7 @@ class Word
 			'rafinement_semantique' => array(),
 			'gloses' => array(),
 			'inhib' => array(),
+
 			'association_idees' => array(),
 			'tataki' => array(),
 			'wikipedia' => array(),
@@ -115,7 +116,9 @@ class Word
 			'quoi_peut_on_ouvrir_compte' => array(),
 			'propriete_pertinent_pour' => array(),	
 			'qui_peu_utiliser' => array(),
-			
+			'ayant_poisson_comestible_pour_element' => array(),
+						'partie_de_word' => array(),
+
 			'participe_passe' => array(),
 			'termes_etymologiquement_apparente' => array(),
 			'equivalent_semantique' => array(),
@@ -334,32 +337,32 @@ class Word
 		    		case 'r_verb_real':
 			    		$dataResult['termes_etymologiquement_apparente'][] = $row['q']->getProperty('name');
 			    		break;
-		    		case 'r_termgroup':
+		    		case 'r_termgroup':// GPHILO1
 			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
 			    		break;
 		    		case 'r_chunk_head':
 			    		$dataResult['comme_tete_syntaxique'][] = $row['q']->getProperty('name');
 			    		break;
-		    		case 'r_similar':
+		    		case 'r_similar':// dificile
 			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
 			    		break;
 		    		case 'r_set_item':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+			    		$dataResult['partie_de_word'][] = $row['q']->getProperty('name');
 			    		break;
 		    		case 'r_item_set':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+			    		$dataResult['ayant_poisson_comestible_pour_element'][] = $row['q']->getProperty('name');
 			    		break;
-		    		case 'r_processus_gt_agent':
+		    		case 'r_processus_gt_agent':// nexiste pas 
 			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
 			    		break;
 		    		case 'r_variante':
 			    		$dataResult['variantes'][] = $row['q']->getProperty('name');
 			    		break;
 		    		case 'r_has_personnage':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+			    		$dataResult['association_idee'][] = $row['q']->getProperty('name');
 			    		break;
 		    		case 'r_has_auteur':
-			    		//$dataResult['synonimes'][] = $row['q']->getProperty('name');
+			    		$dataResult['association_idee'][] = $row['q']->getProperty('name');
 			    		break;
 			    	case 'r_can_eat':
 			    		$dataResult['de_quoi_nourrir'][] = $row['q']->getProperty('name');
