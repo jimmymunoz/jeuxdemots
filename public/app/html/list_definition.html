@@ -56,16 +56,19 @@
 		      
 		    </li>
 		    <li *ngFor="let key of keys(listResult.data)">
-		      <div *ngIf="listResult.data[key].data.length" class="block">
-		        <!-- 
-		        <div class="tags">
-		          <a href="" class="tag">
-		            <span>{{key}}</span>
-		          </a>
-		        </div>
-		        -->
+		      <!-- definitios -->
+		      <div *ngIf="key == 'definitions'" class="block">
+		      		<span class="label label-info title" style="font-size: 14px;">{{key}}</span>
+					<div *ngFor="let rowDef of listResult.data[key].data">
+						<span innerHTML='{{rowDef.def}}'></span>
+					</div>
+		      </div>
+
+		      <!-- asociations -->
+		      <div *ngIf="listResult.data[key].data.length && key != 'definitions'" class="block">
+		        
 		        <div class="block_content" id="section_{{key}}">
-					        
+						        
 		         	<span class="label label-info title" style="font-size: 14px;">{{key}}</span>
 		          <div class="byline">
 		            <span>Total</span>  <a>{{listResult.data[key].data.length}}</a>
@@ -81,7 +84,7 @@
 		          </div>
 		          	<!-- Sort By pipe: concatenate 2 params and call OrderBy -->
 		          	<span *ngFor="let term of listResult.data[key].data | orderby: [listResult.data[key].sort_dir + listResult.data[key].sort_field]" >
-		          		<a class="btn-link" style="cursor: pointer;" popover="Weight: {{term.w}}" popoverTitle="{{term.name}}" [popoverOnHover]="true" (click)="searchNewWord(term.name)">
+		          		<a class="btn-link" style="cursor: pointer;" popover="Weight: {{term.w}} id: {{term.eid}}" popoverTitle="{{term.name}}" [popoverOnHover]="true" (click)="searchNewWord(term.name)">
 		          			{{term.name}}
 		          		</a>
 		          	</span>
