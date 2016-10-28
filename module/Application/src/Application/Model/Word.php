@@ -11,12 +11,46 @@ class Word
         $this->em = $em;
 	 }
 
+	public function getDefByWord($word)
+	{
+		$result = null;
+    	if( $word != "" ){
+
+			$result =  $this->em->cypherQuery('
+			MATCH (p:Word)-[r:r_raff_sem]->(q:Word)-[d:DEF]->(f:Definition)
+			WHERE  p.name = {name} 
+			RETURN p, f, type(d) as rel_type',
+							 array(
+							    'name' => $word,
+							)
+			);
+    	}
+    	$dataResult = array('definitions' => array());
+			if( $result != null )
+			{
+			foreach ($result as $row) 
+				{
+			    
+			    $type = $row['f']->getProperty('typeNode');
+			    $rel_type = $row['rel_type'];
+			    //if  ($rel_type == 'DEF') 
+			    switch ($rel_type) {
+			    	case 'DEF':
+			    		$dataResult['definition'][] = $row['f']->getProperty('def');
+			    		break;}
+			  							
+			  	}
+		
+			}
+			return $dataResult;
+		}
   /**
    * Gets the nodes by word.
    *
    * @param      string  $word   The word
    * @return     array   The nodes by word.
    */
+  
 	public function getNodesByWord($word)
 	{
 		$result = null;
@@ -38,17 +72,10 @@ class Word
 			'info_semantique' => array(),
 			'femenin_equivalent' => array(),
 			'variantes' => array(),
-			'definitions' => array(
-				"def1",
-				"def2",
-				"def3",
-				"def4",
-				"def5",
-			),
+			'definitions' => array(),
 			'rafinement_semantique' => array(),
 			'gloses' => array(),
 			'inhib' => array(),
-
 			'association_idees' => array(),
 			'tataki' => array(),
 			'wikipedia' => array(),
@@ -105,7 +132,6 @@ class Word
 			'ce_qui_produit' => array(),
 			'ce_qui_soppose' => array(),
 			'a_quoi_proche' => array(),
-			
 			'quantificateurs' => array(),
 			'implication_ assosiee' => array(),
 			'est_souvent_accompagne' => array(),
@@ -117,8 +143,7 @@ class Word
 			'propriete_pertinent_pour' => array(),	
 			'qui_peu_utiliser' => array(),
 			'ayant_poisson_comestible_pour_element' => array(),
-						'partie_de_word' => array(),
-
+			'partie_de_word' => array(),
 			'participe_passe' => array(),
 			'termes_etymologiquement_apparente' => array(),
 			'equivalent_semantique' => array(),

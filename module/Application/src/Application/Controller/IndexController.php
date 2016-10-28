@@ -9,12 +9,14 @@ use Zend\View\Model\JsonModel;
 use Application\Model\Word;
 use Zend\Json\Json;
 
+
+
 class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-
-		return new ViewModel();
+		//die("2134");
+    	return new ViewModel();
     }
 
     /**
@@ -31,6 +33,7 @@ class IndexController extends AbstractActionController
 		$word = $this->params()->fromQuery('word');
     	
     	$data = $WordModel->getNodesByWord($word);
+    	$data['definitions'] = $WordModel->getDefByWord($word);
 		
 		$dataResult = array(
 			"success" => false,
