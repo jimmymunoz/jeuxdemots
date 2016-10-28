@@ -11,17 +11,18 @@
 
         <!-- Le styles -->
         <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
-                        //->prependStylesheet($this->basePath('css/style.css'))
-                        //->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
-                        //->prependStylesheet($this->basePath('css/bootstrap.min.css')) 
+              //->prependStylesheet($this->basePath('css/style.css'))
+              //->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
+              //->prependStylesheet($this->basePath('css/bootstrap.min.css')) 
 
-                         ->prependStylesheet($this->basePath('template/build/css/custom.min.css'))
-                         ->prependStylesheet($this->basePath('template/vendors/jqvmap/dist/jqvmap.min.css'))
-                         ->prependStylesheet($this->basePath('template/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css'))
-                         ->prependStylesheet($this->basePath('template/vendors/iCheck/skins/flat/green.css'))
-                         ->prependStylesheet($this->basePath('template/vendors/nprogress/nprogress.css'))
-                         ->prependStylesheet($this->basePath('template/vendors/font-awesome/css/font-awesome.min.css'))
-                         ->prependStylesheet($this->basePath('template/vendors/bootstrap/dist/css/bootstrap.min.css'))
+               //->prependStylesheet($this->basePath('template/build/css/custom.min.css'))
+               ->prependStylesheet($this->basePath('template/build/css/custom.css'))
+               ->prependStylesheet($this->basePath('template/vendors/jqvmap/dist/jqvmap.min.css'))
+               ->prependStylesheet($this->basePath('template/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css'))
+               ->prependStylesheet($this->basePath('template/vendors/iCheck/skins/flat/green.css'))
+               ->prependStylesheet($this->basePath('template/vendors/nprogress/nprogress.css'))
+               ->prependStylesheet($this->basePath('template/vendors/font-awesome/css/font-awesome.min.css'))
+               ->prependStylesheet($this->basePath('template/vendors/bootstrap/dist/css/bootstrap.min.css'))
 
         ?>
 
@@ -284,15 +285,15 @@
 
             </style>
             <div class="right_col" role="main" style="padding-none: 0px 0px 0;">
-                <div class="backgroud_sky">
-                    <!-- top tiles -->
-                    <div class="row tile_count">
+                <!-- top tiles -->
+                <div class="row tile_count">
 
-                    </div>
-                    <!-- /top tiles -->
-                    <div class="row tile_count" style="padding: 20px;">
-                        <?php echo $this->content; ?>
-                    </div>
+                </div>
+                <!-- /top tiles -->
+                <div class="row tile_count">
+                    <?php echo $this->content; ?>
+                </div>
+                <div class="backgroud_sky">
                 </div>
             </div>
             <!-- /page content -->

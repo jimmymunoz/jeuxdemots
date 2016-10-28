@@ -19,47 +19,77 @@
     </div>
   </div>
 </div>
+
+<div class="col-md-12">
+  <h4>Labels and badges</h4>
+  <span class="label label-default">Default</span>
+  <span class="label label-primary">Primary</span>
+  <span class="label label-success">Success</span>
+  <span class="label label-info">Info</span>
+  <span class="label label-warning">Warning</span>
+  <span class="label label-danger">Danger</span>
+  <span class="badge badge-success">42</span>
+</div>
   	-->
 <div class="col-md-12 col-xs-12">
   <div class="x_panel">
 	<div class="x_content">
-	  <ul class="list-unstyled timeline">
-	    <li>
-	      
-	    </li>
-	    <li *ngFor="let key of keys(listResult.data)">
-	      <div *ngIf="listResult.data[key].data.length" class="block">
-	        <div class="tags">
-	          <a href="" class="tag">
-	            <span>{{key}}</span>
-	          </a>
-	        </div>
-	        <div class="block_content">
-	          <h2 class="title">
-	              <a>{{listResult.data[key].display_value}}</a>
-	          </h2>
-	          <div class="byline">
-	            <span>Total</span>  <a>{{listResult.data[key].data.length}}</a>
-	            <a>Ranger par: </a> 
-	            <select [(ngModel)]="listResult.data[key].sort_field" >
-	            	<option value="w">Weight</option>
-	            	<option value="name">Name</option>
-	            </select>
-	            <select [(ngModel)]="listResult.data[key].sort_dir" >
-	            	<option value="+">Ascendant</option>
-	            	<option value="-">Descendant</option>
-	            </select>
-	          </div>
-	          	<!-- Sort By pipe: concatenate 2 params and call OrderBy -->
-	          	<span *ngFor="let term of listResult.data[key].data | orderby: [listResult.data[key].sort_dir + listResult.data[key].sort_field]" >
-	          		<a popover="Weight: {{term.w}}" popoverTitle="{{term.name}}" [popoverOnHover]="true" (click)="searchNewWord(term.name)">
-	          			{{term.name}}
-	          		</a>
-	          	</span>
-	        </div>
-	      </div>
-	    </li>
-	  </ul>
+
+		<section class="filters">
+			<div class="col-md-12">
+			  <!-- labels goto -->
+			  <div *ngFor="let key of keys(listResult.data)" class="input-append" style="display: inline-block; ">
+		  			<span class="label label-success" style="margin-left: none;">
+		         		<a pageScroll href="#section_{{key}}">{{key}}</a>
+	         		</span>
+		         	<span class="add-on label label-danger" style="cursor: pointer; margin-right: none;">X</span>
+		      </div>
+		    </div>
+		</section>
+	    
+	    <hr/>
+	    <h2> Results <small>({{word}})</small></h2> 
+
+		<section>
+		  <ul class="list-unstyled timeline widget">
+		    <li>
+		      
+		    </li>
+		    <li *ngFor="let key of keys(listResult.data)">
+		      <div *ngIf="listResult.data[key].data.length" class="block">
+		        <!-- 
+		        <div class="tags">
+		          <a href="" class="tag">
+		            <span>{{key}}</span>
+		          </a>
+		        </div>
+		        -->
+		        <div class="block_content" id="section_{{key}}">
+					        
+		         	<span class="label label-info title" style="font-size: 14px;">{{key}}</span>
+		          <div class="byline">
+		            <span>Total</span>  <a>{{listResult.data[key].data.length}}</a>
+		            <a>Ranger par: </a> 
+		            <select [(ngModel)]="listResult.data[key].sort_field" >
+		            	<option value="w">Poids</option>
+		            	<option value="name">Nom</option>
+		            </select>
+		            <select [(ngModel)]="listResult.data[key].sort_dir" >
+		            	<option value="+">Ascendant</option>
+		            	<option value="-">Descendant</option>
+		            </select>
+		          </div>
+		          	<!-- Sort By pipe: concatenate 2 params and call OrderBy -->
+		          	<span *ngFor="let term of listResult.data[key].data | orderby: [listResult.data[key].sort_dir + listResult.data[key].sort_field]" >
+		          		<a class="btn-link" style="cursor: pointer;" popover="Weight: {{term.w}}" popoverTitle="{{term.name}}" [popoverOnHover]="true" (click)="searchNewWord(term.name)">
+		          			{{term.name}}
+		          		</a>
+		          	</span>
+		        </div>
+		      </div>
+		    </li>
+		  </ul>
+		</section>
 	</div>
   </div>
 </div>

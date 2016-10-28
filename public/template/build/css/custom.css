@@ -1,6 +1,6 @@
 @charset "UTF-8";
 .left_col {
-  background: #2A3F54; }
+  background: #00313B; }
 
 .nav-sm .container.body .col-md-3.left_col {
   min-height: 100%;
@@ -36,9 +36,10 @@
   margin: 13px 0 0 3px; }
 
 .site_title i {
-  border: 1px solid #EAEAEA;
   padding: 5px 6px;
-  border-radius: 50%; }
+  border-radius: 50%;
+  color: #00abff;
+   }
 
 .nav-sm .main_container .top_nav {
   display: block;
@@ -53,7 +54,7 @@
 
 .nav-sm .nav.child_menu li.active,
 .nav-sm .nav.side-menu li.active-sm {
-  border-right: 5px solid #1ABB9C; }
+  border-right: 5px solid #00abff; }
 
 .nav-sm ul.nav.child_menu ul,
 .nav-sm .nav.side-menu li.active-sm ul ul {
@@ -62,7 +63,7 @@
   background: none; }
 
 .nav-sm > .nav.side-menu > li.active-sm > a {
-  color: #1ABB9C !important; }
+  color: #00abff !important; }
 
 .nav-sm .nav.side-menu li a i.toggle-up {
   display: none !important; }
@@ -178,7 +179,7 @@
 
 .nav_menu {
   float: left;
-  background: #EDEDED;
+  background: #00313B;
   border-bottom: 1px solid #D9DEE4;
   margin-bottom: 10px;
   width: 100%;
@@ -210,7 +211,7 @@ body .container.body .right_col {
 .nav_title {
   width: 230px;
   float: left;
-  background: #2A3F54;
+  background: #00313B;
   border-radius: 0;
   height: 57px; }
 
@@ -253,7 +254,7 @@ body .container.body .right_col {
   color: #9B59B6; }
 
 .green {
-  color: #1ABB9C; }
+  color: #00abff; }
 
 .aero {
   color: #9CC2CB; }
@@ -271,7 +272,7 @@ body .container.body .right_col {
   border-color: #9B59B6 !important; }
 
 .border-green {
-  border-color: #1ABB9C !important; }
+  border-color: #00abff !important; }
 
 .border-aero {
   border-color: #9CC2CB !important; }
@@ -288,8 +289,8 @@ body .container.body .right_col {
   color: #73879C; }
 
 .bg-green {
-  background: #1ABB9C !important;
-  border: 1px solid #1ABB9C !important;
+  background: #00abff !important;
+  border: 1px solid #00abff !important;
   color: #fff; }
 
 .bg-red {
@@ -329,7 +330,7 @@ body .container.body .right_col {
 
 body {
   color: #73879C;
-  background: #2A3F54;
+  background: #00313B;
   font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
   font-size: 13px;
   font-weight: 400;
@@ -544,7 +545,7 @@ a:hover, a:focus {
   padding: 13px 15px 12px; }
 
 .nav.side-menu > li.current-page, .nav.side-menu > li.active {
-  border-right: 5px solid #1ABB9C; }
+  border-right: 5px solid #00abff; }
 
 .nav li.current-page {
   background: rgba(255, 255, 255, 0.05); }
@@ -557,7 +558,7 @@ a:hover, a:focus {
 
 .nav.side-menu > li.active > a {
   text-shadow: rgba(0, 0, 0, 0.25) 0 -1px 0;
-  background: linear-gradient(#334556, #2C4257), #2A3F54;
+  background: linear-gradient(#334556, #2C4257), #00313B;
   box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16) 0 1px 0; }
 
 .navbar-brand, .navbar-nav > li > a {
@@ -1107,7 +1108,7 @@ table.jambo_table tbody tr.selected td {
 
 table.dataTable th.focus,
 table.dataTable td.focus {
-  outline: 2px solid #1ABB9C !important;
+  outline: 2px solid #00abff !important;
   outline-offset: -1px; }
 
 table.display {
@@ -1419,7 +1420,7 @@ span.right {
   padding: 5px 0 0 0;
   position: fixed;
   width: 230px;
-  background: #2A3F54; }
+  background: #00313B; }
 
 .sidebar-footer a {
   padding: 7px 0 3px;
@@ -2183,7 +2184,7 @@ textarea:focus {
   font-size: 10px;
   line-height: 1.4;
   text-align: center;
-  background-color: #f9f9f9;
+  background-color: #009090;
   border: 1px solid #fff; }
 
 .bs-glyphicons .glyphicon {
@@ -2198,7 +2199,7 @@ textarea:focus {
 
 .bs-glyphicons li:hover {
   color: #fff;
-  background-color: #1ABB9C; }
+  background-color: #00abff; }
 
 @media (min-width: 768px) {
   .bs-glyphicons {
@@ -2224,7 +2225,7 @@ span.tag {
   float: left;
   padding: 5px 9px;
   text-decoration: none;
-  background: #1ABB9C;
+  background: #00abff;
   color: #F1F6F7;
   margin-right: 5px;
   font-weight: 500;
@@ -2354,7 +2355,7 @@ ul.timeline li {
 
 .tag {
   line-height: 1;
-  background: #1ABB9C;
+  background: #00abff;
   color: #fff !important; }
 
 .tag:after {
@@ -2368,7 +2369,7 @@ ul.timeline li {
   pointer-events: none;
   border-top: 14px solid transparent;
   border-bottom: 14px solid transparent;
-  border-left: 11px solid #1ABB9C; }
+  border-left: 11px solid #00abff; }
 
 .timeline h2.title {
   position: relative;
@@ -2436,7 +2437,7 @@ ul.social li {
   border-radius: 50%; }
 
 .chat .status.online {
-  background: #1ABB9C; }
+  background: #00abff; }
 
 .chat .status.away {
   background: #F39C12; }
@@ -2563,7 +2564,7 @@ ul.widget_profile_box li a {
   padding: 0px; }
 
 ul.widget_profile_box li a:hover {
-  color: #1ABB9C !important;
+  color: #00abff !important;
   border: 1px solid #26b99a; }
 
 ul.widget_profile_box li .profile_img {
@@ -2751,7 +2752,7 @@ ul.project_files li a i {
   background: #fff; }
 
 .pricing .title {
-  background: #1ABB9C;
+  background: #00abff;
   height: 110px;
   color: #fff;
   padding: 15px 0 0;
@@ -3328,14 +3329,14 @@ header {
 /** signup **/
 /** NProgress **/
 #nprogress .bar {
-  background: #1ABB9C; }
+  background: #00abff; }
 
 #nprogress .peg {
-  box-shadow: 0 0 10px #1ABB9C, 0 0 5px #1ABB9C; }
+  box-shadow: 0 0 10px #00abff, 0 0 5px #00abff; }
 
 #nprogress .spinner-icon {
-  border-top-color: #1ABB9C;
-  border-left-color: #1ABB9C; }
+  border-top-color: #00abff;
+  border-left-color: #00abff; }
 
 /** /NProgress **/
 /** bootstrap-wysiwyg **/
@@ -3609,7 +3610,7 @@ fieldset {
   color: #fff; }
 
 .wizard_horizontal ul.wizard_steps li a.done:before, .wizard_horizontal ul.wizard_steps li a.done .step_no {
-  background: #1ABB9C;
+  background: #00abff;
   color: #fff; }
 
 .wizard_horizontal ul.wizard_steps li:first-child a:before {
@@ -3703,7 +3704,7 @@ fieldset {
   color: #fff; }
 
 .wizard_verticle ul.wizard_steps li a.done:before, .wizard_verticle ul.wizard_steps li a.done .step_no {
-  background: #1ABB9C;
+  background: #00abff;
   color: #fff; }
 
 .wizard_verticle ul.wizard_steps li:first-child a:before {
@@ -3880,7 +3881,7 @@ ul.notifications {
   color: #ECF0F1; }
 
 .daterangepicker.picker_1 table.table-condensed thead tr:first-child {
-  background: #1ABB9C; }
+  background: #00abff; }
 
 .daterangepicker table.table-condensed thead tr:first-child th {
   line-height: 28px;
@@ -3912,10 +3913,10 @@ ul.notifications {
   color: inherit; }
 
 .daterangepicker.picker_2 table.table-condensed thead tr {
-  color: #1ABB9C; }
+  color: #00abff; }
 
 .daterangepicker.picker_3 table.table-condensed thead tr:first-child {
-  background: #1ABB9C;
+  background: #00abff;
   color: #ECF0F1; }
 
 .daterangepicker.picker_4 table.table-condensed tbody td {

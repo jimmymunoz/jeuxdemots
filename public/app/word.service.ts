@@ -33,7 +33,7 @@ export class WordService {
   }
 
   //findUrl: string = "http://jeuxdemots.localhost/application/index/autocompleteword";
-  findUrl: string = "application/index/autocompleteword";
+  findUrl: string = "/application/index/autocompleteword";
   
   findWords = (startsWith: string): Observable<any[]> => {
       return this.http.get(`${this.findUrl}?word=${startsWith}`)
