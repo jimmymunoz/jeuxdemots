@@ -4130,3 +4130,14 @@ ul.notifications {
   border: 1px solid #e5e5e5; }
 
 /** /Dropzone.js **/
+
+.reamark_text{
+  font-size: 2em;
+  text-shadow: red 0px 0px 20px;
+}
+.definitions_text{
+  color: #000000;
+}
+.definitions_text:hover, .definitions_text:focus {
+  background: #287F7F;
+}

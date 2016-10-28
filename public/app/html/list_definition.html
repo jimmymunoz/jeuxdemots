@@ -36,62 +36,68 @@
 	<div class="x_content">
 
 		<section class="filters">
+			<h2> Filters <small>({{word}})</small></h2> 
 			<div class="col-md-12">
 			  <!-- labels goto -->
-			  <div *ngFor="let key of keys(listResult.data)" class="input-append" style="display: inline-block; ">
-		  			<span class="label label-success" style="margin-left: none;">
-		         		<a pageScroll href="#section_{{key}}">{{key}}</a>
-	         		</span>
-		         	<span class="add-on label label-danger" style="cursor: pointer; margin-right: none;">X</span>
-		      </div>
+			  	<div *ngFor="let key of keys(listResult.data)" style="display: inline-block; ">
+				  <div *ngIf="listResult.data[key].data.length" class="input-append" >
+
+			  			<span class="label label-success" style="margin-left: none;">
+			         		<a pageScroll href="#section_{{key}}">{{key}}</a>
+		         		</span>
+			         	<span class="add-on label label-danger" style="cursor: pointer; margin-right: none;">X</span>
+			      </div>
+			    </div>
 		    </div>
+	    	<br/>
 		</section>
 	    
-	    <hr/>
-	    <h2> Results <small>({{word}})</small></h2> 
+	    <br/>
 
 		<section>
-		  <ul class="list-unstyled timeline widget">
-		    <li>
-		      
-		    </li>
-		    <li *ngFor="let key of keys(listResult.data)">
-		      <!-- definitios -->
-		      <div *ngIf="key == 'definitions'" class="block">
-		      		<span class="label label-info title" style="font-size: 14px;">{{key}}</span>
-					<div *ngFor="let rowDef of listResult.data[key].data">
-						<span innerHTML='{{rowDef.def}}'></span>
-					</div>
-		      </div>
+	    	<h2> Results <small>({{word}})</small></h2> 
 
-		      <!-- asociations -->
-		      <div *ngIf="listResult.data[key].data.length && key != 'definitions'" class="block">
-		        
-		        <div class="block_content" id="section_{{key}}">
-						        
-		         	<span class="label label-info title" style="font-size: 14px;">{{key}}</span>
-		          <div class="byline">
-		            <span>Total</span>  <a>{{listResult.data[key].data.length}}</a>
-		            <a>Ranger par: </a> 
-		            <select [(ngModel)]="listResult.data[key].sort_field" >
-		            	<option value="w">Poids</option>
-		            	<option value="name">Nom</option>
-		            </select>
-		            <select [(ngModel)]="listResult.data[key].sort_dir" >
-		            	<option value="+">Ascendant</option>
-		            	<option value="-">Descendant</option>
-		            </select>
-		          </div>
-		          	<!-- Sort By pipe: concatenate 2 params and call OrderBy -->
-		          	<span *ngFor="let term of listResult.data[key].data | orderby: [listResult.data[key].sort_dir + listResult.data[key].sort_field]" >
-		          		<a class="btn-link" style="cursor: pointer;" popover="Weight: {{term.w}} id: {{term.eid}}" popoverTitle="{{term.name}}" [popoverOnHover]="true" (click)="searchNewWord(term.name)">
-		          			{{term.name}}
-		          		</a>
-		          	</span>
-		        </div>
-		      </div>
-		    </li>
-		  </ul>
+			<ul class="list-unstyled timeline widget">
+			    <li>
+			      
+			    </li>
+			    <li *ngFor="let key of keys(listResult.data)">
+			      <!-- definitions -->
+			      <div *ngIf="listResult.data[key].data.length && key == 'definitions'" class="block">
+			      		<span class="label label-info title" style="font-size: 14px;">{{key}}</span>
+						<div *ngFor="let rowDef of listResult.data[key].data" class="definitions_text" (mouseenter)="mouseEnterDefinition(rowDef.termid)"  (mouseleave) ="mouseLeaveDefinition(rowDef.termid)">
+							<span innerHTML='{{rowDef.def}}'></span>
+						</div>
+			      </div>
+
+			      <!-- asociations -->
+			      <div *ngIf="listResult.data[key].data.length && key != 'definitions'" class="block">
+			        
+			        <div class="block_content" id="section_{{key}}">
+							        
+			         	<span class="label label-info title" style="font-size: 14px;">{{key}}</span>
+			          <div class="byline">
+			            <span>Total</span>  <a>{{listResult.data[key].data.length}}</a>
+			            <a>Ranger par: </a> 
+			            <select [(ngModel)]="listResult.data[key].sort_field" >
+			            	<option value="w">Poids</option>
+			            	<option value="name">Nom</option>
+			            </select>
+			            <select [(ngModel)]="listResult.data[key].sort_dir" >
+			            	<option value="+">Ascendant</option>
+			            	<option value="-">Descendant</option>
+			            </select>
+			          </div>
+			          	<!-- Sort By pipe: concatenate 2 params and call OrderBy -->
+			          	<span *ngFor="let term of listResult.data[key].data | orderby: [listResult.data[key].sort_dir + listResult.data[key].sort_field]" >
+			          		<a id="{{key}}_{{term.eid}}" class="btn-link" style="cursor: pointer;" popover="Weight: {{term.w}} id: {{term.eid}}" popoverTitle="{{term.name}}" [popoverOnHover]="true" (click)="searchNewWord(term.name)">
+			          			{{term.name}}
+			          		</a>
+			          	</span>
+			        </div>
+			      </div>
+			    </li>
+			</ul>
 		</section>
 	</div>
   </div>

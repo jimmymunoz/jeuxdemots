@@ -78,4 +78,14 @@ export class ListSearchResultDetailComponent {
     }
     return Object.keys(object);
   }
+
+  mouseEnterDefinition(id : string){
+    let myDiv = document.getElementById("rafinement_semantique_" + id);
+    myDiv.className += ' reamark_text';
+  }
+
+  mouseLeaveDefinition(id : string){
+    let myDiv = document.getElementById("rafinement_semantique_" + id);
+    myDiv.className = 'btn-link';
+  }
 }
