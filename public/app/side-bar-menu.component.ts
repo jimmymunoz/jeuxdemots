@@ -5,12 +5,10 @@ import { PopoverModule } from "ng2-popover"; //https://github.com/pleerock/ng2-p
 import { WordService }   from './word.service';
 
 @Component({
-  selector: 'list-search-result-detail-component',
-  templateUrl: 'app/html/list_definition.html',
+  selector: 'side-bar-menu',
+  templateUrl: 'app/html/side-bar-menu.html',
   styles: [`
-    left-menu {
-      display: block; border: 1px solid #ccc;
-    }
+    
   `],
   inputs: ['myname', 'listResult', 'word'],
   outputs: ['myevent'],
@@ -19,7 +17,7 @@ import { WordService }   from './word.service';
 })
 
 
-export class ListSearchResultDetailComponent {
+export class SideBarMenuComponent {
   public myname : String;
   public word : String;
   public myevent : EventEmitter = new EventEmitter();
@@ -32,8 +30,7 @@ export class ListSearchResultDetailComponent {
   constructor(
     private wordService: WordService
   ){
-
-    console.log("List result : " + this.listResult);
+  
   }
   
   searchNewWord(newword: String){

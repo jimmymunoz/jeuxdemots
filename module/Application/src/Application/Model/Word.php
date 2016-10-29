@@ -108,7 +108,6 @@ class Word
 			'consequences_associes' => array(),
 			'contraires' => array(),
 			'action_verbe' => array(),
-			
 			'sentiments_emotions' => array(),
 			'masculin_equivalent' => array(),
 			'action_pouvant_etre_faites_rapidement' => array(),
@@ -558,11 +557,329 @@ class Word
 
 			switch ($key) {
 				//Custom:
+				case 'r_pos':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#a5b8da';
+					break;
+				case 'lemme':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#7089b3';
+					break;
+				case 'info_semantique':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#ffd65e';
+					break;
+				case 'femenin_equivalent':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#febf04';
+					break;
+				case 'variantes':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#606c88';
+					break;
+				case 'definitions':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#3f4c6b';
+					break;
+				case 'rafinement_semantique':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#d5cea6';
+					break;
+				case 'gloses':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#b7ad70';
+					break;
+				case 'inhib':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#a90329';
+					break;
+				case 'association_idees':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#6d0019';
+					break;
+				case 'tataki':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#4ba614';
+					break;
+				case 'wikipedia':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#008c00';
+					break;
+				case 'concurrences':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#ff5db1';
+					break;
 				case 'themes_domaines':
 					$newDataResult[$key]['display_value'] = "Thèmes et Domaines";
-					$newDataResult[$key]['sort_field'] = "name";
-					$newDataResult[$key]['sort_dir'] = "+";
+					$newDataResult[$key]['color'] = '#ef007c';
 					break;
+				case 'synonimes':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#7d7e7d';
+					break;
+				case 'generiques':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#0e0e0e';
+					break;
+				case 'generiques_incompatibles':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#cef8ff';
+					break;
+				case 'specifiques':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#7fe0f8';
+					break;
+				case 'instances':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#f2f9fe';
+					break;
+				case 'parties':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#d6f0fd';
+					break;
+				case 'fait_partie_de':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#fb83fa';
+					break;
+				case 'plus_intence':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#e93cec';
+					break;
+				case 'plus_gros':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#3093c7';
+					break;
+				case 'moins_gros':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#1c5a85';
+					break;
+				case 'term_etymologiquement':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#a9db80';
+					break;
+				case 'locution_term_composes':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#96c56f';
+					break;
+				case 'caracteristiques':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#b29af8';
+					break;
+				case 'ayant_caracteristique':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#9174ed';
+					break;
+				case 'couleurs_pour':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#f2f5f6';
+					break;
+				case 'lieux_trouver':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#c8d7dc';
+					break;
+				case 'adjectif':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#ffc579';
+					break;
+				case 'lieux_faire':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#fb9d23';
+					break;
+				case 'que_peut_faire':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#d3d3d3';
+					break;
+				case 'que_peut_on_faire':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#707070';
+					break;
+				case 'que_peut_on_faire':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#fcfac0';
+					break;
+				case 'que_peut_produire':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#f6f283';
+					break;
+				case 'de_quoi_nourrir':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#f4f5f5';
+					break;
+				case 'causes_associes':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#dfdddd';
+					break;
+				case 'moins-intense':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#f7e3e3';
+					break;
+				case 'apres_mettre_sa_ceinture':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#ffd7d7';
+					break;
+				case 'comme-predicat':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#ff9a9a';
+					break;
+				case 'valeur_temp_dur_periode':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#ff4040';
+					break;
+				case 'consequences_associes':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#a9a588';
+					break;
+				case 'contraires':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#8e865b';
+					break;
+				case 'action_verbe':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#f62b2b';
+					break;
+				case 'sentiments_emotions':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#d20202';
+					break;
+				case 'masculin_equivalent':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#a67939';
+					break;
+				case 'action_pouvant_etre_faites_rapidement':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#845108';
+					break;
+				case 'roles':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#d2d2f9';
+					break;
+				case 'avec_quoi':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#a6a6f2';
+					break;
+				case 'form_incorrect':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#49c0f0';
+					break;
+				case 'comme_instrument':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#2CAFE3';
+					break;
+				case 'avant_temporel':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#CEDCE7';
+					break;
+				case 'implication_agentives_de_messe':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#596a72';
+					break;
+				case 'qui_quoi_peut_manger':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#b6e026';
+					break;
+				case 'role_agentifs':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#abdc28';
+					break;
+				case 'comment_peut_on':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#eab92d';
+					break;
+				case 'comme_sujet':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#c79810';
+					break;
+				case 'comme_objet':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#45484d';
+					break;
+				case 'matiere':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#000000';
+					break;
+				case 'ce_qui_produit':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#92cfde';
+					break;
+				case 'ce_qui_soppose':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#76bdd1';
+					break;
+				case 'a_quoi_proche':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#a7cfdf';
+					break;
+				case 'quantificateurs':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#23538a';
+					break;
+				case 'implication_ assosiee':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#E6E6E6';
+					break;
+				case 'est_souvent_accompagne':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#CCCCCC';
+					break;
+				case 'ce_qui_est_lie_a':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#5cb85c';
+					break;
+				case 'descend_de':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#5cb85c';
+					break;
+				case 'apres_banlieure_dortoir':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#5cb85c';
+					break;
+				case 'adjectif_adverbe':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#5cb85c';
+					break;
+				case 'quoi_peut_on_ouvrir_compte':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#5cb85c';
+					break;
+				case 'propriete_pertinent_pour':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#5cb85c';
+					break;	
+				case 'qui_peu_utiliser':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#5cb85c';
+					break;
+				case 'ayant_poisson_comestible_pour_element':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#5cb85c';
+					break;
+				case 'partie_de_word':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#5cb85c';
+					break;
+				case 'participe_passe':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#5cb85c';
+					break;
+				case 'termes_etymologiquement_apparente':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#5cb85c';
+					break;
+				case 'equivalent_semantique':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#5cb85c';
+					break;
+				case 'co_hyponymes':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#5cb85c';
+					break;
+				case 'nom_de_propriete':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#5cb85c';
+					break;
+				case 'comme_tete_syntaxique':
+					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['color'] = '#5cb85c';
 				default:
 					# code...
 					break;

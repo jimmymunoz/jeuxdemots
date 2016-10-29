@@ -31,31 +31,30 @@
   <span class="badge badge-success">42</span>
 </div>
   	-->
-<div class="col-md-12 col-xs-12">
-	<div class="x_panel">
-		<div class="x_content">
-			<section class="filters">
+<section class="filters">
+	<div class="col-md-12 col-xs-12">
+		<div class="x_panel">
+			<div class="x_content">
 				<h2> <i class="fa fa-filter"></i> Filters <small>({{word}})</small></h2> 
 				<div class="col-md-12">
 				  <!-- labels goto -->
 				  	<div *ngFor="let key of keys(listResult.data)" style="display: inline-block; " class="">
 					  <div *ngIf="listResult.data[key].data.length" class="input-append" >
 
-				  			<a  style="margin-left: none;" class="btn btn-sm label-success" pageScroll href="#section_{{key}}">{{key}}</a>
-			         		<span class="add-on btn btn-sm btn-default" style="cursor: pointer; margin-right: none;"> <i class="fa fa-eye"></i> </span>
+				  			<a  class="btn btn-sm category_button not_margin color-{{key}} "  pageScroll href="#section_{{key}}">{{key}}</a>
+			         		<span class="add-on btn btn-sm btn-default not_margin" style="cursor: pointer; margin-right: none;"> <i class="fa fa-eye"></i> </span>
 				      </div>
 				    </div>
 			    </div>
-		    	<br/>
-			</section>
+			</div>
 		</div>
 	</div>
-</div>
+</section>
 
-<div class="col-md-12 col-xs-12">
-  <div class="x_panel">
-	<div class="x_content">
-		<section>
+<section class="result">
+	<div class="col-md-12 col-xs-12" >
+	  <div class="x_panel" style="min-height: 300px;">
+		<div class="x_content">
 	    	<h2> Results <small>({{word}})</small></h2> 
 
 			<ul class="list-unstyled timeline widget">
@@ -80,7 +79,7 @@
 			        
 			        <div class="block_content" id="section_{{key}}">
 							        
-			         	<span class="label label-info title" style="font-size: 1.2em;">{{key}}</span>
+			         	<span class="label label-info title category_button_title color-{{key}}" >{{key}}</span>
 						
 						<span>Total {{listResult.data[key].data.length}}</span>  
 
@@ -124,7 +123,7 @@
 			      </div>
 			    </li>
 			</ul>
-		</section>
+		</div>
+	  </div>
 	</div>
-  </div>
-</div>
+</section>
