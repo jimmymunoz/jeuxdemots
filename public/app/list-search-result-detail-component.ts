@@ -79,6 +79,13 @@ export class ListSearchResultDetailComponent {
     return Object.keys(object);
   }
 
+  sortListData(listData: any, sort_field: String, sort_dir: String){
+    //console.log(listData);
+    //console.log("Sort: " + sort_field + ", " + sort_dir);
+    listData.sort_field = sort_field;
+    listData.sort_dir = sort_dir;
+  }
+
   mouseEnterDefinition(id : string){
     let myDiv = document.getElementById("rafinement_semantique_" + id);
     myDiv.className += ' reamark_text';
