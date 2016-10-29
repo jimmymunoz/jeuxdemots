@@ -33,7 +33,7 @@ class IndexController extends AbstractActionController
 		$word = $this->params()->fromQuery('word');
     	
     	$data = $WordModel->getNodesByWord($word);
-    	$data['definitions'] = $WordModel->getDefByWord($word);
+    	
 		
 		$dataResult = array(
 			"success" => false,

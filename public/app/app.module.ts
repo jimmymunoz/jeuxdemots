@@ -7,6 +7,9 @@ import { SearchWordComponet }  from './search-word-component';
 import { ListSearchResultDetailComponent }  from './list-search-result-detail-component';
 import { WordService }    from './word.service';
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
+import { Ng2PageScrollModule } from 'ng2-page-scroll'; //https://www.npmjs.com/package/ng2-page-scroll#example-app
+import { OrderBy } from './orderby';
+import { PopoverModule }  from "ng2-popover";
 
 
 @NgModule({
@@ -14,12 +17,15 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
     BrowserModule,
     HttpModule,
     FormsModule,
-    Ng2AutoCompleteModule
+    Ng2AutoCompleteModule,
+    Ng2PageScrollModule,
+    PopoverModule
   ],
   declarations: [
     SearchWordComponet,
     ListSearchResultDetailComponent,
-    AppComponent
+    AppComponent,
+    OrderBy
   ],
   providers: [
     WordService,

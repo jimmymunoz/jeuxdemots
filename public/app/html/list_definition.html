@@ -12,37 +12,119 @@
         <li *ngFor="let key of keys(listResult.data)">
            <b>{{key}}</b>
            <div>
-             {{listResult.data[key] | json}}
+             {{listResult.data[key].data | json}}
            </div>
         </li>
       </ul>
     </div>
   </div>
 </div>
+
+<div class="col-md-12">
+  <h4>Labels and badges</h4>
+  <span class="label label-default">Default</span>
+  <span class="label label-primary">Primary</span>
+  <span class="label label-success">Success</span>
+  <span class="label label-info">Info</span>
+  <span class="label label-warning">Warning</span>
+  <span class="label label-danger">Danger</span>
+  <span class="badge badge-success">42</span>
+</div>
   	-->
-<div class="x_content">
-  <ul class="list-unstyled timeline">
-    <li>
-      
-    </li>
-    <li *ngFor="let key of keys(listResult.data)">
-      <div class="block">
-        <div class="tags">
-          <a href="" class="tag">
-            <span>{{key}}</span>
-          </a>
-        </div>
-        <div class="block_content">
-          <h2 class="title">
-              <a>{{key}}</a>
-          </h2>
-          <div class="byline">
-            <span>13 hours ago</span> by <a>Jane Smith</a>
-          </div>
-          <p class="excerpt"> {{listResult.data[key] | json}} … <a>Read&nbsp;More</a>
-          </p>
-        </div>
-      </div>
-    </li>
-  </ul>
+<div class="col-md-12 col-xs-12">
+	<div class="x_panel">
+		<div class="x_content">
+			<section class="filters">
+				<h2> <i class="fa fa-filter"></i> Filters <small>({{word}})</small></h2> 
+				<div class="col-md-12">
+				  <!-- labels goto -->
+				  	<div *ngFor="let key of keys(listResult.data)" style="display: inline-block; " class="">
+					  <div *ngIf="listResult.data[key].data.length" class="input-append" >
+
+				  			<a  style="margin-left: none;" class="btn btn-sm label-success" pageScroll href="#section_{{key}}">{{key}}</a>
+			         		<span class="add-on btn btn-sm btn-default" style="cursor: pointer; margin-right: none;"> <i class="fa fa-eye"></i> </span>
+				      </div>
+				    </div>
+			    </div>
+		    	<br/>
+			</section>
+		</div>
+	</div>
+</div>
+
+<div class="col-md-12 col-xs-12">
+  <div class="x_panel">
+	<div class="x_content">
+		<section>
+	    	<h2> Results <small>({{word}})</small></h2> 
+
+			<ul class="list-unstyled timeline widget">
+			    <li>
+			      
+			    </li>
+			    <li *ngFor="let key of keys(listResult.data)">
+			      <!-- definitions -->
+			      <div *ngIf="listResult.data[key].data.length && key == 'definitions'" class="block" id="section_{{key}}">
+			      		<span class="label label-info title" style="font-size: 1.2em;">{{key}}</span>
+			      		<span>Total {{listResult.data[key].data.length}}</span>
+						<ol>
+							<li *ngFor="let rowDefKey of keys(listResult.data[key].data)" class="byline definitions_text" (mouseenter)="mouseEnterDefinition(listResult.data[key].data[rowDefKey].termid)"  (mouseleave) ="mouseLeaveDefinition(listResult.data[key].data[rowDefKey].termid)">
+								<span innerHTML='{{listResult.data[key].data[rowDefKey].def}}'></span>
+								
+							</li>
+						</ol>
+			      </div>
+
+			      <!-- asociations -->
+			      <div *ngIf="listResult.data[key].data.length && key != 'definitions'" class="block">
+			        
+			        <div class="block_content" id="section_{{key}}">
+							        
+			         	<span class="label label-info title" style="font-size: 1.2em;">{{key}}</span>
+						
+						<span>Total {{listResult.data[key].data.length}}</span>  
+
+						<div *ngIf="listResult.data[key].data.length >= 2" class="btn-group" >
+							<a href="#" data-toggle="dropdown" class="btn-link btn-default dropdown-toggle" style="font-size: 0.9em;">
+							 <i class="fa fa-sort" ></i> Ranger par <span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a style="cursor:pointer" (click)="sortListData(listResult.data[key],'name','+')"><i class="fa fa-sort-alpha-asc"></i> Nom Ascendant</a></li>
+								<li><a style="cursor:pointer" (click)="sortListData(listResult.data[key],'name','-')"><i class="fa fa-sort-alpha-desc"></i> Nom Descendant</a></li>
+								<li><a style="cursor:pointer" (click)="sortListData(listResult.data[key],'w','+')"><i class="fa fa-sort-numeric-asc"></i> Poids Ascendant </a></li>
+								<li><a style="cursor:pointer" (click)="sortListData(listResult.data[key],'w','-')"><i class="fa fa-sort-numeric-desc"></i> Poids Descendant </a></li>
+							</ul>
+						</div>
+			          	<div class="byline">
+			          		<span *ngFor="let term of listResult.data[key].data | orderby: [listResult.data[key].sort_dir + listResult.data[key].sort_field]" >
+				          		<a id="{{key}}_{{term.eid}}" class="btn-link" style="cursor: pointer;" popover="Weight: {{term.w}} id: {{term.eid}}" popoverTitle="{{term.name}}" [popoverOnHover]="true" (click)="searchNewWord(term.name)">
+				          			{{term.name}}
+				          		</a>
+				          	</span>
+						</div>
+
+
+					<!-- 
+			          <div class="byline">
+			            
+			            <a>Ranger par: </a> 
+			            <select [(ngModel)]="listResult.data[key].sort_field" >
+			            	<option value="w">Poids</option>
+			            	<option value="name">Nom</option>
+			            </select>
+			            <select [(ngModel)]="listResult.data[key].sort_dir" >
+			            	<option value="+">Ascendant</option>
+			            	<option value="-">Descendant</option>
+			            </select>
+			          </div>
+			          	<!- - Sort By pipe: concatenate 2 params and call OrderBy - - >
+			          	
+					-->
+			        </div>
+			      </div>
+			    </li>
+			</ul>
+		</section>
+	</div>
+  </div>
 </div>

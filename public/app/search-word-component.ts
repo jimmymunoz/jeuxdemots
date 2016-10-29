@@ -12,16 +12,21 @@ import { WordService }   from './word.service';
   selector: 'search-word-component',
   templateUrl: 'app/html/search-word.html',
   styles: [`
-    ng2-auto-complete, input {
-      display: block; border: 1px solid #ccc; width: 300px;
+    ng2-auto-complete {
+      display: inline-block; position: relative; width: 100% !important;
+    }
+    ng2-auto-complete input {
+      display: inline-block; position: relative; width: 100%;
     }
   `],
    providers : [WordService]
 	//,templateUrl: 'app/search-word.html'
 })
+
 export class SearchWordComponet {
 	title = 'Search a Word';
 	word = "";
+	wordObjet = { id: "test", value: "test"};
 	public resultsParent : any;
 
 	constructor(
@@ -34,6 +39,8 @@ export class SearchWordComponet {
 	 }
 
 	getSearchResult(): void {
+  		//console.log(this.wordObjet);
+  		//console.log(this.word);
 		this.wordService
 		    .searchResults(this.word)
 		    .then(
@@ -41,14 +48,23 @@ export class SearchWordComponet {
 		    );
 	}
 
+	clearResults(): void {
+		this.resultsParent  = {
+	    	"data": []
+	    };
+	}
+
 	
 	leftAligned = (data: any) : SafeHtml => {
     	let html = `<div style="text-align:left">${data.value}</div>`;
     	return this._sanitizer.bypassSecurityTrustHtml(html);
   	}
-  	completeCallBack(): void {
-  		//console.log(this.word);
-	   	this.getSearchResult();	
+  	completeCallBack(event): void {
+  		//console.log(event);
+  		this.clearResults();
+  		this.word = event.value;
+  		console.log(this.word);
+	   	//this.getSearchResult();	
 	}
 
 	json(obj) {

@@ -476,6 +476,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        divEl.className = "ng2-auto-complete";
 	        divEl.style.display = "inline-block";
 	        divEl.style.position = "relative";
+	        divEl.style.width = "100%";
 	        this.el.parentElement.insertBefore(divEl, this.el.nextSibling);
 	        divEl.appendChild(this.el);
 	        // apply toString() method for the object
