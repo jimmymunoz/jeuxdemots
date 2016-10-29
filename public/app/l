@@ -1,0 +1,8 @@
+MATCH (p:Word)-[r:r_adj_nomprop]->(q:Word) 
+	where p.name = "muscle grand complexus"
+				RETURN p,q,r
+
+
+				MATCH (p:Word)-[r:r_adj_nomprop]->(q:Word) 
+			
+				RETURN p,q,r limit 10
