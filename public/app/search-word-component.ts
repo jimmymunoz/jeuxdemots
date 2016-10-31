@@ -28,7 +28,7 @@ import { WordService }   from './word.service';
 })
 
 export class SearchWordComponet {
-	title = 'Rechercher un mot';
+	title = 'Chercher un mot';
 	word = "";
 	wordObjet = { id: "test", value: "test"};
 	public resultsParent : any;

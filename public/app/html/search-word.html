@@ -6,7 +6,7 @@
 
     </div>
     <!-- /top tiles -->
-    <div class="row tile_count" >
+    <div class="row tile_count main-container-jeuxdemots" >
       <section class="search-word">
         <div class="col-md-12 col-xs-12">
           <div class="x_panel-jeuxdemots">
@@ -18,7 +18,7 @@
                 <div class="col-sm-12" style="padding-left: 0px; padding-right: 0px;">
                   <div class="input-group">
                     <input  ng2-auto-complete
-                      placeholder="Start typing a Word"     
+                      placeholder="Tapez un mot"     
                       [(ngModel)]="word" 
                       [source]="wordService.findWords"  
                       [list-formatter]="leftAligned"
@@ -31,7 +31,7 @@
                     />
                     
                     <span class="input-group-btn">
-                      <button (click)="getSearchResult()" class="btn btn-default btn-primary" type="button"><i class="fa fa-search"></i> Search</button>
+                      <button (click)="getSearchResult()" class="btn btn-default btn-primary" type="button"><i class="fa fa-search"></i> Chercher</button>
                     </span>
                   </div>
                 </div>
