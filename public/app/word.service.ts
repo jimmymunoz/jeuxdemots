@@ -14,6 +14,9 @@ export class WordService {
   private headers = new Headers({'Content-Type': 'application/json'});
   //private searchUrl = 'csv_example.json';  // URL to web api
   private searchUrl = 'application/index/search';  // URL to web api
+  private findUrl: string = "/application/index/autocompleteword";
+  //private baseUrl: string = "http://localhost";
+  private baseUrl: string = "http://46.101.40.23";
 
   constructor(private http: Http) { }
 
@@ -33,7 +36,6 @@ export class WordService {
   }
 
   //findUrl: string = "http://jeuxdemots.localhost/application/index/autocompleteword";
-  findUrl: string = "/application/index/autocompleteword";
   
   
   findWords = (startsWith: string): Observable<any[]> => {

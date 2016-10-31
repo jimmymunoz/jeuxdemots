@@ -4147,6 +4147,42 @@ ul.notifications {
   margin: 0 !important;
 }
 
+.timeline .block_jeuxdemots {
+  margin: 0;
+  /*
+  border-left: 3px solid #e8e8e8;
+  padding: 7px 4px;
+   */
+  overflow: visible;
+  padding: 4px 0px;
+  margin-left: 0px; 
+}
+
+.text_word_jeuxdemots{
+  color: #000;
+}
+
+.result_word_jeuxdemots{
+  margin-left: 10px;
+  padding: 10px 15px;
+  overflow: visible;
+
+}
+.x_panel-jeuxdemots{
+  position: relative;
+  width: 100%;
+  margin-bottom: 5px;
+  padding: 3px 3px;
+  display: inline-block;
+  background: #fff;
+  border: 1px solid #E6E9ED;
+  -webkit-column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+  column-break-inside: avoid;
+  opacity: 1;
+  transition: all .2s 
+}
+
 .category_button {
     color: #FFF;
     font-size: 0.8em;
