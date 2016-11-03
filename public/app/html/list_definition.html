@@ -30,33 +30,41 @@
   <span class="label label-danger">Danger</span>
   <span class="badge badge-success">42</span>
 </div>
+
+<a  class="btn btn-sm category_button not_margin color-{{key}} "  pageScroll href="#section_{{key}}">{{key}}</a>
+			         		<span class="add-on btn btn-sm btn-default not_margin" style="cursor: pointer; "> <i class="fa fa-eye"></i> </span>
   	-->
-<div class="col-md-12 col-xs-12">
-	<div class="x_panel">
-		<div class="x_content">
-			<section class="filters">
-				<h2> <i class="fa fa-filter"></i> Filters <small>({{word}})</small></h2> 
+<section class="filters">
+	<div class="col-md-12 col-xs-12">
+		<div class="x_panel-jeuxdemots">
+			<div class="x_content">
+				<div class="text-center">
+		    		<h2><i class="fa fa-book"></i> Categories </h2> 
+				</div>
 				<div class="col-md-12">
 				  <!-- labels goto -->
 				  	<div *ngFor="let key of keys(listResult.data)" style="display: inline-block; " class="">
-					  <div *ngIf="listResult.data[key].data.length" class="input-append" >
+					  <div *ngIf="listResult.data[key].data.length" class="input-append" style="margin-right: 3px;" >
 
-				  			<a  style="margin-left: none;" class="btn btn-sm label-success" pageScroll href="#section_{{key}}">{{key}}</a>
-			         		<span class="add-on btn btn-sm btn-default" style="cursor: pointer; margin-right: none;"> <i class="fa fa-eye"></i> </span>
+				  			<a class="label category_button not_margin color-{{key}} " pageScroll href="#section_{{key}}">{{key}}</a>
+				  			<!-- 
+			         		<span class="add-on label btn-default not_margin" style="cursor: pointer; "> <i class="fa fa-eye"></i> </span>
+				  			-->
 				      </div>
 				    </div>
 			    </div>
-		    	<br/>
-			</section>
+			</div>
 		</div>
 	</div>
-</div>
+</section>
 
-<div class="col-md-12 col-xs-12">
-  <div class="x_panel">
-	<div class="x_content">
-		<section>
-	    	<h2> Results <small>({{word}})</small></h2> 
+<section class="result">
+	<div class="col-md-12 col-xs-12" >
+	  <div class="x_panel-jeuxdemots">
+		<div class="x_content">
+			<div class="text-center">
+	    		<h2><i class="fa fa-book"></i> Resultats <strong>{{word}}</strong></h2> 
+			</div>
 
 			<ul class="list-unstyled timeline widget">
 			    <li>
@@ -64,29 +72,28 @@
 			    </li>
 			    <li *ngFor="let key of keys(listResult.data)">
 			      <!-- definitions -->
-			      <div *ngIf="listResult.data[key].data.length && key == 'definitions'" class="block" id="section_{{key}}">
+			      <div *ngIf="listResult.data[key].data.length && key == 'definitions'" class="block_jeuxdemots" id="section_{{key}}">
 			      		<span class="label label-info title" style="font-size: 1.2em;">{{key}}</span>
 			      		<span>Total {{listResult.data[key].data.length}}</span>
 						<ol>
 							<li *ngFor="let rowDefKey of keys(listResult.data[key].data)" class="byline definitions_text" (mouseenter)="mouseEnterDefinition(listResult.data[key].data[rowDefKey].termid)"  (mouseleave) ="mouseLeaveDefinition(listResult.data[key].data[rowDefKey].termid)">
 								<span innerHTML='{{listResult.data[key].data[rowDefKey].def}}'></span>
-								
 							</li>
 						</ol>
 			      </div>
 
 			      <!-- asociations -->
-			      <div *ngIf="listResult.data[key].data.length && key != 'definitions'" class="block">
+			      <div *ngIf="listResult.data[key].data.length && key != 'definitions'" class="block_jeuxdemots">
 			        
 			        <div class="block_content" id="section_{{key}}">
 							        
-			         	<span class="label label-info title" style="font-size: 1.2em;">{{key}}</span>
+			         	<span class="label label-info title category_button_title color-{{key}}" >{{key}}</span>
 						
-						<span>Total {{listResult.data[key].data.length}}</span>  
+						<small>Total ({{listResult.data[key].data.length}})</small>  
 
-						<div *ngIf="listResult.data[key].data.length >= 2" class="btn-group" >
-							<a href="#" data-toggle="dropdown" class="btn-link btn-default dropdown-toggle" style="font-size: 0.9em;">
-							 <i class="fa fa-sort" ></i> Ranger par <span class="caret"></span>
+						<div *ngIf="listResult.data[key].data.length >= 2" class="btn-group push-right" >
+							<a href="#" data-toggle="dropdown" class="btn-link btn-default dropdown-toggle " style="font-size: 1em;">
+							  Ranger par <span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
 								<li><a style="cursor:pointer" (click)="sortListData(listResult.data[key],'name','+')"><i class="fa fa-sort-alpha-asc"></i> Nom Ascendant</a></li>
@@ -95,11 +102,9 @@
 								<li><a style="cursor:pointer" (click)="sortListData(listResult.data[key],'w','-')"><i class="fa fa-sort-numeric-desc"></i> Poids Descendant </a></li>
 							</ul>
 						</div>
-			          	<div class="byline">
-			          		<span *ngFor="let term of listResult.data[key].data | orderby: [listResult.data[key].sort_dir + listResult.data[key].sort_field]" >
-				          		<a id="{{key}}_{{term.eid}}" class="btn-link" style="cursor: pointer;" popover="Weight: {{term.w}} id: {{term.eid}}" popoverTitle="{{term.name}}" [popoverOnHover]="true" (click)="searchNewWord(term.name)">
-				          			{{term.name}}
-				          		</a>
+			          	<div class="result_word_jeuxdemots">
+			          		<span class="text_word_jeuxdemots"  *ngFor="let term of listResult.data[key].data | orderby: [listResult.data[key].sort_dir + listResult.data[key].sort_field]" >
+				          		<a id="{{key}}_{{term.eid}}" class="btn-link" style="cursor: pointer;" popover="Weight: {{term.w}} id: {{term.eid}}" popoverTitle="{{term.name}}" [popoverOnHover]="true" (click)="searchNewWord(term.name)">{{term.name}}</a>,
 				          	</span>
 						</div>
 
@@ -124,7 +129,7 @@
 			      </div>
 			    </li>
 			</ul>
-		</section>
+		</div>
+	  </div>
 	</div>
-  </div>
-</div>
+</section>

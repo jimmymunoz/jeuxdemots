@@ -12,6 +12,10 @@ import { WordService }   from './word.service';
   selector: 'search-word-component',
   templateUrl: 'app/html/search-word.html',
   styles: [`
+    .loading{
+		min-height: 20px !important; 
+		font-size: 1.2em !important;
+    }
     ng2-auto-complete {
       display: inline-block; position: relative; width: 100% !important;
     }
@@ -24,7 +28,7 @@ import { WordService }   from './word.service';
 })
 
 export class SearchWordComponet {
-	title = 'Search a Word';
+	title = 'Chercher un mot';
 	word = "";
 	wordObjet = { id: "test", value: "test"};
 	public resultsParent : any;
@@ -56,7 +60,7 @@ export class SearchWordComponet {
 
 	
 	leftAligned = (data: any) : SafeHtml => {
-    	let html = `<div style="text-align:left">${data.value}</div>`;
+    	let html = `<div style="text-align:left; min-height: 20px; font-size: 1.2em;"><i class="fa fa-book"></i> ${data.value}</div>`;
     	return this._sanitizer.bypassSecurityTrustHtml(html);
   	}
   	completeCallBack(event): void {

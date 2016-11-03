@@ -17,39 +17,14 @@ import { WordService }   from './word.service';
   pipes: [ OrderBy ]
 
 })
-/*
- <div class="">
-      <div class="row">
-        <div class="col-md-3 left-menu">
-          <div *ngFor="let key of keys(listResult.data)">
-             <input type="checkbox" name="{{key}}" /> <span>{{key}}</span>
-          </div>
-        </div>
-        <div class="col-md-9">
-          <ul>
-            <li *ngFor="let key of keys(listResult.data)">
-               <b>{{key}}</b>
-               <div>
-                 {{listResult.data[key] | json}}
-               </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
- */
 
-//{ "eid": "46164", "typeNode": "n_term", "t": "1", "w": "52", "name": "carnivores", "nf": "" }
 
 export class ListSearchResultDetailComponent {
   public myname : String;
   public word : String;
   public myevent : EventEmitter = new EventEmitter();
   public listResult : any;
-  //@Input()
-  //myname: String;
-  //@Input()
-  //listResult : listResult;
+ 
   titre = "Result Details";
   orderByDir = "-";//Descending
   orderByField = "w";//weight
@@ -80,8 +55,6 @@ export class ListSearchResultDetailComponent {
   }
 
   sortListData(listData: any, sort_field: String, sort_dir: String){
-    //console.log(listData);
-    //console.log("Sort: " + sort_field + ", " + sort_dir);
     listData.sort_field = sort_field;
     listData.sort_dir = sort_dir;
   }

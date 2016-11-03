@@ -58,7 +58,7 @@
         </script>
 
     </head>
-    <body class="nav-md">
+    <body class="nav-md footer_fixed-">
         <!--
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
@@ -81,173 +81,7 @@
             
         </div>
         -->
-        <div class="container body">
-          <div class="main_container">
-              <div class="left_col scroll-view">
-                <div class="navbar nav_title" style="border: 0;">
-                  <a href="/" class="site_title"><i class="glyphicon glyphicon-book"></i> <span><?php echo $this->translate('Jeux de mots') ?></span></a>
-                </div>
-
-                <!-- 
-                -->
-                <div class="clearfix"></div>
-
-                <!-- /menu profile quick info -->
-
-                <!-- sidebar menu -->
-                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-                  <div class="menu_section">
-                    <h3>General</h3>
-                    <ul class="nav side-menu">
-                      <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                          <li><a href="index.html">Dashboard</a></li>
-                          <li><a href="index2.html">Dashboard2</a></li>
-                          <li><a href="index3.html">Dashboard3</a></li>
-                        </ul>
-                      </li>
-                      <li><a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                          <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
-                          <li><a href="fixed_footer.html">Fixed Footer</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="menu_section">
-                    <h3>Live On</h3>
-                    <ul class="nav side-menu">
-                      <li><a><i class="fa fa-sitemap"></i> Multilevel Menu <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="#level1_1">Level One</a>
-                            <li><a>Level One<span class="fa fa-chevron-down"></span></a>
-                              <ul class="nav child_menu">
-                                <li class="sub_menu"><a href="level2.html">Level Two</a>
-                                </li>
-                                <li><a href="#level2_1">Level Two</a>
-                                </li>
-                                <li><a href="#level2_2">Level Two</a>
-                                </li>
-                              </ul>
-                            </li>
-                            <li><a href="#level1_2">Level One</a>
-                            </li>
-                        </ul>
-                      </li>                  
-                      
-                    </ul>
-                  </div>
-
-                </div>
-                <!-- /sidebar menu -->
-
-                <!-- /menu footer buttons -->
-                <div class="sidebar-footer hidden-small">
-                  
-                </div>
-                <!-- /menu footer buttons -->
-              </div>
-            </div>
-
-            <!-- top navigation -->
-            <!-- top navigation -->
-        <div class="top_nav navbar navbar-fixed-top">
-          <div class="nav_menu">
-            <nav>
-              <div class="nav toggle">
-                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-              </div>
-                    <?php //echo $this->translate('Dic - Jeux de Mots Ikbal - Jimmy') ?>
-                
-              <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                  
-                  
-                </li>
-
-                <li role="presentation" class="dropdown">
-                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">6</span>
-                  </a>
-                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-            <!-- /top navigation -->
-
-            <!-- page content -->
-            <style type="text/css">
-                my-app-a::before{
-                    content: '';
-                    position: fixed;
-                    width: 100%;
-                    height: 100%;
-                    top: 0;
-                    left: 0;
-                    background: url(assets/img/sky-bg.jpg) no-repeat center center;
-                    background-size: cover;
-                    will-change: transform;
-                    z-index: 0;
-                }
-                .backgroud_sky_ {
-                    content: '';
-                    /* position: absolute; */
-                    width: 100%;
-                    height: 100%;
-                    top: 0;
-                    left: 0;
-                    background: url(assets/img/sky-bg.jpg) no-repeat center center;
-                    background-size: cover;
-                    will-change: transform;
-                    z-index: 0;
-                    overflow: hidden;
-                    display: block;
-                    padding: 0 !important;
-                    min-height: 600px;
-                    overflow: hidden;
-                }
-
-            </style>
-            <div class="right_col" role="main" style="padding: 25px 25px 7px;">
-                <!-- top tiles -->
-                <div class="row tile_count">
-
-                </div>
-                <!-- /top tiles -->
-                <div class="row tile_count">
-                    <?php echo $this->content; ?>
-                </div>
-                <div class="backgroud_sky">
-                </div>
-            </div>
-            <!-- /page content -->
-
-            <!-- footer content -->
-            <footer>
-              <div class="pull-right">
-                &copy; 2016 - <?php echo date('Y') ?> by Ikbal Hamdaoui - Jimmy Muñoz. <?php echo $this->translate('All rights reserved.') ?>
-              </div>
-              <div class="clearfix"></div>
-            </footer>
-            <!-- /footer content -->
-          </div>
-        </div>
+        <?php echo $this->content; ?>
         <?php echo $this->inlineScript() ?>
         <!-- jQuery -->
         <script src="template/vendors/jquery/dist/jquery.min.js"></script>
@@ -289,6 +123,7 @@
 
         <!-- Custom Theme Scripts -->
         <script src="template/build/js/custom.min.js"></script>
+        <script src="js/custom_jeux_de_mots.js"></script>
 
         <script>
         $(document).ready(function(){
