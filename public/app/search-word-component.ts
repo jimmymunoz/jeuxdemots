@@ -5,17 +5,10 @@ import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 import { ResultDetail } from './result-detail';
 import { WordService }   from './word.service';
 
-
-
-
 @Component({
   selector: 'search-word-component',
   templateUrl: 'app/html/search-word.html',
   styles: [`
-    .loading{
-		min-height: 20px !important; 
-		font-size: 1.2em !important;
-    }
     ng2-auto-complete {
       display: inline-block; position: relative; width: 100% !important;
     }
@@ -23,14 +16,16 @@ import { WordService }   from './word.service';
       display: inline-block; position: relative; width: 100%;
     }
   `],
+
    providers : [WordService]
 	//,templateUrl: 'app/search-word.html'
 })
 
 export class SearchWordComponet {
-	title = 'Chercher un mot';
+	title = 'Search a Word';
 	word = "";
 	wordObjet = { id: "test", value: "test"};
+	public  history: string[] = [];
 	public resultsParent : any;
 
 	constructor(
@@ -43,6 +38,7 @@ export class SearchWordComponet {
 	 }
 
 	getSearchResult(): void {
+		this.setHistory(this.getWord());
   		//console.log(this.wordObjet);
   		//console.log(this.word);
 		this.wordService
@@ -50,7 +46,27 @@ export class SearchWordComponet {
 		    .then(
 		    	resultsParent => this.resultsParent = resultsParent
 		    );
+		   
 	}
+
+	getWord():any
+	{
+		return this.word;
+	}
+
+	setHistory(word: string)
+	{
+    if (this.history.indexOf(word) === -1) 
+    {
+      this.history.push(word);
+    }  
+		
+	}
+	getHistory(word: string): any
+	{
+		return this.history;
+	}
+
 
 	clearResults(): void {
 		this.resultsParent  = {
@@ -60,7 +76,7 @@ export class SearchWordComponet {
 
 	
 	leftAligned = (data: any) : SafeHtml => {
-    	let html = `<div style="text-align:left; min-height: 20px; font-size: 1.2em;"><i class="fa fa-book"></i> ${data.value}</div>`;
+    	let html = `<div style="text-align:left">${data.value}</div>`;
     	return this._sanitizer.bypassSecurityTrustHtml(html);
   	}
   	completeCallBack(event): void {

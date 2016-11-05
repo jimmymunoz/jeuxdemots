@@ -1,13 +1,14 @@
 /**
  * Created by sebastianfuss on 29.08.16.
  */
-import { EventEmitter } from '@angular/core';
-import { PageScrollConfig } from './ng2-page-scroll-config';
-import { PageScrollUtilService } from './ng2-page-scroll-util.service';
+"use strict";
+var core_1 = require('@angular/core');
+var ng2_page_scroll_config_1 = require('./ng2-page-scroll-config');
+var ng2_page_scroll_util_service_1 = require('./ng2-page-scroll-util.service');
 /**
  * Represents a scrolling action
  */
-export var PageScrollInstance = (function () {
+var PageScrollInstance = (function () {
     /**
      * Private constructor, requires the properties assumed to be the bare minimum.
      * Use the factory methods to create instances: {@link PageScrollInstance#simpleInstance}
@@ -19,17 +20,17 @@ export var PageScrollInstance = (function () {
          * These properties will be set during instance construction
          */
         /* A namespace to "group" scroll animations together and stopping some does not stop others */
-        this._namespace = PageScrollConfig._defaultNamespace;
+        this._namespace = ng2_page_scroll_config_1.PageScrollConfig._defaultNamespace;
         /* Offset in px that the animation should stop above that target element */
-        this._offset = PageScrollConfig.defaultScrollOffset;
+        this._offset = ng2_page_scroll_config_1.PageScrollConfig.defaultScrollOffset;
         /* Duration in milliseconds the scroll animation should last */
-        this._duration = PageScrollConfig.defaultDuration;
+        this._duration = ng2_page_scroll_config_1.PageScrollConfig.defaultDuration;
         /* Easing function to manipulate the scrollTop value over time */
-        this._easingLogic = PageScrollConfig.defaultEasingLogic;
+        this._easingLogic = ng2_page_scroll_config_1.PageScrollConfig.defaultEasingLogic;
         /* Boolean whether the scroll animation should stop on user interruption or not */
-        this._interruptible = PageScrollConfig.defaultInterruptible;
+        this._interruptible = ng2_page_scroll_config_1.PageScrollConfig.defaultInterruptible;
         /* Event emitter to notify the world about the scrolling */
-        this._pageScrollFinish = new EventEmitter();
+        this._pageScrollFinish = new core_1.EventEmitter();
         /**
          * These properties will be set/manipulated if the scroll animation starts
          */
@@ -101,11 +102,11 @@ export var PageScrollInstance = (function () {
         if (pageScrollEasingLogic === void 0) { pageScrollEasingLogic = null; }
         if (pageScrollDuration === void 0) { pageScrollDuration = null; }
         if (pageScrollFinishListener === void 0) { pageScrollFinishListener = null; }
-        if (PageScrollUtilService.isUndefinedOrNull(namespace) || namespace.length <= 0) {
-            namespace = PageScrollConfig._defaultNamespace;
+        if (ng2_page_scroll_util_service_1.PageScrollUtilService.isUndefinedOrNull(namespace) || namespace.length <= 0) {
+            namespace = ng2_page_scroll_config_1.PageScrollConfig._defaultNamespace;
         }
         var pageScrollInstance = new PageScrollInstance(namespace, document);
-        if (PageScrollUtilService.isUndefinedOrNull(scrollingViews) || scrollingViews.length === 0) {
+        if (ng2_page_scroll_util_service_1.PageScrollUtilService.isUndefinedOrNull(scrollingViews) || scrollingViews.length === 0) {
             pageScrollInstance._isInlineScrolling = false;
             pageScrollInstance._scrollTopSources = [document.documentElement, document.body, document.body.parentNode];
         }
@@ -114,20 +115,20 @@ export var PageScrollInstance = (function () {
             pageScrollInstance._scrollTopSources = scrollingViews;
         }
         pageScrollInstance._scrollTarget = scrollTarget;
-        if (!PageScrollUtilService.isUndefinedOrNull(pageScrollOffset)) {
+        if (!ng2_page_scroll_util_service_1.PageScrollUtilService.isUndefinedOrNull(pageScrollOffset)) {
             pageScrollInstance._offset = pageScrollOffset;
         }
-        if (!PageScrollUtilService.isUndefinedOrNull(pageScrollEasingLogic)) {
+        if (!ng2_page_scroll_util_service_1.PageScrollUtilService.isUndefinedOrNull(pageScrollEasingLogic)) {
             pageScrollInstance._easingLogic = pageScrollEasingLogic;
         }
-        if (!PageScrollUtilService.isUndefinedOrNull(pageScrollDuration)) {
+        if (!ng2_page_scroll_util_service_1.PageScrollUtilService.isUndefinedOrNull(pageScrollDuration)) {
             pageScrollInstance._duration = pageScrollDuration;
         }
-        if (!PageScrollUtilService.isUndefinedOrNull(pageScrollFinishListener)) {
+        if (!ng2_page_scroll_util_service_1.PageScrollUtilService.isUndefinedOrNull(pageScrollFinishListener)) {
             pageScrollInstance._pageScrollFinish = pageScrollFinishListener;
         }
         pageScrollInstance._interruptible = pageScrollInterruptible ||
-            (PageScrollUtilService.isUndefinedOrNull(pageScrollInterruptible) && PageScrollConfig.defaultInterruptible);
+            (ng2_page_scroll_util_service_1.PageScrollUtilService.isUndefinedOrNull(pageScrollInterruptible) && ng2_page_scroll_config_1.PageScrollConfig.defaultInterruptible);
         return pageScrollInstance;
     };
     /**
@@ -153,7 +154,7 @@ export var PageScrollInstance = (function () {
         if (this._isInlineScrolling) {
             return { top: scrollTargetElement.offsetTop, left: scrollTargetElement.offsetLeft };
         }
-        return PageScrollUtilService.extractElementPosition(this.document, scrollTargetElement);
+        return ng2_page_scroll_util_service_1.PageScrollUtilService.extractElementPosition(this.document, scrollTargetElement);
     };
     /**
      * Get the top offset of the scroll animation.
@@ -175,7 +176,7 @@ export var PageScrollInstance = (function () {
     PageScrollInstance.prototype.setScrollTopPosition = function (position) {
         // Set the new scrollTop to all scrollTopSource elements
         return this.scrollTopSources.reduce(function (oneAlreadyWorked, scrollTopSource) {
-            if (scrollTopSource && !PageScrollUtilService.isUndefinedOrNull(scrollTopSource.scrollTop)) {
+            if (scrollTopSource && !ng2_page_scroll_util_service_1.PageScrollUtilService.isUndefinedOrNull(scrollTopSource.scrollTop)) {
                 scrollTopSource.scrollTop = position;
                 // Return true of setting the new scrollTop value worked
                 if (scrollTopSource.scrollTop === position) {
@@ -211,7 +212,7 @@ export var PageScrollInstance = (function () {
         this._interruptListener = function (event) {
             interruptReporter.report(event, _this);
         };
-        PageScrollConfig._interruptEvents.forEach(function (event) { return _this.document.body.addEventListener(event, _this._interruptListener); });
+        ng2_page_scroll_config_1.PageScrollConfig._interruptEvents.forEach(function (event) { return _this.document.body.addEventListener(event, _this._interruptListener); });
         this._interruptListenersAttached = true;
     };
     /**
@@ -220,7 +221,7 @@ export var PageScrollInstance = (function () {
      */
     PageScrollInstance.prototype.detachInterruptListeners = function () {
         var _this = this;
-        PageScrollConfig._interruptEvents.forEach(function (event) { return _this.document.body.removeEventListener(event, _this._interruptListener); });
+        ng2_page_scroll_config_1.PageScrollConfig._interruptEvents.forEach(function (event) { return _this.document.body.removeEventListener(event, _this._interruptListener); });
         this._interruptListenersAttached = false;
     };
     Object.defineProperty(PageScrollInstance.prototype, "namespace", {
@@ -327,4 +328,5 @@ export var PageScrollInstance = (function () {
     });
     return PageScrollInstance;
 }());
+exports.PageScrollInstance = PageScrollInstance;
 //# sourceMappingURL=ng2-page-scroll-instance.js.map
