@@ -566,7 +566,7 @@ class Word
 					$newDataResult[$key]['color'] = '#7089b3';
 					break;
 				case 'info_semantique':
-					$newDataResult[$key]['display_value'] = $key;
+					$newDataResult[$key]['display_value'] = "Informations sémantiques";
 					$newDataResult[$key]['color'] = '#ffd65e';
 					break;
 				case 'femenin_equivalent':

@@ -1,0 +1,7 @@
+<ul class="nav child_menu">
+  <li *ngFor="let key of keys(listResult.data)">
+  	<a href="#">
+  		<label><input type="checkbox" name="cbox1" checked="checked" value="premiere_checkbox" /> {{listResult.data[key].display_value}}</label>
+  	</a>
+  </li>
+</ul>

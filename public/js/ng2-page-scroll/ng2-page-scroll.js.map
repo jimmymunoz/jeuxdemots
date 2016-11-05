@@ -1,1 +1,1 @@
-{"version":3,"file":"ng2-page-scroll.js","sourceRoot":"","sources":["ng2-page-scroll.ts"],"names":[],"mappings":";;;;AAAA,iBAAc,iCAAiC,CAAC,EAAA;AAChD,iBAAc,+BAA+B,CAAC,EAAA;AAC9C,iBAAc,8BAA8B,CAAC,EAAA;AAC7C,iBAAc,gCAAgC,CAAC,EAAA;AAC/C,iBAAc,oCAAoC,CAAC,EAAA;AAEnD,uCAAkC,8BAA8B,CAAC;AAAzD,2EAAyD"}
+{"version":3,"file":"ng2-page-scroll.js","sourceRoot":"","sources":["ng2-page-scroll.ts"],"names":[],"mappings":"AAAA,cAAc,iCAAiC,CAAC;AAChD,cAAc,+BAA+B,CAAC;AAC9C,cAAc,8BAA8B,CAAC;AAC7C,cAAc,gCAAgC,CAAC;AAC/C,cAAc,oCAAoC,CAAC;AAEnD,SAAQ,mBAAmB,QAAO,8BAA8B,CAAC"}

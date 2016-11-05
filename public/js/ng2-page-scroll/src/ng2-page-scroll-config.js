@@ -1,11 +1,9 @@
-"use strict";
-var EasingLogic = (function () {
+export var EasingLogic = (function () {
     function EasingLogic() {
     }
     return EasingLogic;
 }());
-exports.EasingLogic = EasingLogic;
-var PageScrollConfig = (function () {
+export var PageScrollConfig = (function () {
     function PageScrollConfig() {
     }
     Object.defineProperty(PageScrollConfig, "defaultEasingLogic", {
@@ -66,5 +64,4 @@ var PageScrollConfig = (function () {
     };
     return PageScrollConfig;
 }());
-exports.PageScrollConfig = PageScrollConfig;
 //# sourceMappingURL=ng2-page-scroll-config.js.map
