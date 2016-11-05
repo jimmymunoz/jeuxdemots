@@ -73,7 +73,7 @@
 			    <li *ngFor="let key of keys(listResult.data)">
 			      <!-- definitions -->
 			      <div *ngIf="listResult.data[key].data.length && key == 'definitions'" class="block_jeuxdemots" id="section_{{key}}">
-			      		<span class="label label-info title" style="font-size: 1.2em;">{{key}}</span>
+			      		<span class="label label-info title" style="font-size: 1.2em;">{{listResult.data[key].display_value}}</span>
 			      		<span>Total {{listResult.data[key].data.length}}</span>
 						<ol>
 							<li *ngFor="let rowDefKey of keys(listResult.data[key].data)" class="byline definitions_text" (mouseenter)="mouseEnterDefinition(listResult.data[key].data[rowDefKey].termid)"  (mouseleave) ="mouseLeaveDefinition(listResult.data[key].data[rowDefKey].termid)">
@@ -87,7 +87,7 @@
 			        
 			        <div class="block_content" id="section_{{key}}">
 							        
-			         	<span class="label label-info title category_button_title color-{{key}}" >{{key}}</span>
+			         	<span class="label label-info title category_button_title color-{{key}}" >{{listResult.data[key].display_value}}</span>
 						
 						<small>Total ({{listResult.data[key].data.length}})</small>  
 

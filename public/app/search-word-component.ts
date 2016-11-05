@@ -24,7 +24,6 @@ import { WordService }   from './word.service';
     }
   `],
    providers : [WordService]
-	//,templateUrl: 'app/search-word.html'
 })
 
 export class SearchWordComponet {

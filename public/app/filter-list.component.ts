@@ -3,22 +3,23 @@ import { Component, Input} from '@angular/core';
 //import { PopoverModule } from "ng2-popover"; //https://github.com/pleerock/ng2-popover
 
 @Component({
-  selector: 'side-bar-menu',
-  templateUrl: 'app/html/side-bar-menu.html',
-  styles: [`
-    
-  `],
-  inputs: ['listResult', 'word']
+  selector: 'filter-list-component',
+  templateUrl: 'app/html/filter-list-component.html',
+  inputs: ['listResult']
 })
 
 
-export class SideBarMenuComponent {
-  public word : String;
+export class FilterListComponent {
   public listResult : any;
  
   constructor(
   ){
   
   }
-  
+  keys(object: {}) {
+    if(! object ){
+        object = [];
+    }
+    return Object.keys(object);
+  }
 }
