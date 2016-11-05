@@ -1,6 +1,7 @@
 import { Component, Input} from '@angular/core';
 //import { OrderBy } from './orderby'; //http://www.fueltravel.com/blog/migrating-from-angular-1-to-2-part-1-pipes/
 //import { PopoverModule } from "ng2-popover"; //https://github.com/pleerock/ng2-popover
+import { Historique }   from './history.component';
 
 @Component({
   selector: 'side-bar-menu',
@@ -8,7 +9,8 @@ import { Component, Input} from '@angular/core';
   styles: [`
     
   `],
-  inputs: ['listResult', 'word']
+  inputs: ['listResult',  'history', 'word'],
+  directives: [Historique]
 })
 
 

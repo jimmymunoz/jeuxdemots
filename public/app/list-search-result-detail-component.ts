@@ -12,8 +12,8 @@ import { WordService }   from './word.service';
       display: block; border: 1px solid #ccc;
     }
   `],
-  inputs: ['myname', 'listResult', 'word'],
-  outputs: ['myevent'],
+  inputs: ['listResult', 'word'],
+  //outputs: ['myevent'],
   pipes: [ OrderBy ]
 
 })

@@ -4,6 +4,7 @@ import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
 import { AppComponent }  from './app.component';
 import { SearchWordComponet }  from './search-word-component';
+import { Historique }  from './history.component';
 import { ListSearchResultDetailComponent }  from './list-search-result-detail-component';
 import { SideBarMenuComponent }  from './side-bar-menu.component';
 import { FilterListComponent }  from './filter-list.component';
@@ -21,11 +22,13 @@ import { PopoverModule }  from "ng2-popover";
     FormsModule,
     Ng2AutoCompleteModule,
     Ng2PageScrollModule,
+  
     PopoverModule
   ],
   declarations: [
     SearchWordComponet,
     ListSearchResultDetailComponent,
+    Historique,
     AppComponent,
     OrderBy,
     SideBarMenuComponent,
