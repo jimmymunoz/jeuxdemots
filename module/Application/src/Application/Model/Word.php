@@ -552,6 +552,7 @@ class Word
 				'display_value' => $key,
 				'sort_field' => "w",// w -> weight, name -> name 
 				'sort_dir' => "-",// + -> asc, - -> desc
+				'visible' => "1",// 1 - 0
 				'data' => $value,
 			);
 

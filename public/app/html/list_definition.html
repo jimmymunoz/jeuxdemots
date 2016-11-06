@@ -34,23 +34,30 @@
 <a  class="btn btn-sm category_button not_margin color-{{key}} "  pageScroll href="#section_{{key}}">{{key}}</a>
 			         		<span class="add-on btn btn-sm btn-default not_margin" style="cursor: pointer; "> <i class="fa fa-eye"></i> </span>
   	-->
-<section class="filters">
+<section *ngIf="keys(listResult.data).length" class="filters">
 	<div class="col-md-12 col-xs-12">
 		<div class="x_panel-jeuxdemots">
 			<div class="x_content">
-				<div class="text-center">
+				<div class="x_title text-center">
 		    		<h2><i class="fa fa-book"></i> Categories </h2> 
+					<ul class="nav navbar-right panel_toolbox">
+		                <li><a href="#categories_content" data-toggle="collapse" class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+		                </li>
+		            </ul>
+	            	<div class="clearfix"></div>
 				</div>
-				<div class="col-md-12">
-				  <!-- labels goto -->
-				  	<div *ngFor="let key of keys(listResult.data)" style="display: inline-block; " class="">
-					  <div *ngIf="listResult.data[key].data.length" class="input-append" style="margin-right: 3px;" >
+				<div id="categories_content" class="collapse in x_content">
+					<div class="col-md-12">
+					  <!-- labels goto -->
+					  	<div *ngFor="let key of keys(listResult.data)" style="display: inline-block; " class="">
+						  <div *ngIf="listResult.data[key].data.length" class="input-append" style="margin-right: 3px;" >
 
-				  			<a class="label category_button not_margin color-{{key}} " pageScroll href="#section_{{key}}">{{key}}</a>
-				  			<!-- 
-			         		<span class="add-on label btn-default not_margin" style="cursor: pointer; "> <i class="fa fa-eye"></i> </span>
-				  			-->
-				      </div>
+					  			<a class="label category_button not_margin color-{{key}} " pageScroll [pageScrollOffset]="60" href="#section_{{key}}">{{key}}</a>
+					  			<!-- 
+				         		<span class="add-on label btn-default not_margin" style="cursor: pointer; "> <i class="fa fa-eye"></i> </span>
+					  			-->
+					      </div>
+				    	</div>
 				    </div>
 			    </div>
 			</div>
@@ -58,7 +65,7 @@
 	</div>
 </section>
 
-<section class="result">
+<section *ngIf="keys(listResult.data).length" class="result">
 	<div class="col-md-12 col-xs-12" >
 	  <div class="x_panel-jeuxdemots">
 		<div class="x_content">
@@ -72,8 +79,8 @@
 			    </li>
 			    <li *ngFor="let key of keys(listResult.data)">
 			      <!-- definitions -->
-			      <div *ngIf="listResult.data[key].data.length && key == 'definitions'" class="block_jeuxdemots" id="section_{{key}}">
-			      		<span class="label label-info title" style="font-size: 1.2em;">{{listResult.data[key].display_value}}</span>
+			      <div [hidden]="!listResult.data[key].visible" *ngIf="listResult.data[key].data.length && key == 'definitions'" class="block_jeuxdemots" id="section_{{key}}">
+			      		<span class="label label-info title category_button_title color-{{key}}" style="font-size: 1.2em;">{{listResult.data[key].display_value}}</span>
 			      		<span>Total {{listResult.data[key].data.length}}</span>
 						<ol>
 							<li *ngFor="let rowDefKey of keys(listResult.data[key].data)" class="byline definitions_text" (mouseenter)="mouseEnterDefinition(listResult.data[key].data[rowDefKey].termid)"  (mouseleave) ="mouseLeaveDefinition(listResult.data[key].data[rowDefKey].termid)">
@@ -83,7 +90,7 @@
 			      </div>
 
 			      <!-- asociations -->
-			      <div *ngIf="listResult.data[key].data.length && key != 'definitions'" class="block_jeuxdemots">
+			      <div [hidden]="!listResult.data[key].visible" *ngIf="listResult.data[key].data.length && key != 'definitions'" class="block_jeuxdemots">
 			        
 			        <div class="block_content" id="section_{{key}}">
 							        

@@ -231,7 +231,9 @@ body .container.body .right_col {
     padding: 10px !important; } }
 @media (max-width: 1200px) {
   .x_title h2 {
+    /*
     width: 62%;
+     */
     font-size: 17px; }
 
   .tile, .graph {
@@ -640,7 +642,11 @@ a:hover, a:focus {
 
 .panel_toolbox {
   float: right;
-  min-width: 70px; }
+  /*
+  min-width: 70px; 
+   */
+  min-width: 25px; 
+}
 
 .panel_toolbox > li {
   float: left;
@@ -4610,5 +4616,10 @@ ul.notifications {
 }
 .color-comme_tete_syntaxique{
   background-color: #5cb85c;
+}
+.nav.child_menu > li > label {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 12px;
+    padding: 9px;
 }
 /*colors - categorie*/
