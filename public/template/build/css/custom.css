@@ -608,6 +608,52 @@ a:hover, a:focus {
   padding-left: 20px;
   border: 1px solid rgba(221, 226, 232, 0.49); }
 
+
+.completer-input {
+  border-right: 0;
+  box-shadow: inset 0 1px 0px rgba(0, 0, 0, 0.075);
+  /*
+  border-radius: 25px 0px 0px 25px;
+  padding-left: 20px;
+   */
+  padding-left: 10px;
+  z-index: 1;
+  width: 100%;
+  font-size: 1.3em;
+  line-height: 1.8;
+  border: 1px solid rgba(221, 226, 232, 0.49); }
+
+ng2-completer{
+}
+
+.completer-holder{
+}
+.completer-dropdown-holder{
+  margin-top: 5px;
+}
+.completer-dropdown{
+  width: 98% !important;
+}
+.completer-row-wrapper{
+}
+
+.completer-row {
+    display: block;
+}
+
+.completer-selected-row {
+    background-color: lightblue;
+    width: 100% !important;
+    color: #ffffff;
+}
+/*
+.completer-row p {
+    position: relative;
+    top: 50%;
+    transform: translateY(50%);
+}
+ */
+
 .top_search .form-control:focus {
   border: 1px solid rgba(221, 226, 232, 0.49);
   border-right: 0; }
@@ -1726,7 +1772,7 @@ a.star {
   background: none repeat scroll 0 0 #FFFFFF;
   border-radius: 4px;
   margin-top: 20px;
-  min-height: 500px;
+  min-height: 500px !important;
   padding: 10px 11px;
   width: 100%; }
 
@@ -4622,4 +4668,29 @@ ul.notifications {
     font-size: 12px;
     padding: 9px;
 }
+
+.polarite_neg {
+  background: red; /* For browsers that do not support gradients */
+  /* For Safari 5.1 to 6.0 */
+  background: -webkit-linear-gradient(left,red,yellow,green);
+  /* For Opera 11.1 to 12.0 */
+  background: -o-linear-gradient(left,red,yellow,green);
+  /* For Fx 3.6 to 15 */
+  background: -moz-linear-gradient(left,red,yellow,green);
+  /* Standard syntax */
+  background: linear-gradient(to right, red,yellow,green); 
+}
 /*colors - categorie*/
+
+.cursor-pointer{ cursor:pointer; }
+.font_size-1-0{ font-size: 1.0em; }
+.font_size-1-1{ font-size: 1.1em; }
+.font_size-1-2{ font-size: 1.1em; }
+.font_size-1-3{ font-size: 1.2em; }
+.font_size-1-4{ font-size: 1.2em; }
+.font_size-1-5{ font-size: 1.3em; }
+.font_size-1-6{ font-size: 1.3em; }
+.font_size-1-7{ font-size: 1.4em; }
+.font_size-1-8{ font-size: 1.4em; }
+.font_size-1-9{ font-size: 1.5em; }
+.font_size-1-10{ font-size: 1.5em; }

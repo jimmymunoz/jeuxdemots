@@ -532,7 +532,22 @@ class Word
 		return $newDataResult;
 	}
 
-	
+	private function getMaxAndMinWeight($arrValues){
+		$max_value = 0;
+		$min_value = 0;
+		if( isset($arrValues[0]['w']) ){
+			foreach ($arrValues as $value) {
+				if( $value['w'] > $max_value  ){
+					$max_value = $value['w'];
+				}
+				if( $value['w'] < $min_value  ){
+					$min_value = $value['w'];
+				}
+
+			}
+		}
+		return array('max' => $max_value, 'min' => $min_value);
+	}
 
 	/**
 	 * Adds extra properties to use in front-end.
@@ -548,11 +563,14 @@ class Word
 		foreach ($dataResult as $key => $value) {
 
 			//New array with others values to use in front-end
+			$arrMaxMinW = $this->getMaxAndMinWeight($value);
 			$newDataResult[$key] = array(
 				'display_value' => $key,
 				'sort_field' => "w",// w -> weight, name -> name 
 				'sort_dir' => "-",// + -> asc, - -> desc
 				'visible' => "1",// 1 - 0
+				'max_w' => $arrMaxMinW['max'],
+				'min_w' => $arrMaxMinW['min'],
 				'data' => $value,
 			);
 

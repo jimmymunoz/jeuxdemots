@@ -54,6 +54,13 @@ export class ListSearchResultDetailComponent {
     return Object.keys(object);
   }
 
+  getFontSizeByWeight(objRow: any, w: number){
+    var distance = ((objRow.max_w - objRow.min_w) / 10);
+    var size = Math.floor(w / distance);
+    return "font_size-1-" + size;
+  }
+
+  
   sortListData(listData: any, sort_field: String, sort_dir: String){
     listData.sort_field = sort_field;
     listData.sort_dir = sort_dir;

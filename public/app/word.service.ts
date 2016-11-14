@@ -24,8 +24,16 @@ export class WordService {
      } 
    }
 
+   public getSearchUrl(): string{
+     return `${this.baseUrl}${this.searchUrl}`;
+   }
+
+   public getfindWordsUrl(): string{
+     return `${this.baseUrl}${this.findUrl}`;
+   }
+
   searchResults(word: string):  Promise<ResultDetail[]> {
-    return this.http.get(`${this.baseUrl}${this.searchUrl}?word=${word}`)
+    return this.http.get(this.getSearchUrl() + `?word=${word}`)
        .toPromise()
        .then(
           response => response.json() as ResultDetail[]
@@ -39,7 +47,7 @@ export class WordService {
   }
 
   findWords = (startsWith: string): Observable<any[]> => {
-      return this.http.get(`${this.baseUrl}${this.findUrl}?word=${startsWith}`)
+      return this.http.get(this.getfindWordsUrl() + `?word=${startsWith}`)
         //return this._http.get(`${this.marvelBase}characters?nameStartsWith=${startsWith}&apikey=${this.marvelPublicKey}`)
         .map(h => h.json())
         .catch(e => console.error(e));

@@ -1,7 +1,10 @@
 import { Component, Input } from '@angular/core';
+import { Http, Response } from "@angular/http";
 import { NgForm }    from '@angular/common';
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 //import { Word } from './words';
+import { CompleterService, CompleterData } from 'ng2-completer';
+import { CompleterSearchWord } from "./completer-search-word";
 import { ResultDetail } from './result-detail';
 import { WordService }   from './word.service';
 
@@ -26,21 +29,25 @@ export class SearchWordComponet {
 	wordObjet = { id: "test", value: "test"};
 	public  history: string[] = [];
 	public resultsParent : any;
+	private dataService: CompleterSearchWord;
+	//private dataService: CompleterData;
 
 	constructor(
 	    private wordService: WordService,
-		private _sanitizer: DomSanitizer
+		private _sanitizer: DomSanitizer,
+		private completerService: CompleterService,
+		private http: Http
 	) {
 		this.resultsParent  = {
 	    	"data": []
 	    };
+	    this.dataService = new CompleterSearchWord(http, wordService.getfindWordsUrl() + '?word=');
+	    //this.dataService = completerService.remote(wordService.getfindWordsUrl() + '?word=', 'data', 'value');
 	 }
 
 	getSearchResult(): void {
 		this.setHistory(this.getWord());
-  		//console.log(this.wordObjet);
-  		//console.log(this.word);
-		this.wordService
+  		this.wordService
 		    .searchResults(this.word)
 		    .then(
 		    	resultsParent => this.resultsParent = resultsParent
@@ -55,10 +62,10 @@ export class SearchWordComponet {
 
 	setHistory(word: string)
 	{
-    if (this.history.indexOf(word) === -1) 
-    {
-      this.history.push(word);
-    }  
+	    if (this.history.indexOf(word) === -1) 
+	    {
+	    	this.history.push(word);
+	    }  
 		
 	}
 	getHistory(word: string): any
@@ -71,6 +78,14 @@ export class SearchWordComponet {
 		this.resultsParent  = {
 	    	"data": []
 	    };
+	}
+
+	typingEvent(event: any){
+	    //console.log("event:" + event.target.value);
+	    if( event.target.value != this.word ){
+	    	this.clearResults();
+	    }
+	    this.word = event.target.value;
 	}
 
 	

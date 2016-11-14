@@ -17,18 +17,16 @@
                 
                 <div class="col-sm-12" style="padding-left: 0px; padding-right: 0px;">
                   <div class="input-group">
-                    <input  ng2-auto-complete
-                      placeholder="Tapez un mot"     
-                      [(ngModel)]="word" 
-                      [source]="wordService.findWords"  
-                      [list-formatter]="leftAligned"
-                      (ngModelChange)="completeCallBack($event)"
-                      path-to-data="data"
-                      min-chars="3" 
-                      type="text"
-                      class="form-control"
-                      style="z-index: 1;" 
-                    />
+                    <ng2-completer 
+                      [(ngModel)]="word"
+                      (keyup)="typingEvent($event)"
+                      [dataService]="dataService" 
+                      [textNoResults]="'Pas des resultats'"
+                      [textSearching]="'En cherchant'"
+                      [placeholder]="'Tapez un mot'"
+                      [minSearchLength]="3"
+                      >
+                      </ng2-completer>
                     
                     <span class="input-group-btn">
                       <!-- (submit) -->

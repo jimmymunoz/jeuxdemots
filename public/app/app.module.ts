@@ -9,7 +9,9 @@ import { ListSearchResultDetailComponent }  from './list-search-result-detail-co
 import { SideBarMenuComponent }  from './side-bar-menu.component';
 import { FilterListComponent }  from './filter-list.component';
 import { WordService }    from './word.service';
-import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
+//import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
+import { Ng2CompleterModule } from "ng2-completer";
+//import { CompleterSearchWord } from "./completer-search-word";
 import { Ng2PageScrollModule } from 'ng2-page-scroll'; //https://www.npmjs.com/package/ng2-page-scroll#example-app
 import { OrderBy } from './orderby';
 import { PopoverModule }  from "ng2-popover";
@@ -20,7 +22,8 @@ import { PopoverModule }  from "ng2-popover";
     BrowserModule,
     HttpModule,
     FormsModule,
-    Ng2AutoCompleteModule,
+//    Ng2AutoCompleteModule,
+    Ng2CompleterModule,
     Ng2PageScrollModule,
   
     PopoverModule
@@ -32,6 +35,7 @@ import { PopoverModule }  from "ng2-popover";
     AppComponent,
     OrderBy,
     SideBarMenuComponent,
+//    CompleterSearchWord,
     FilterListComponent
   ],
   providers: [

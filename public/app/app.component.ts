@@ -1,6 +1,5 @@
 import { ElementRef, AfterViewInit , Component } from '@angular/core';
 import { NgForm }    from '@angular/common';
-import { Word } from './words';
 import { ResultDetail } from './result-detail';
 import { Historique }   from './history.component';
 import { WordService }   from './word.service';
