@@ -6,7 +6,7 @@ import { WordService }   from './word.service';
 
 @Component({
   selector: 'list-search-result-detail-component',
-  templateUrl: 'app/html/list_definition.html',
+  templateUrl: 'app/html/list_definition.html', 
   styles: [`
     left-menu {
       display: block; border: 1px solid #ccc;

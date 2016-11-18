@@ -1,39 +1,3 @@
-<!-- 
-<div class="">
-  
-  <div class="row">
-    <div class="col-md-3 left-menu">
-      <div *ngFor="let key of keys(listResult.data)">
-         <input type="checkbox" name="{{key}}" /> <span>{{key}}</span>
-      </div>
-    </div>
-    <div class="col-md-9">
-      <ul>
-        <li *ngFor="let key of keys(listResult.data)">
-           <b>{{key}}</b>
-           <div>
-             {{listResult.data[key].data | json}}
-           </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="col-md-12">
-  <h4>Labels and badges</h4>
-  <span class="label label-default">Default</span>
-  <span class="label label-primary">Primary</span>
-  <span class="label label-success">Success</span>
-  <span class="label label-info">Info</span>
-  <span class="label label-warning">Warning</span>
-  <span class="label label-danger">Danger</span>
-  <span class="badge badge-success">42</span>
-</div>
-
-<a  class="btn btn-sm category_button not_margin color-{{key}} "  pageScroll href="#section_{{key}}">{{key}}</a>
-			         		<span class="add-on btn btn-sm btn-default not_margin" style="cursor: pointer; "> <i class="fa fa-eye"></i> </span>
-  	-->
 <section *ngIf="keys(listResult.data).length" class="filters">
 	<div class="col-md-12 col-xs-12">
 		<div class="x_panel-jeuxdemots">
@@ -112,7 +76,7 @@
 						</div>
 			          	<div class="result_word_jeuxdemots">
 			          		<span class="text_word_jeuxdemots" *ngFor="let term of listResult.data[key].data | orderby: [listResult.data[key].sort_dir + listResult.data[key].sort_field]" >
-				          		<a id="{{key}}_{{term.eid}}" class="btn-link cursor-pointer {{getFontSizeByWeight(listResult.data[key], term.w)}}" popover="Weight: {{term.w}} id: {{term.eid}}" popoverTitle="{{term.name}}" [popoverOnHover]="true" (click)="searchNewWord(term.name)">{{term.name}}</a>,
+				          		<a id="{{key}}_{{term.eid}}" class="btn-link cursor-pointer {{getFontSizeByWeight(listResult.data[key], term.w)}}" popover="Weight: {{term.w}}" [popoverOnHover]="true" (click)="searchNewWord(term.name)">{{term.name}}</a>,
 				          	</span>
 						</div>
 			        </div>
