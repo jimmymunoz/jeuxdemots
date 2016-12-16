@@ -42,7 +42,7 @@
 			    <li>
 			      
 			    </li>
-			    <li *ngFor="let key of keys(listResult.data)">
+			    <li *ngFor="let key of keys(listResult.data)" style="">
 			      <!-- definitions -->
 			      <div [hidden]="!listResult.data[key].visible" *ngIf="listResult.data[key].data.length && key == 'definitions'" class="block_jeuxdemots">
 			      		<div class="block_content" id="section_{{key}}">
@@ -68,20 +68,22 @@
 			        
 			        <div class="block_content" id="section_{{key}}">
 							        
-			         	<span class="label label-info title category_button_title color-{{key}}" >{{listResult.data[key].display_value}}</span>
-						
-						<small>Total ({{listResult.data[key].data.length}})</small>  
-						
-						<div *ngIf="listResult.data[key].data.length >= 2" class="btn-group push-right" >
-							<a href="#" data-toggle="dropdown" class="btn-link btn-default font_size-1-0 dropdown-toggle ">
-							  Ranger par <span class="caret"></span>
-							</a>
-							<ul class="dropdown-menu">
-								<li><a class="cursor-pointer" (click)="sortListData(listResult.data[key],'name','+')"><i class="fa fa-sort-alpha-asc"></i> Nom Ascendant</a></li>
-								<li><a class="cursor-pointer" (click)="sortListData(listResult.data[key],'name','-')"><i class="fa fa-sort-alpha-desc"></i> Nom Descendant</a></li>
-								<li><a class="cursor-pointer" (click)="sortListData(listResult.data[key],'w','+')"><i class="fa fa-sort-numeric-asc"></i> Poids Ascendant </a></li>
-								<li><a class="cursor-pointer" (click)="sortListData(listResult.data[key],'w','-')"><i class="fa fa-sort-numeric-desc"></i> Poids Descendant </a></li>
-							</ul>
+						<div class="row" style="height: 22px;">
+				        	<span class="label label-info title category_button_title color-{{key}}" >{{listResult.data[key].display_value}}</span>
+							
+							<small>Total ({{listResult.data[key].data.length}})</small>  
+				    		<ul class="nav navbar-right panel_toolbox">
+				    			<li *ngIf="listResult.data[key].data.length >= 2" class="btn-group push-right">
+									<a href="#" data-toggle="dropdown" class="collapse-link"><i class="fa fa-sort"></i>
+									</a>
+									<ul class="dropdown-menu">
+										<li><a class="cursor-pointer" (click)="sortListData(listResult.data[key],'name','+')"><i class="fa fa-sort-alpha-asc"></i> Nom Ascendant</a></li>
+										<li><a class="cursor-pointer" (click)="sortListData(listResult.data[key],'name','-')"><i class="fa fa-sort-alpha-desc"></i> Nom Descendant</a></li>
+										<li><a class="cursor-pointer" (click)="sortListData(listResult.data[key],'w','+')"><i class="fa fa-sort-numeric-asc"></i> Poids Ascendant </a></li>
+										<li><a class="cursor-pointer" (click)="sortListData(listResult.data[key],'w','-')"><i class="fa fa-sort-numeric-desc"></i> Poids Descendant </a></li>
+									</ul>
+				                </li>
+				            </ul>
 						</div>
 			          	<div class="result_word_jeuxdemots" [class.collapsed]="listResult.data[key].isCollapsed" [style.height]="listResult.data[key].isCollapsed ? maxHeight+'px' : 'auto'">
 			          		<!-- https://blog.tompawlak.org/nice-features-improvements-in-angular-2 -->
