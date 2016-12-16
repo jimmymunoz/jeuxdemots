@@ -79,7 +79,7 @@ export class ListSearchResultDetailComponent {
 
   mouseLeaveDefinition(id : string){
     let myDiv = document.getElementById("rafinement_semantique_" + id);
-    myDiv.className = 'btn-link';
+    myDiv.className = ' byline definitions_text';
   }
 
 }

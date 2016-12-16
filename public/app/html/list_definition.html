@@ -85,7 +85,7 @@
 						</div>
 			          	<div class="result_word_jeuxdemots" [class.collapsed]="listResult.data[key].isCollapsed" [style.height]="listResult.data[key].isCollapsed ? maxHeight+'px' : 'auto'">
 			          		<!-- https://blog.tompawlak.org/nice-features-improvements-in-angular-2 -->
-			          		<span *ngFor="let term of listResult.data[key].data | orderby: [listResult.data[key].sort_dir + listResult.data[key].sort_field]" class="text_word_jeuxdemots btn-link cursor-pointer {{getFontSizeByWeight(listResult.data[key], term.w)}}"  (click)="searchNewWord(term.name)">{{term.name}}, </span>
+			          		<span *ngFor="let term of listResult.data[key].data | orderby: [listResult.data[key].sort_dir + listResult.data[key].sort_field]"  id="{{key}}_{{term['eid']}}" class="text_word_jeuxdemots btn-link cursor-pointer {{getFontSizeByWeight(listResult.data[key], term.w)}}"  (click)="searchNewWord(term.name)">{{term.name}}, </span>
 						</div>
 						<!-- Read more -->
 						<div *ngIf="listResult.data[key].isCollapsable" class="row text-right">
