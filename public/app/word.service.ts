@@ -36,9 +36,26 @@ export class WordService {
     return this.http.get(this.getSearchUrl() + `?word=${word}`)
        .toPromise()
        .then(
-          response => response.json() as ResultDetail[]
+          response => this.setDefaultValuesList(response.json()) as ResultDetail[]
         )
        .catch(this.handleError);
+  }
+
+  setDefaultValuesList(listResult: {}) {
+    for(var key in listResult['data']){
+      var isCollapsable = (listResult['data'][key].data.length > 15) ? true : false;//12 words
+      if( key == 'definitions' ){
+        isCollapsable = (listResult['data'][key].data.length > 3) ? true : false;//2 definitions
+      }
+      listResult['data'][key]['isCollapsed'] = isCollapsable;
+      listResult['data'][key]['isCollapsable'] = isCollapsable;
+      
+      listResult['data'][key]['sort_field'] = "w";// w -> weight, name -> name 
+      listResult['data'][key]['sort_dir'] = "-";// + -> asc, - -> desc
+      listResult['data'][key]['visible'] = 1;// 1 - 0
+    }
+    console.log(listResult);
+    return listResult;
   }
 
   private handleError(error: any): Promise<any> {

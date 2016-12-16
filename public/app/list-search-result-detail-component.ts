@@ -29,11 +29,17 @@ export class ListSearchResultDetailComponent {
   orderByDir = "-";//Descending
   orderByField = "w";//weight
   
+  public text: string;
+
+  public maxHeight: number = 35;
+  public maxHeightDefinitions: number = 80;
+  
   constructor(
     private wordService: WordService
   ){
-
+    this.text = "Content React Native Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad neque nisi tempore in deleniti magnam numquam odio, ut nesciunt eos est asperiores inventore dicta optio dolorem, omnis odit beatae animi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad neque nisi tempore in deleniti magnam numquam odio, ut nesciunt eos est asperiores inventore dicta optio dolorem";
     console.log("List result : " + this.listResult);
+    console.log("text : " + this.text);
   }
   
   searchNewWord(newword: String){
@@ -75,4 +81,5 @@ export class ListSearchResultDetailComponent {
     let myDiv = document.getElementById("rafinement_semantique_" + id);
     myDiv.className = 'btn-link';
   }
+
 }
