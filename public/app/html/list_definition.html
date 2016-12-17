@@ -45,22 +45,23 @@
 			    <li *ngFor="let key of keys(listResult.data)" style="">
 			      <!-- definitions -->
 			      <div [hidden]="!listResult.data[key].visible" *ngIf="listResult.data[key].data.length && key == 'definitions'" class="block_jeuxdemots">
-			      		<div class="block_content" id="section_{{key}}">
+		      		<div class="block_content" id="section_{{key}}">
+		      			<div class="row" style="height: 22px;">
 				      		<span class="label label-info title category_button_title color-{{key}}">{{listResult.data[key].display_value}}</span>
 				      		<small>Total ({{listResult.data[key].data.length}})</small> 
-				      		
-				      		<div class="result_word_jeuxdemots" [class.collapsed]="listResult.data[key].isCollapsed" [style.height]="listResult.data[key].isCollapsed ? maxHeightDefinitions+'px' : 'auto'">
-				      			<ol>
-									<li *ngFor="let rowDefKey of keys(listResult.data[key].data)" class="byline definitions_text" (mouseenter)="mouseEnterDefinition(listResult.data[key].data[rowDefKey].termid)"  (mouseleave) ="mouseLeaveDefinition(listResult.data[key].data[rowDefKey].termid)">
-										<span innerHTML='{{listResult.data[key].data[rowDefKey].def}}'></span>
-									</li>
-								</ol>
-				      		</div>
-							<!-- Read more -->
-							<div *ngIf="listResult.data[key].isCollapsable" class="row text-right">
-								<a  class="cursor-pointer" (click)="listResult.data[key].isCollapsed =! listResult.data[key].isCollapsed"><i class="fa fa-chevron-{{listResult.data[key].isCollapsed? 'down':'up'}}"></i> {{listResult.data[key].isCollapsed? 'Lire plus':'Lire moins'}}</a>
-							</div>
+			      		</div>
+			      		<div class="result_word_jeuxdemots" [class.collapsed]="listResult.data[key].isCollapsed" [style.height]="listResult.data[key].isCollapsed ? maxHeightDefinitions+'px' : 'auto'">
+			      			<ol>
+								<li *ngFor="let rowDefKey of keys(listResult.data[key].data)" class="byline definitions_text" (mouseenter)="mouseEnterDefinition(listResult.data[key].data[rowDefKey].termid)"  (mouseleave) ="mouseLeaveDefinition(listResult.data[key].data[rowDefKey].termid)">
+									<span innerHTML='{{listResult.data[key].data[rowDefKey].def}}'></span>
+								</li>
+							</ol>
+			      		</div>
+						<!-- Read more -->
+						<div *ngIf="listResult.data[key].isCollapsable" class="row text-right">
+							<a  class="cursor-pointer" (click)="listResult.data[key].isCollapsed =! listResult.data[key].isCollapsed"><i class="fa fa-chevron-{{listResult.data[key].isCollapsed? 'down':'up'}}"></i> {{listResult.data[key].isCollapsed? 'Lire plus':'Lire moins'}}</a>
 						</div>
+					</div>
 			      </div>
 
 			      <!-- asociations -->
@@ -87,7 +88,10 @@
 						</div>
 			          	<div class="result_word_jeuxdemots" [class.collapsed]="listResult.data[key].isCollapsed" [style.height]="listResult.data[key].isCollapsed ? maxHeight+'px' : 'auto'">
 			          		<!-- https://blog.tompawlak.org/nice-features-improvements-in-angular-2 -->
-			          		<span *ngFor="let term of listResult.data[key].data | orderby: [listResult.data[key].sort_dir + listResult.data[key].sort_field]"  id="{{key}}_{{term['eid']}}" class="text_word_jeuxdemots btn-link cursor-pointer {{getFontSizeByWeight(listResult.data[key], term.w)}}"  (click)="searchNewWord(term.name)">{{term.name}}, </span>
+			          		<span *ngFor="let i=index; let term of listResult.data[key].data | orderby: [listResult.data[key].sort_dir + listResult.data[key].sort_field]">
+			          			<span id="{{key}}_{{term['eid']}}" class="text_word_jeuxdemots btn-link cursor-pointer {{getFontSizeByWeight(listResult.data[key], term.w)}}"  (click)="searchNewWord(term.name)">{{term.name}}</span><span *ngIf="i < (listResult.data[key].data.length -1)">, </span>
+			          		</span>
+			          		
 						</div>
 						<!-- Read more -->
 						<div *ngIf="listResult.data[key].isCollapsable" class="row text-right">

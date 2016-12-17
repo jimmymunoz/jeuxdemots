@@ -1,5 +1,7 @@
-<ul class="nav child_menu">
-  <li *ngFor="let key of keys(listResult.data)">
-  	<label><input type="checkbox" (change)="filterList($event)" name="{filters}" checked="checked" value="{{key}}" /> {{listResult.data[key].display_value}}</label>
-  </li>
-</ul>
+<li><a class="fix-style-side-bar-a"><i class="fa fa-eye"></i> Montrer / Cacher<span class="fa fa-chevron-down"></span></a>
+	<ul class="nav child_menu">
+		<li *ngFor="let key of keys(listResult.data)">
+			<label><input type="checkbox" (change)="filterList($event)" name="{filters}" checked="checked" value="{{key}}" /> {{listResult.data[key].display_value}}</label>
+		</li>
+	</ul>
+</li>
