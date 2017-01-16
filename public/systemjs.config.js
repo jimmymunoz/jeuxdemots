@@ -49,6 +49,7 @@
       'ng2-auto-complete' : 'js/ng2-auto-complete/dist',
       'ng2-popover': 'js/ng2-popover', //https://github.com/pleerock/ng2-popover
       'ng2-page-scroll': 'js/ng2-page-scroll/bundles/ng2-page-scroll.umd.js'
+      'ng2-completer':  'node_modules/ng2-completer/bundles'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {

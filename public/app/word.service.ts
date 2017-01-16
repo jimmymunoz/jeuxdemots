@@ -17,22 +17,46 @@ export class WordService {
   private history: string[] = [];
   private findUrl: string = "application/index/autocompleteword";
   private baseUrl: string = "/";
+  private useRemote: boolean = false;//Jimmy (Cordova -> Remote) true Remote, false: Local
 
   constructor(private http: Http) {
-     if(false){ //Jimmy (Cordova -> Remote) true Remote, false: Local
+     if(this.useRemote){ 
        this.baseUrl = "http://46.101.40.23/jeuxdemots/public/";
      } 
    }
 
+   public getSearchUrl(): string{
+     return `${this.baseUrl}${this.searchUrl}`;
+   }
 
+   public getfindWordsUrl(): string{
+     return `${this.baseUrl}${this.findUrl}`;
+   }
 
   searchResults(word: string):  Promise<ResultDetail[]> {
-    return this.http.get(`${this.baseUrl}${this.searchUrl}?word=${word}`)
+    return this.http.get(this.getSearchUrl() + `?word=${word}`)
        .toPromise()
        .then(
-          response => response.json() as ResultDetail[]
+          response => this.setDefaultValuesList(response.json()) as ResultDetail[]
         )
        .catch(this.handleError);
+  }
+
+  setDefaultValuesList(listResult: {}) {
+    for(var key in listResult['data']){
+      var isCollapsable = (listResult['data'][key].data.length > 15) ? true : false;//12 words
+      if( key == 'definitions' ){
+        isCollapsable = (listResult['data'][key].data.length > 3) ? true : false;//2 definitions
+      }
+      listResult['data'][key]['isCollapsed'] = isCollapsable;
+      listResult['data'][key]['isCollapsable'] = isCollapsable;
+      
+      listResult['data'][key]['sort_field'] = "w";// w -> weight, name -> name 
+      listResult['data'][key]['sort_dir'] = "-";// + -> asc, - -> desc
+      listResult['data'][key]['visible'] = 1;// 1 - 0
+    }
+    console.log(listResult);
+    return listResult;
   }
 
   private handleError(error: any): Promise<any> {
@@ -41,10 +65,10 @@ export class WordService {
   }
 
   findWords = (startsWith: string): Observable<any[]> => {
-      return this.http.get(`${this.baseUrl}${this.findUrl}?word=${startsWith}`)
+      return this.http.get(this.getfindWordsUrl() + `?word=${startsWith}`)
         //return this._http.get(`${this.marvelBase}characters?nameStartsWith=${startsWith}&apikey=${this.marvelPublicKey}`)
-        .map(h => h.json())
-        .catch(e => console.error(e));
+        .map(h => h.json());
+        //.catch(e => console.error(e));
     } 
 
 }

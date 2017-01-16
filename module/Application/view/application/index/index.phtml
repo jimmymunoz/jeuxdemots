@@ -1,157 +1,122 @@
 <!-- 
-<div class="jumbotron">
-    <h1><?php echo sprintf($this->translate('Welcome to Jeux de Mots'), '<span class="zf-green">', '</span>') ?></h1>
-    <a href="http://46.101.40.23/jeuxdemots/public/"> http://46.101.40.23/jeuxdemots/public/ </a>
-    <p> Pour l'instant il n'y pas de connection à la base de donnés dans le serveur. </p>
-</div>
 -->
-  <div>
-    <my-app>Loading Angular 2...</my-app>
+<div>
+  <my-app>Loading Angular 2...</my-app>
+</div>
+<div id="animation_content">
+  <style>
+  .animated_div_left {
+      width:76px;
+      height:47px;
+      color: #92B901;
+      position: fixed;
+      font-weight:bold;
+      font-size:30px;
+      padding:10px;
+      animation: animated_div_left 3s linear 0s infinite alternate;
+       /*
+      animation:animated_div_left 3s;
+      animation-iteration-count: infinite;
+       */
+      -moz-animation:animated_div_left 3s linear 0s infinite alternate;
+      -webkit-animation:animated_div_left 3s linear 0s infinite alternate;
+      -o-animation:animated_div_left 3s linear 0s infinite alternate;
+      border-radius:5px;
+      -webkit-border-radius:5px;
+  }
+
+  @keyframes animated_div_left
+  {
+      0% {transform: rotate(0deg);right:50%;}
+      25% {transform: rotate(20deg);right:50%;}
+      50% {transform: rotate(360deg);right:80%;}
+      55% {transform: rotate(0deg);right:80%;}
+      70% {transform: rotate(0deg);right:80%;}
+      100% {transform: rotate(-360deg);right:50%;}
+  }
+
+  .animated_div_right {
+      width:76px;
+      height:47px;
+      color: #92B901;
+      position: fixed;
+      left:50%;
+      font-weight:bold;
+      font-size:30px;
+      padding:10px;
+      animation: animated_div_right 3s linear 0s infinite alternate;
+       /*
+      animation:animated_div_right 3s;
+      animation-iteration-count: infinite;
+       */
+      -moz-animation:animated_div_right 3s linear 0s infinite alternate;
+      -webkit-animation:animated_div_right 3s linear 0s infinite alternate;
+      -o-animation:animated_div_right 3s linear 0s infinite alternate;
+      border-radius:5px;
+      -webkit-border-radius:5px;
+  }
+
+  @keyframes animated_div_right
+  {
+      0% {transform: rotate(0deg);left:50%;}
+      25% {transform: rotate(20deg);left:50%;}
+      50% {transform: rotate(360deg);left:70%;}
+      55% {transform: rotate(0deg);left:70%;}
+      70% {transform: rotate(0deg);left:70%;}
+      100% {transform: rotate(-360deg);left:50%;}
+  }
+
+  /*
+  @-webkit-keyframes animated_div
+  {
+      0% {-webkit-transform: rotate(0deg);left:0px;}
+      25% {-webkit-transform: rotate(20deg);left:0px;}
+      50% {-webkit-transform: rotate(0deg);left:500px;}
+      55% {-webkit-transform: rotate(0deg);left:500px;}
+      70% {-webkit-transform: rotate(0deg);left:500px;color:#1ec7e6;}
+      100% {-webkit-transform: rotate(-360deg);left:0px;}
+  }
+
+  @-moz-keyframes animated_div
+  {
+  0%  {-moz-transform: rotate(0deg);left:0px;}
+  25% {-moz-transform: rotate(20deg);left:0px;}
+  50%  {-moz-transform: rotate(0deg);left:500px;}
+  55%  {-moz-transform: rotate(0deg);left:500px;}
+  70%  {-moz-transform: rotate(0deg);left:500px;color:#1ec7e6;}
+  100% {-moz-transform: rotate(-360deg);left:0px;}
+  }
+
+  @-o-keyframes animated_div
+  {
+  0% {transform: rotate(0deg);left:0px;}
+  25% {transform: rotate(20deg);left:0px;}
+  50%  {transform: rotate(0deg);left:500px;}
+  55%  {transform: rotate(0deg);left:500px;}
+  70%  {transform: rotate(0deg);left:500px;color:#1ec7e6;}
+  100% {transform: rotate(-360deg);left:0px;}
+  }
+  */
+
+
+  </style>
+  <div style="z-index: 2px; position: fixed; top: 50%; left: 50%;  ">
+    <img src="images/book_img.png" alt="HTML5 Icon" style="width:200px; margin-top: -50px; margin-left: -100px;">
   </div>
-    
-
-
-
-<!--
-<div class="x_content">
-  <ul class="list-unstyled timeline">
-    <li>
-      
-    </li>
-    <li>
-      <div class="block">
-        <div class="tags">
-          <a href="" class="tag">
-            <span>Entertainment</span>
-          </a>
-        </div>
-        <div class="block_content">
-          <h2 class="title">
-              <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>
-          </h2>
-          <div class="byline">
-            <span>13 hours ago</span> by <a>Jane Smith</a>
-          </div>
-          <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
-          </p>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="block">
-        <div class="tags">
-          <a href="" class="tag">
-            <span>Entertainment</span>
-          </a>
-        </div>
-        <div class="block_content">
-          <div class="x_panel">
-              <div class="x_title">
-                <h2>Tooltips <small>Hover to view</small></h2>
-                <ul class="nav navbar-right panel_toolbox" style="min-width: 20px;">
-                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                  </li>
-                </ul>
-                <div class="clearfix"></div>
-              </div>
-              <div class="x_content">
-
-                <p>Hover over the links below to see tooltips:</p>
-
-              </div>
-            </div>
-        </div>
-      </div>
-    </li>
-    <li>
-      <div class="block">
-        <div class="tags">
-          <a href="" class="tag">
-            <span>Entertainment</span>
-          </a>
-        </div>
-        <div class="block_content">
-            <div class="x_panel">
-              <div class="x_title">
-                <span>Entertainment</span> <small>Hover to view</small>
-                <ul class="nav navbar-right pull-right">
-                  <li>
-                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                  </li>
-                </ul>
-                <div class="clearfix"></div>
-              </div>
-              <div class="x_content">
-
-                <p>Hover over the links below to see tooltips:</p>
-
-              </div>
-            </div>
-
-
-        </div>
-      </div>
-    </li>
-  </ul>
-
+  <div class="animated_div_left" style="font-size: 2em; top: 10%;color:#1a6ef6">Chat</div>
+  <div class="animated_div_right" style="top: 10%;color:#dffba8">Profiter</div>
+  <div class="animated_div_left" style="font-size: 1.5em; top: 20%; color:#a7ccc4">Échouer</div>
+  <div class="animated_div_right" style="top: 20%; color: #ff2d39">Printemps</div>
+  <div class="animated_div_left" style="top: 30%; color: #1b998a;">Chanson</div>
+  <div class="animated_div_right" style="top: 35%; color: #ffb358;">Copains</div>
+  <div class="animated_div_left" style="font-size: 3em; top: 40%; color: #EF5184;">Amis</div>
+  <div class="animated_div_right" style="top: 40%; color: #1ec7e6;">Fétefora</div>
+  <div class="animated_div_left" style="top: 50%; color: #7d8413;">Chimie</div>
+  <div class="animated_div_right" style="top: 50%; color: #e0c544;">Musique</div>
+  <div class="animated_div_right" style="top: 60%; color: #1ec7e6;">SVT</div>
+  <div class="animated_div_left" style="top: 65%; color: #FFFECF;">Vélo</div>
+  <div class="animated_div_right" style="top: 70%; color: #1ec7e6;">Sports</div>
+  <div class="animated_div_left" style="top: 70%; color: #1ec7e6;">Réussir</div>
+  <div class="animated_div_left" style="top: 80%; color: #1ec7e6;">Natation</div>
+  <div class="animated_div_right" style="top: 85%; left: 10%; color: #1ec7e6;">Saisons</div>
 </div>
-
-<div class="col-md-12 col-sm-6 col-xs-12">
-    <div class="x_panel">
-      <div class="x_title">
-        <h2>Tooltips <small>Hover to view</small></h2>
-        <ul class="nav navbar-right panel_toolbox">
-          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Settings 1</a>
-              </li>
-              <li><a href="#">Settings 2</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <div class="clearfix"></div>
-      </div>
-      <div class="x_content">
-
-        <p>Hover over the links below to see tooltips:</p>
-
-      </div>
-    </div>
-  </div>
-</div>
--->
-<!-- 
-<div class="row">
-    <div class="col-md-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Search Words (Angular2 - Typescript)') ?></h3>
-            </div>
-            <div class="panel-body">
-               
-            </div>
-        </div>
-              
-    </div>
-
-    <div class="col-md-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Architecture') ?></h3>
-            </div>
-            <div class="panel-body">
-                <p>
-                    <?php echo $this->translate('Notre architecture') ?>
-
-                </p>
-                <img src="img/general-architecture.png" style="width: 90%;" /> 
-                
-            </div>
-        </div>
-    </div> 
-</div>
--->

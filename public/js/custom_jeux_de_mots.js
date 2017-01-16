@@ -1,10 +1,10 @@
-
-
-
 var customJeuxDeMots = {};
 
 customJeuxDeMots.initJqueryBoostrap = function(){
-	var CURRENT_URL = window.location.href.split('?')[0],
+	$('#animation_content').fadeOut();
+    $('#animation_content').remove();
+
+    var CURRENT_URL = window.location.href.split('?')[0],
     $BODY = $('body'),
     $MENU_TOGGLE = $('#menu_toggle'),
     $SIDEBAR_MENU = $('#sidebar-menu'),
@@ -91,6 +91,15 @@ customJeuxDeMots.initJqueryBoostrap = function(){
             mouseWheel:{ preventDefault: true }
         });
     }
+    $(document).scroll(function() {
+      var y = $(this).scrollTop();
+      if (y > 800) {
+        $('.iconTop').fadeIn();
+      } else {
+        $('.iconTop').fadeOut();
+      }
+    });
 }
 
 exports = customJeuxDeMots;
+

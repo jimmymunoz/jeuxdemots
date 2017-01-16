@@ -1,46 +1,16 @@
-<!-- 
-<div class="">
-  
-  <div class="row">
-    <div class="col-md-3 left-menu">
-      <div *ngFor="let key of keys(listResult.data)">
-         <input type="checkbox" name="{{key}}" /> <span>{{key}}</span>
-      </div>
-    </div>
-    <div class="col-md-9">
-      <ul>
-        <li *ngFor="let key of keys(listResult.data)">
-           <b>{{key}}</b>
-           <div>
-             {{listResult.data[key].data | json}}
-           </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="col-md-12">
-  <h4>Labels and badges</h4>
-  <span class="label label-default">Default</span>
-  <span class="label label-primary">Primary</span>
-  <span class="label label-success">Success</span>
-  <span class="label label-info">Info</span>
-  <span class="label label-warning">Warning</span>
-  <span class="label label-danger">Danger</span>
-  <span class="badge badge-success">42</span>
-</div>
-
-<a  class="btn btn-sm category_button not_margin color-{{key}} "  pageScroll href="#section_{{key}}">{{key}}</a>
-			         		<span class="add-on btn btn-sm btn-default not_margin" style="cursor: pointer; "> <i class="fa fa-eye"></i> </span>
-  	-->
-<section class="filters">
+<section *ngIf="keys(listResult.data).length" class="filters">
 	<div class="col-md-12 col-xs-12">
 		<div class="x_panel-jeuxdemots">
 			<div class="x_content">
 				<div class="text-center">
 		    		<h2><i class="fa fa-book"></i> Categories </h2> 
+					<ul class="nav navbar-right panel_toolbox">
+		                <li><a href="#categories_content" data-toggle="collapse" class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+		                </li>
+		            </ul>
+	            	<div class="clearfix"></div>
 				</div>
+				<div id="categories_content" class="collapse in x_content">
 				<div class="col-md-12">
 				  <!-- labels goto -->
 				  	<div *ngFor="let key of keys(listResult.data)" style="display: inline-block; " class="">
@@ -59,12 +29,13 @@
 	</div>
 </section>
 
-<section class="result">
+<section *ngIf="keys(listResult.data).length" class="result">
 	<div class="col-md-12 col-xs-12" >
 	  <div class="x_panel-jeuxdemots">
 		<div class="x_content">
 			<div class="text-center">
-	    		<h2><i class="fa fa-book"></i> Resultats <strong>{{word}}</strong></h2> 
+	    		<h2><i class="fa fa-book"></i> Resultats <strong>{{word}}</strong> <div class="push-left polarite_neg" style="width: 80px; height: 20px; color: #FFF; ">Polarité</div>
+						</h2> 
 			</div>
 
 			<ul class="list-unstyled timeline widget">
@@ -73,10 +44,13 @@
 			    </li>
 			    <li *ngFor="let key of keys(listResult.data)">
 			      <!-- definitions -->
+			      <div [hidden]="!listResult.data[key].visible" *ngIf="listResult.data[key].data.length && key == 'definitions'" class="block_jeuxdemots">
 			      <div *ngIf="listResult.data[key].data.length && key == 'definitions'" class="block_jeuxdemots" id="section_{{key}}">
-
+		      			<div class="row" style="height: 22px;">
 			      		<span class="label label-info title" style="font-size: 1.2em;">{{listResult.data[key].display_value}}</span>
 			      		<span>Total {{listResult.data[key].data.length}}</span>
+			      		</div>
+			      		<div class="result_word_jeuxdemots" [class.collapsed]="listResult.data[key].isCollapsed" [style.height]="listResult.data[key].isCollapsed ? maxHeightDefinitions+'px' : 'auto'">
 						<ol>
 							<li *ngFor="let rowDefKey of keys(listResult.data[key].data)" class="byline definitions_text" (mouseenter)="mouseEnterDefinition(listResult.data[key].data[rowDefKey].termid)"  (mouseleave) ="mouseLeaveDefinition(listResult.data[key].data[rowDefKey].termid)">
 								<span innerHTML='{{listResult.data[key].data[rowDefKey].def}}'></span>
@@ -84,6 +58,12 @@
 							</li>
 							<Button>Read More</Button>s
 						</ol>
+			      		</div>
+						<!-- Read more -->
+						<div *ngIf="listResult.data[key].isCollapsable" class="row text-right">
+							<a  class="cursor-pointer" (click)="listResult.data[key].isCollapsed =! listResult.data[key].isCollapsed"><i class="fa fa-chevron-{{listResult.data[key].isCollapsed? 'down':'up'}}"></i> {{listResult.data[key].isCollapsed? 'Lire plus':'Lire moins'}}</a>
+						</div>
+					</div>
 			      </div>
 
 
@@ -92,6 +72,7 @@
 			        
 			        <div class="block_content" id="section_{{key}}">
 							        
+						<div class="row" style="height: 22px;">
 			         	<span class="label label-info title category_button_title color-{{key}}" >{{listResult.data[key].display_value}}</span>
 						
 						<small>Total ({{listResult.data[key].data.length}})</small>  
@@ -113,6 +94,7 @@
 			          		<span class="text_word_jeuxdemots"  *ngFor="let term of listResult.data[key].data | orderby: [listResult.data[key].sort_dir + listResult.data[key].sort_field]" >
 				          		<a id="{{key}}_{{term.eid}}" class="btn-link" style="cursor: pointer;" popover="Weight: {{term.w}} id: {{term.eid}}" popoverTitle="{{term.name}}" [popoverOnHover]="true" (click)="searchNewWord(term.name)">{{term.name}}</a>,
 				          	</span>
+			          		
 						</div>
 
 
@@ -139,4 +121,5 @@
 		</div>
 	  </div>
 	</div>
+	<!-- popover="Weight: {{term.w}}" [popoverOnHover]="true" -->
 </section>

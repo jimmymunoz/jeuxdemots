@@ -16,6 +16,13 @@ export class FilterListComponent {
   ){
   
   }
+
+  filterList(e: Event ){
+    var key = e.target['value'];
+    console.log(key + ": "  + e.target['checked']);
+    this.listResult.data[key].visible = (e.target['checked'])? 1 : 0;
+  }
+
   keys(object: {}) {
     if(! object ){
         object = [];

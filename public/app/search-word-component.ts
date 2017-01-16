@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { NgForm }    from '@angular/common';
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 //import { Word } from './words';
+import { CompleterService, CompleterData } from 'ng2-completer';
+import { CompleterSearchWord } from "./completer-search-word";
 import { ResultDetail } from './result-detail';
 import { WordService }   from './word.service';
 import { RuntimeCompiler} from '@angular/compiler'; // add this
@@ -30,6 +32,8 @@ export class SearchWordComponet {
 	public  history: string[] = [];
 	public  history1: any;
 	public resultsParent : any;
+	private dataService: CompleterSearchWord;
+	//private dataService: CompleterData;
 
 	constructor(
 	    private wordService: WordService,
@@ -44,6 +48,8 @@ export class SearchWordComponet {
 		this.resultsParent  = {
 	    	"data": []
 	    };
+	    this.dataService = new CompleterSearchWord(http, wordService.getfindWordsUrl() + '?word=');
+	    //this.dataService = completerService.remote(wordService.getfindWordsUrl() + '?word=', 'data', 'value');
 	 }
 
 	getSearchResult(): void {
@@ -86,6 +92,14 @@ export class SearchWordComponet {
 		this.resultsParent  = {
 	    	"data": []
 	    };
+	}
+
+	typingEvent(event: any){
+	    //console.log("event:" + event.target.value);
+	    if( event.target.value != this.word ){
+	    	this.clearResults();
+	    }
+	    this.word = event.target.value;
 	}
 
 	
