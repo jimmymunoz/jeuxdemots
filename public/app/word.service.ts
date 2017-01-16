@@ -17,9 +17,10 @@ export class WordService {
   private history: string[] = [];
   private findUrl: string = "application/index/autocompleteword";
   private baseUrl: string = "/";
+  private useRemote: boolean = false;//Jimmy (Cordova -> Remote) true Remote, false: Local
 
   constructor(private http: Http) {
-     if(false){ //Jimmy (Cordova -> Remote) true Remote, false: Local
+     if(this.useRemote){ 
        this.baseUrl = "http://46.101.40.23/jeuxdemots/public/";
      } 
    }
@@ -66,8 +67,8 @@ export class WordService {
   findWords = (startsWith: string): Observable<any[]> => {
       return this.http.get(this.getfindWordsUrl() + `?word=${startsWith}`)
         //return this._http.get(`${this.marvelBase}characters?nameStartsWith=${startsWith}&apikey=${this.marvelPublicKey}`)
-        .map(h => h.json())
-        .catch(e => console.error(e));
+        .map(h => h.json());
+        //.catch(e => console.error(e));
     } 
 
 }

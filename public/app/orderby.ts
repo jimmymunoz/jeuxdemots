@@ -1,5 +1,5 @@
 //The pipe class implements the PipeTransform interface's transform method that accepts an input value and an optional array of parameters and returns the transformed value.
-import { Pipe,PipeTransform } from "@angular/core";
+import { Pipe, Type, PipeTransform } from "@angular/core";
 
 @Pipe({name: 'orderby', pure: false})
 export class OrderBy implements PipeTransform {

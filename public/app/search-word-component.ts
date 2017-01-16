@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Http, Response } from "@angular/http";
-import { NgForm }    from '@angular/common';
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 //import { Word } from './words';
 import { CompleterService, CompleterData } from 'ng2-completer';
@@ -19,7 +18,6 @@ import { WordService }   from './word.service';
       display: inline-block; position: relative; width: 100%;
     }
   `],
-
    providers : [WordService]
 })
 
@@ -93,7 +91,7 @@ export class SearchWordComponet {
     	let html = `<div style="text-align:left">${data.value}</div>`;
     	return this._sanitizer.bypassSecurityTrustHtml(html);
   	}
-  	completeCallBack(event): void {
+  	completeCallBack(event: any): void {
   		//console.log(event);
   		this.clearResults();
   		this.word = event.value;
@@ -101,7 +99,7 @@ export class SearchWordComponet {
 	   	//this.getSearchResult();	
 	}
 
-	json(obj) {
+	json(obj: any) {
 		return JSON.stringify(obj);
 	}
 }

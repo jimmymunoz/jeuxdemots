@@ -1,7 +1,7 @@
 import { Component, Input} from '@angular/core';
 //import { OrderBy } from './orderby'; //http://www.fueltravel.com/blog/migrating-from-angular-1-to-2-part-1-pipes/
 //import { PopoverModule } from "ng2-popover"; //https://github.com/pleerock/ng2-popover
-import { Historique }   from './history.component';
+//import { Historique }   from './history.component';
 
 @Component({
   selector: 'side-bar-menu',
@@ -9,13 +9,13 @@ import { Historique }   from './history.component';
   styles: [`
     
   `],
-  inputs: ['listResult',  'history', 'word'],
-  directives: [Historique]
+  inputs: ['listResult',  'history', 'word']
+//  ,directives: [Historique]
 })
 
 
 export class SideBarMenuComponent {
-  public word : String;
+  public word : string;
   public listResult : any;
  
   constructor(

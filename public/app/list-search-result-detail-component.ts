@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, Pipe } from '@angular/core';
 import { ResultDetail } from './result-detail';
-import { OrderBy } from './orderby'; //http://www.fueltravel.com/blog/migrating-from-angular-1-to-2-part-1-pipes/
+//import { OrderBy } from './orderby'; //http://www.fueltravel.com/blog/migrating-from-angular-1-to-2-part-1-pipes/
 import { PopoverModule } from "ng2-popover"; //https://github.com/pleerock/ng2-popover
 import { WordService }   from './word.service';
 
@@ -12,34 +12,27 @@ import { WordService }   from './word.service';
       display: block; border: 1px solid #ccc;
     }
   `],
-  inputs: ['listResult', 'word'],
-  //outputs: ['myevent'],
-  pipes: [ OrderBy ]
-
+  inputs: ['listResult', 'word']
+  //,pipes: [ OrderBy ]
 })
 
 
 export class ListSearchResultDetailComponent {
   public myname : String;
   public word : String;
-  public myevent : EventEmitter = new EventEmitter();
   public listResult : any;
  
   titre = "Result Details";
   orderByDir = "-";//Descending
   orderByField = "w";//weight
   
-  public text: string;
-
   public maxHeight: number = 35;
   public maxHeightDefinitions: number = 80;
   
   constructor(
     private wordService: WordService
   ){
-    this.text = "Content React Native Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad neque nisi tempore in deleniti magnam numquam odio, ut nesciunt eos est asperiores inventore dicta optio dolorem, omnis odit beatae animi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad neque nisi tempore in deleniti magnam numquam odio, ut nesciunt eos est asperiores inventore dicta optio dolorem";
     console.log("List result : " + this.listResult);
-    console.log("text : " + this.text);
   }
   
   searchNewWord(newword: String){
@@ -47,7 +40,7 @@ export class ListSearchResultDetailComponent {
     this.word = newword;
     console.log(this.word);
     this.wordService
-        .searchResults(newword)
+        .searchResults(""+ newword)
         .then(
           listResult => this.listResult = listResult
         );
