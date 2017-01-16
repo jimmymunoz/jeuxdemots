@@ -37,6 +37,8 @@
       '@angular/http': 'npm:@angular/http/bundles/http.umd.js',
       '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
+      //'angular-2-local-storage': 'js/angular-2-local-storage',
+      //'angular2-cookie': 'js/angular2-cookie',
       '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
 
       // other libraries
@@ -61,9 +63,9 @@
         main: './index.js',
         defaultExtension: 'js'
       }
+      //,'angular-2-local-storage': { main: 'index.js', defaultExtension: 'js' }
       ,'ng2-auto-complete' : {main: 'ng2-auto-complete.umd.js', defaultExtension: 'js'}
       ,'ng2-popover': { 'main': 'index.js', 'defaultExtension': 'js' }
-      
     }
   });
 })(this);

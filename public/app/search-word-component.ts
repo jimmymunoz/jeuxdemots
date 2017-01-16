@@ -4,6 +4,8 @@ import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 //import { Word } from './words';
 import { ResultDetail } from './result-detail';
 import { WordService }   from './word.service';
+import { RuntimeCompiler} from '@angular/compiler'; // add this
+
 
 @Component({
   selector: 'search-word-component',
@@ -17,26 +19,35 @@ import { WordService }   from './word.service';
     }
   `],
 
-   providers : [WordService]
+   providers : [WordService,RuntimeCompiler]
 })
 
 export class SearchWordComponet {
 	title = 'Search a Word';
 	word = "";
 	wordObjet = { id: "test", value: "test"};
+
 	public  history: string[] = [];
+	public  history1: any;
 	public resultsParent : any;
 
 	constructor(
 	    private wordService: WordService,
-		private _sanitizer: DomSanitizer
+		private _sanitizer: DomSanitizer,
+	  	private runtimeCompiler: RuntimeCompiler// add this
 	) {
+    	var history = localStorage.getItem("history");
+		var AppListJson = history != null ? JSON.parse(history) : [];
+		this.history = AppListJson;
+		
+		this.runtimeCompiler.clearCache(); // add this
 		this.resultsParent  = {
 	    	"data": []
 	    };
 	 }
 
 	getSearchResult(): void {
+		localStorage.setItem("wordls", this.getWord());
 		this.setHistory(this.getWord());
   		//console.log(this.wordObjet);
   		//console.log(this.word);
@@ -55,15 +66,19 @@ export class SearchWordComponet {
 
 	setHistory(word: string)
 	{
-    if (this.history.indexOf(word) === -1) 
-    {
-      this.history.push(word);
-    }  
-		
+	    if (this.history.indexOf(word) === -1) 
+	    {
+	      this.history.unshift(word);
+	     
+	      localStorage.setItem("history",JSON.stringify(this.history));
+	    }  
 	}
-	getHistory(word: string): any
+	getHistory(): any
 	{
+		
+		//console.log(AppListJson.concat(this.history))
 		return this.history;
+		
 	}
 
 
@@ -83,6 +98,8 @@ export class SearchWordComponet {
   		this.clearResults();
   		this.word = event.value;
   		console.log(this.word);
+  		console.log(this.history);
+
 	   	//this.getSearchResult();	
 	}
 

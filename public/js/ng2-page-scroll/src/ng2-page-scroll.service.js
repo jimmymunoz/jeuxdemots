@@ -1,19 +1,29 @@
-import { Injectable, isDevMode } from '@angular/core';
-import { PageScrollConfig } from './ng2-page-scroll-config';
-import { PageScrollUtilService } from './ng2-page-scroll-util.service';
-export var PageScrollService = (function () {
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var core_1 = require('@angular/core');
+var ng2_page_scroll_config_1 = require('./ng2-page-scroll-config');
+var ng2_page_scroll_util_service_1 = require('./ng2-page-scroll-util.service');
+var PageScrollService = (function () {
     function PageScrollService() {
         var _this = this;
         this.runningInstances = [];
         this.onInterrupted = {
             report: function (event, pageScrollInstance) {
                 if (pageScrollInstance.interruptible &&
-                    (event.type !== 'keyup' || PageScrollConfig._interruptKeys.indexOf(event.keyCode) >= 0)) {
+                    (event.type !== 'keyup' || ng2_page_scroll_config_1.PageScrollConfig._interruptKeys.indexOf(event.keyCode) >= 0)) {
                     _this.stopAll(pageScrollInstance.namespace);
                 }
             }
         };
-        if (PageScrollService.instanceCounter > 0 && isDevMode()) {
+        if (PageScrollService.instanceCounter > 0 && core_1.isDevMode()) {
             console.warn('An instance of PageScrollService already exists, usually ' +
                 'including one provider should be enough, so double check.');
         }
@@ -47,7 +57,7 @@ export var PageScrollService = (function () {
         this.stopAll(pageScrollInstance.namespace);
         if (pageScrollInstance.scrollTopSources === null || pageScrollInstance.scrollTopSources.length === 0) {
             // No scrollingViews specified, thus we can't animate anything
-            if (isDevMode()) {
+            if (core_1.isDevMode()) {
                 console.warn('No ScrollTopSource specified, this ng2-page-scroll does not know which DOM elements to scroll');
             }
             return;
@@ -55,7 +65,7 @@ export var PageScrollService = (function () {
         var startScrollTopFound = false;
         // Get the start scroll position from the scrollingViews (e.g. if the user already scrolled down the content)
         pageScrollInstance.scrollTopSources.forEach(function (scrollingView) {
-            if (PageScrollUtilService.isUndefinedOrNull(scrollingView)) {
+            if (ng2_page_scroll_util_service_1.PageScrollUtilService.isUndefinedOrNull(scrollingView)) {
                 return;
             }
             // Get the scrolltop value of the first scrollTopSource that returns a value for its "scrollTop" property
@@ -74,7 +84,7 @@ export var PageScrollService = (function () {
         pageScrollInstance.distanceToScroll = pageScrollInstance.targetScrollTop - pageScrollInstance.startScrollTop;
         if (isNaN(pageScrollInstance.distanceToScroll)) {
             // We weren't able to find the target position, maybe the element does not exist?
-            if (isDevMode()) {
+            if (core_1.isDevMode()) {
                 console.log('Scrolling not possible, as we can\'t find the specified target');
             }
             pageScrollInstance.fireEvent(false);
@@ -84,16 +94,16 @@ export var PageScrollService = (function () {
             // We're at the final destination already
             // OR we need to scroll down but are already at the end
             // OR we need to scroll up but are at the top already
-            if (isDevMode()) {
+            if (core_1.isDevMode()) {
                 console.log('Scrolling not possible, as we can\'t get any closer to the destination');
             }
             pageScrollInstance.fireEvent(true);
             return;
         }
-        if (pageScrollInstance.duration <= PageScrollConfig._interval) {
+        if (pageScrollInstance.duration <= ng2_page_scroll_config_1.PageScrollConfig._interval) {
             // We should go there directly, as our "animation" would have one big step
             // only anyway and this way we save the interval stuff
-            if (isDevMode()) {
+            if (core_1.isDevMode()) {
                 console.log('Scroll duration shorter that interval length, jumping to target');
             }
             pageScrollInstance.setScrollTopPosition(pageScrollInstance.targetScrollTop);
@@ -102,7 +112,7 @@ export var PageScrollService = (function () {
         }
         // Register the interrupt listeners if we want an interruptible scroll animation
         if (pageScrollInstance.interruptible ||
-            (PageScrollUtilService.isUndefinedOrNull(pageScrollInstance.interruptible) && PageScrollConfig.defaultInterruptible)) {
+            (ng2_page_scroll_util_service_1.PageScrollUtilService.isUndefinedOrNull(pageScrollInstance.interruptible) && ng2_page_scroll_config_1.PageScrollConfig.defaultInterruptible)) {
             pageScrollInstance.attachInterruptListeners(this.onInterrupted);
         }
         // Let's get started, get the start time...
@@ -135,7 +145,7 @@ export var PageScrollService = (function () {
             if (stopNow) {
                 _this.stopInternal(false, _pageScrollInstance);
             }
-        }, PageScrollConfig._interval, pageScrollInstance);
+        }, ng2_page_scroll_config_1.PageScrollConfig._interval, pageScrollInstance);
         // Register the instance as running one
         this.runningInstances.push(pageScrollInstance);
     };
@@ -150,7 +160,7 @@ export var PageScrollService = (function () {
         if (this.runningInstances.length > 0) {
             var stoppedSome_1 = false;
             this.runningInstances.forEach(function (pageScrollInstance, index) {
-                if (PageScrollUtilService.isUndefinedOrNull(namespace) || namespace.length === 0 ||
+                if (ng2_page_scroll_util_service_1.PageScrollUtilService.isUndefinedOrNull(namespace) || namespace.length === 0 ||
                     pageScrollInstance.namespace === namespace) {
                     stoppedSome_1 = true;
                     _this.stopInternal(true, pageScrollInstance);
@@ -164,11 +174,11 @@ export var PageScrollService = (function () {
         return this.stopInternal(true, pageScrollInstance);
     };
     PageScrollService.instanceCounter = 0;
-    PageScrollService.decorators = [
-        { type: Injectable },
-    ];
-    /** @nocollapse */
-    PageScrollService.ctorParameters = [];
+    PageScrollService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [])
+    ], PageScrollService);
     return PageScrollService;
 }());
+exports.PageScrollService = PageScrollService;
 //# sourceMappingURL=ng2-page-scroll.service.js.map

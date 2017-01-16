@@ -900,12 +900,15 @@ class Word
 				',
 				 array(
 				    'name' => $word,
+
+				WHERE n.name = '.*'.$strSearch.'.*'
+
 				)
 			);
     		 */
 			$result = $this->em->cypherQuery('
 				MATCH (n:Word) 
-				WHERE n.name =~ \'(?i).*' . $strSearch . '.*\' 
+				WHERE n.name =~ \'.*(?i)' . $strSearch . '.*\' 
 				RETURN n.name AS value, n.eid AS id
 				LIMIT 10;
 				',

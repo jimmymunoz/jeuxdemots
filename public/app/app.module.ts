@@ -13,6 +13,8 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import { Ng2PageScrollModule } from 'ng2-page-scroll'; //https://www.npmjs.com/package/ng2-page-scroll#example-app
 import { OrderBy } from './orderby';
 import { PopoverModule }  from "ng2-popover";
+import { RuntimeCompiler} from '@angular/compiler'; // add this
+import { COMPILER_PROVIDERS } from "@angular/compiler";
 
 
 @NgModule({
@@ -22,7 +24,6 @@ import { PopoverModule }  from "ng2-popover";
     FormsModule,
     Ng2AutoCompleteModule,
     Ng2PageScrollModule,
-  
     PopoverModule
   ],
   declarations: [
@@ -36,6 +37,7 @@ import { PopoverModule }  from "ng2-popover";
   ],
   providers: [
     WordService,
+    COMPILER_PROVIDERS
   ],
   bootstrap: [ AppComponent ]
 })

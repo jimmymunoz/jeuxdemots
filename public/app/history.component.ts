@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 //import { Word } from './words';
+import {SearchWordComponet}   from './search-word-component';
 //import { WordService }   from './word.service';
 
 
@@ -12,13 +13,25 @@ import { Component, Input } from '@angular/core';
 
 export class Historique{
     public history:string[];
+    public word:SearchWordComponet;
     //historys = ['chat','Bonjour','salut'];
 
     constructor(
     )
     {
-      console.log(history);
+      console.log(history.length);
     	
     }
+
+   
+    Affiche(key:SearchWordComponet)
+      {
+      this.word = key;
+      this.word.getSearchResult();
+
+      console.log(key);
+      }
+
+    
 }
 

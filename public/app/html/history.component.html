@@ -1,8 +1,9 @@
 
 <ul class="nav child_menu">
-	<li *ngFor="let key of history">
+
+	<li *ngFor="let key of history" (click)="Affiche(key)">
 	
-		<a href="#section_{{key}}">{{key}}</a>
+		<div>{{key}}</div>
 	</li>
 </ul>
 

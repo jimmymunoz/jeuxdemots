@@ -1,7 +1,8 @@
 /**
  * Created by sebastianfuss on 02.09.16.
  */
-export var PageScrollUtilService = (function () {
+"use strict";
+var PageScrollUtilService = (function () {
     function PageScrollUtilService() {
     }
     /**
@@ -32,4 +33,5 @@ export var PageScrollUtilService = (function () {
     };
     return PageScrollUtilService;
 }());
+exports.PageScrollUtilService = PageScrollUtilService;
 //# sourceMappingURL=ng2-page-scroll-util.service.js.map

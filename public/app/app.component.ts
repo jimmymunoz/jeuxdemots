@@ -7,12 +7,13 @@ import { WordService }   from './word.service';
 import { ListSearchResultDetailComponent }  from './list-search-result-detail-component';
 import { SideBarMenuComponent }  from './side-bar-menu.component';
 
+
 declare var customJeuxDeMots: any
 
 @Component({
-  selector: 'my-app',
-  templateUrl: 'app/html/layout.html',
-  directives: [ListSearchResultDetailComponent]
+    selector: 'my-app',
+    templateUrl: 'app/html/layout.html',
+    directives: [ListSearchResultDetailComponent]
 })
 
 //declare var customJeuxDeMots: {documentOnLoad: Function, documentOnReady: Function};
@@ -27,9 +28,9 @@ export class AppComponent implements AfterViewInit {
     wordService: WordService
     
     constructor(
-        private wordService: WordService 
+        private wordService: WordService ,
     ){ 
-    	this.myFriend = 'Hello!!';
+        this.myFriend = 'Hello!!';
 	    this.resultsParent  = {
 	    	"data": []
 	    };

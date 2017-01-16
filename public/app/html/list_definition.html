@@ -50,6 +50,7 @@
 				  			<!-- 
 			         		<span class="add-on label btn-default not_margin" style="cursor: pointer; "> <i class="fa fa-eye"></i> </span>
 				  			-->
+
 				      </div>
 				    </div>
 			    </div>
@@ -73,14 +74,18 @@
 			    <li *ngFor="let key of keys(listResult.data)">
 			      <!-- definitions -->
 			      <div *ngIf="listResult.data[key].data.length && key == 'definitions'" class="block_jeuxdemots" id="section_{{key}}">
+
 			      		<span class="label label-info title" style="font-size: 1.2em;">{{listResult.data[key].display_value}}</span>
 			      		<span>Total {{listResult.data[key].data.length}}</span>
 						<ol>
 							<li *ngFor="let rowDefKey of keys(listResult.data[key].data)" class="byline definitions_text" (mouseenter)="mouseEnterDefinition(listResult.data[key].data[rowDefKey].termid)"  (mouseleave) ="mouseLeaveDefinition(listResult.data[key].data[rowDefKey].termid)">
 								<span innerHTML='{{listResult.data[key].data[rowDefKey].def}}'></span>
+
 							</li>
+							<Button>Read More</Button>s
 						</ol>
 			      </div>
+
 
 			      <!-- asociations -->
 			      <div *ngIf="listResult.data[key].data.length && key != 'definitions'" class="block_jeuxdemots">
@@ -101,7 +106,9 @@
 								<li><a style="cursor:pointer" (click)="sortListData(listResult.data[key],'w','+')"><i class="fa fa-sort-numeric-asc"></i> Poids Ascendant </a></li>
 								<li><a style="cursor:pointer" (click)="sortListData(listResult.data[key],'w','-')"><i class="fa fa-sort-numeric-desc"></i> Poids Descendant </a></li>
 							</ul>
+
 						</div>
+
 			          	<div class="result_word_jeuxdemots">
 			          		<span class="text_word_jeuxdemots"  *ngFor="let term of listResult.data[key].data | orderby: [listResult.data[key].sort_dir + listResult.data[key].sort_field]" >
 				          		<a id="{{key}}_{{term.eid}}" class="btn-link" style="cursor: pointer;" popover="Weight: {{term.w}} id: {{term.eid}}" popoverTitle="{{term.name}}" [popoverOnHover]="true" (click)="searchNewWord(term.name)">{{term.name}}</a>,

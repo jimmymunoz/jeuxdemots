@@ -1,0 +1,103 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "angular-2-local-storage",
+        "scope": null,
+        "escapedName": "angular-2-local-storage",
+        "name": "angular-2-local-storage",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "C:\\xampp\\htdocs\\jeuxdemots\\public"
+    ]
+  ],
+  "_from": "angular-2-local-storage@latest",
+  "_id": "angular-2-local-storage@0.0.22",
+  "_inCache": true,
+  "_location": "/angular-2-local-storage",
+  "_nodeVersion": "6.5.0",
+  "_npmOperationalInternal": {
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/angular-2-local-storage-0.0.22.tgz_1478658488805_0.49880113918334246"
+  },
+  "_npmUser": {
+    "name": "elwyn",
+    "email": "elwyn@L1.co.nz"
+  },
+  "_npmVersion": "3.10.3",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "angular-2-local-storage",
+    "scope": null,
+    "escapedName": "angular-2-local-storage",
+    "name": "angular-2-local-storage",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/angular-2-local-storage/-/angular-2-local-storage-0.0.22.tgz",
+  "_shasum": "5cf92fe054bc1b3966ca333da951105425a9e205",
+  "_shrinkwrap": null,
+  "_spec": "angular-2-local-storage",
+  "_where": "C:\\xampp\\htdocs\\jeuxdemots\\public",
+  "author": {
+    "name": "Craig Spence",
+    "email": "craigspence0@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/phenomnomnominal/angular-2-local-storage/issues",
+    "email": "craigspence0@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Elwyn Benson",
+      "email": "elwyn@L1.co.nz"
+    }
+  ],
+  "dependencies": {},
+  "description": "LocalStorageService for Angular 2 with mostly the same API (and most of the code) from angular-local-storage",
+  "devDependencies": {
+    "@angular/core": "2.0.0-rc.4",
+    "cp-cli": "1.0.2",
+    "rimraf": "2.5.4",
+    "rxjs": "5.0.0-beta.10",
+    "typescript": "1.8.10",
+    "typings": "1.3.2"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "5cf92fe054bc1b3966ca333da951105425a9e205",
+    "tarball": "https://registry.npmjs.org/angular-2-local-storage/-/angular-2-local-storage-0.0.22.tgz"
+  },
+  "gitHead": "646b38eceba8849721c9bcd06b5bc7975a091b48",
+  "homepage": "https://github.com/phenomnomnominal/angular-2-local-storage#readme",
+  "license": "MIT",
+  "main": "dist/angular-2-local-storage.js",
+  "maintainers": [
+    {
+      "name": "elwyn",
+      "email": "elwyn@L1.co.nz"
+    },
+    {
+      "name": "phenomnomnominal",
+      "email": "craigspence0@gmail.com"
+    }
+  ],
+  "name": "angular-2-local-storage",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phenomnomnominal/angular-2-local-storage.git"
+  },
+  "scripts": {
+    "compile": "tsc"
+  },
+  "typings": "dist/angular-2-local-storage.d.ts",
+  "version": "0.0.22"
+}

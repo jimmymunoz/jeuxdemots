@@ -24,6 +24,8 @@ export class WordService {
      } 
    }
 
+
+
   searchResults(word: string):  Promise<ResultDetail[]> {
     return this.http.get(`${this.baseUrl}${this.searchUrl}?word=${word}`)
        .toPromise()
