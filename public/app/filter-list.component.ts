@@ -4,7 +4,7 @@ import { Component, Input} from '@angular/core';
 
 @Component({
   selector: 'filter-list-component',
-  templateUrl: 'app/html/filter-list-component.html',
+  templateUrl: 'html/filter-list-component.html',
   inputs: ['listResult']
 })
 

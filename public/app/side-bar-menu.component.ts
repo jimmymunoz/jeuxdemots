@@ -5,7 +5,7 @@ import { Component, Input} from '@angular/core';
 
 @Component({
   selector: 'side-bar-menu',
-  templateUrl: 'app/html/side-bar-menu.html',
+  templateUrl: 'html/side-bar-menu.html',
   styles: [`
     
   `],

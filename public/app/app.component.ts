@@ -9,7 +9,7 @@ declare var customJeuxDeMots: any
 
 @Component({
   selector: 'my-app',
-  templateUrl: 'app/html/layout.html'
+  templateUrl: 'html/layout.html'
 //  ,directives: [ListSearchResultDetailComponent]
 })
 
@@ -19,9 +19,7 @@ declare var customJeuxDeMots: any
 export class AppComponent implements AfterViewInit {
     public resultsParent : any;
     public myFriend : String;
-    //myFriend = 'asasas';
-    /*
-     */
+    
     constructor(
         private wordService: WordService 
     ){ 

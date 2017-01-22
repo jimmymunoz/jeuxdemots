@@ -10,7 +10,7 @@ import { WordService }   from './word.service';
 
 @Component({
   selector: 'search-word-component',
-  templateUrl: 'app/html/search-word.html',
+  templateUrl: 'html/search-word.html',
   styles: [`
     ng2-auto-complete {
       display: inline-block; position: relative; width: 100% !important;
@@ -33,7 +33,7 @@ export class SearchWordComponet {
 
 	constructor(
 		private pageScrollService: PageScrollService, 
-		@Inject(DOCUMENT) private document: Document,
+		@Inject(DOCUMENT) private document: any,
 	    private wordService: WordService,
 		private _sanitizer: DomSanitizer,
 		private completerService: CompleterService,

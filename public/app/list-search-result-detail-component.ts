@@ -6,14 +6,14 @@ import { WordService }   from './word.service';
 
 @Component({
   selector: 'list-search-result-detail-component',
-  templateUrl: 'app/html/list_definition.html', 
+  templateUrl: 'html/list_definition.html', 
   styles: [`
     left-menu {
       display: block; border: 1px solid #ccc;
     }
   `],
   inputs: ['listResult', 'word']
-//  ,outputs: ['word'] 
+  ,outputs: ['newWord'] 
   //,pipes: [ OrderBy ]
 })
 
@@ -22,7 +22,7 @@ export class ListSearchResultDetailComponent {
   public myname : String;
   public word : String;
   public listResult : any;
-  @Output("newWord") wordEvent: EventEmitter<string> = new EventEmitter();
+  @Output("newWord") wordEvent: EventEmitter<string> = new EventEmitter<string>();
  
   titre = "Result Details";
   orderByDir = "-";//Descending
@@ -34,10 +34,10 @@ export class ListSearchResultDetailComponent {
   constructor(
     private wordService: WordService
   ){
-    console.log("List result : " + this.listResult);
+    //console.log("List result : " + this.listResult);
   }
   
-  searchNewWord(newword: String){
+  searchNewWord(newword: string){
     this.sendWord(newword);
   }
 

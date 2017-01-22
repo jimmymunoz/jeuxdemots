@@ -17,6 +17,7 @@ export class WordService {
   private history: string[] = [];
   private findUrl: string = "application/index/autocompleteword";
   //private baseUrl: string = "/Applications/XAMPP/xamppfiles/htdocs/jeuxdemots/zendfk/appcordova/www/";
+  //private baseUrl: string = "/var/www/html/jeuxdemots/public/";
   private baseUrl: string = "/";
   //private useRemote: boolean = true;//Jimmy (Cordova -> Remote) true Remote, false: Local
   private useRemote: boolean = false;//Jimmy (Cordova -> Remote) true Remote, false: Local

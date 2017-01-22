@@ -5,19 +5,18 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'historique',
-  templateUrl: 'app/html/history.component.html',
+  templateUrl: 'html/history.component.html',
   inputs: ['history'],
   //providers : [WordService]
 })
 
 export class Historique{
     public history:string[];
-    //historys = ['chat','Bonjour','salut'];
-
+    
     constructor(
     )
     {
-      console.log(history);
+      //console.log(history);
     	
     }
 }
