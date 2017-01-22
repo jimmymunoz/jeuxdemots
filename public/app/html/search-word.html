@@ -40,7 +40,7 @@
       </section>
 
       <section>
-        <list-search-result-detail-component [listResult]="resultsParent" [word]="word"></list-search-result-detail-component>
+        <list-search-result-detail-component [listResult]="resultsParent" [word]="word" (newWord)="updateSearchResult($event)" ></list-search-result-detail-component>
       </section>
     </div>
 </div>

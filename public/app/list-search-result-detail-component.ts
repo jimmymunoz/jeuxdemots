@@ -13,6 +13,7 @@ import { WordService }   from './word.service';
     }
   `],
   inputs: ['listResult', 'word']
+//  ,outputs: ['word'] 
   //,pipes: [ OrderBy ]
 })
 
@@ -21,6 +22,7 @@ export class ListSearchResultDetailComponent {
   public myname : String;
   public word : String;
   public listResult : any;
+  @Output("newWord") wordEvent: EventEmitter<string> = new EventEmitter();
  
   titre = "Result Details";
   orderByDir = "-";//Descending
@@ -36,14 +38,7 @@ export class ListSearchResultDetailComponent {
   }
   
   searchNewWord(newword: String){
-    console.log(this.word);
-    this.word = newword;
-    console.log(this.word);
-    this.wordService
-        .searchResults(""+ newword)
-        .then(
-          listResult => this.listResult = listResult
-        );
+    this.sendWord(newword);
   }
 
   keys(object: {}) {
@@ -73,6 +68,10 @@ export class ListSearchResultDetailComponent {
   mouseLeaveDefinition(id : string){
     let myDiv = document.getElementById("rafinement_semantique_" + id);
     myDiv.className = ' byline definitions_text';
+  }
+
+  sendWord(word : string): void {
+    this.wordEvent.emit(word);
   }
 
 }

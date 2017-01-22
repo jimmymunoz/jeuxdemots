@@ -187,7 +187,8 @@
 
 @media (min-width: 480px) {
   .nav_menu {
-    position: static; } }
+      position: static; } 
+}
 .nav-md .container.body .col-md-3.left_col {
   min-height: 100%;
   width: 230px;

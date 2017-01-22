@@ -129,6 +129,14 @@ $(document).ready(function() {
             mouseWheel:{ preventDefault: true }
         });
     }
+    //Medeia queries
+    $(window).bind('DOMContentLoaded load resize', function () {
+        if ($(window).innerWidth() <= 480) {
+            console.log("media < 480")
+            $("#categories_content").removeClass('in');
+        }
+    });
+
 });
 // /Sidebar
 
