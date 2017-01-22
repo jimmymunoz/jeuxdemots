@@ -1,0 +1,1 @@
+!function(){"use strict";var r=require("@angular/platform-browser-dynamic"),e=require("./app.module"),o=require("@angular/core");o.enableProdMode(),r.platformBrowserDynamic().bootstrapModule(e.AppModule)}();
