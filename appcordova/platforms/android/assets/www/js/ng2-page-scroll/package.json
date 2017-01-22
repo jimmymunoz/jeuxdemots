@@ -1,0 +1,139 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "ng2-page-scroll",
+        "scope": null,
+        "escapedName": "ng2-page-scroll",
+        "name": "ng2-page-scroll",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Applications/XAMPP/xamppfiles/htdocs/jeuxdemots/zendfk/public"
+    ]
+  ],
+  "_from": "ng2-page-scroll@latest",
+  "_id": "ng2-page-scroll@3.2.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/ng2-page-scroll",
+  "_nodeVersion": "6.4.0",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/ng2-page-scroll-3.2.0.tgz_1477159607569_0.14965230016969144"
+  },
+  "_npmUser": {
+    "name": "nolanus",
+    "email": "sebastian.fuss@googlemail.com"
+  },
+  "_npmVersion": "3.10.3",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "ng2-page-scroll",
+    "scope": null,
+    "escapedName": "ng2-page-scroll",
+    "name": "ng2-page-scroll",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/ng2-page-scroll/-/ng2-page-scroll-3.2.0.tgz",
+  "_shasum": "f3bff4e7ab167e5c00a9c200ec8fb1633b9db350",
+  "_shrinkwrap": null,
+  "_spec": "ng2-page-scroll",
+  "_where": "/Applications/XAMPP/xamppfiles/htdocs/jeuxdemots/zendfk/public",
+  "author": {
+    "name": "Sebastian Fuss",
+    "email": "sebastian.fuss@googlemail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/Nolanus/ng2-page-scroll/issues"
+  },
+  "dependencies": {},
+  "description": "Animated scrolling functionality written in pure angular2",
+  "devDependencies": {
+    "@angular/common": "~2.1.0",
+    "@angular/compiler": "~2.1.0",
+    "@angular/compiler-cli": "~2.1.0",
+    "@angular/core": "~2.1.0",
+    "@angular/platform-browser": "~2.1.0",
+    "@angular/platform-server": "~2.1.0",
+    "@angular/router": "~3.1.0",
+    "codelyzer": "^1.0.0-beta.1",
+    "jasmine-core": "~2.5.2",
+    "jasmine-spec-reporter": "~2.7.0",
+    "protractor": "4.0.9",
+    "rimraf": "^2.5.4",
+    "rollup": "^0.36.3",
+    "rollup-plugin-uglify": "^1.0.1",
+    "rxjs": "5.0.0-beta.12",
+    "tslint": "3.15.1",
+    "typescript": "~2.0.3",
+    "typings": "~1.4.0",
+    "zone.js": "~0.6.25"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "f3bff4e7ab167e5c00a9c200ec8fb1633b9db350",
+    "tarball": "https://registry.npmjs.org/ng2-page-scroll/-/ng2-page-scroll-3.2.0.tgz"
+  },
+  "gitHead": "7688ce250d729e352794f9498387e696b3cf0586",
+  "homepage": "https://github.com/Nolanus/ng2-page-scroll#readme",
+  "keywords": [
+    "angular2",
+    "angularjs",
+    "page",
+    "scroll",
+    "pagescroll",
+    "animate",
+    "move",
+    "scrollto",
+    "anchor"
+  ],
+  "license": "MIT",
+  "main": "bundles/ng2-page-scroll.umd.js",
+  "maintainers": [
+    {
+      "name": "nolanus",
+      "email": "sebastian.fuss@googlemail.com"
+    }
+  ],
+  "module": "ng2-page-scroll.js",
+  "name": "ng2-page-scroll",
+  "optionalDependencies": {},
+  "peerDependencies": {
+    "@angular/core": "~2.1.0",
+    "@angular/common": "~2.1.0",
+    "@angular/compiler": "~2.1.0",
+    "@angular/platform-browser": "~2.1.0",
+    "@angular/router": "~3.1.0",
+    "rxjs": "5.0.0-beta.12",
+    "zone.js": "^0.6.23"
+  },
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Nolanus/ng2-page-scroll.git"
+  },
+  "scripts": {
+    "bundle:clean": "rimraf bundles",
+    "compile": "npm run lint:code && ./node_modules/.bin/ngc -p tsconfig-build.json",
+    "compile:tsc": "npm run lint && ./node_modules/.bin/tsc -p tsconfig.json",
+    "demo": "npm install && cd demo/ && npm uninstall ng2-page-scroll && npm install && node_modules/.bin/ng serve",
+    "install:typings": "typings install",
+    "lint": "npm run lint:code && npm run lint:test",
+    "lint:code": "tslint ./src/**/*.ts -t verbose --exclude ./src/**/*.d.ts",
+    "lint:test": "tslint ./test/**/*.ts -t verbose --exclude ./test/**/*.d.ts",
+    "prepublish": "npm run install:typings && npm run compile && npm run bundle:clean && npm run rollup && npm run rollup:min",
+    "rollup": "rollup -c rollup.conf.js",
+    "rollup:min": "rollup -c rollup-uglify.conf.js",
+    "test": "./node_modules/protractor/bin/webdriver-manager update && protractor protractor.conf.js"
+  },
+  "typings": "ng2-page-scroll.d.ts",
+  "version": "3.2.0"
+}

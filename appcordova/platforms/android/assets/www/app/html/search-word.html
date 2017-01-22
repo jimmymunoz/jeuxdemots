@@ -1,0 +1,54 @@
+<side-bar-menu [listResult]="resultsParent" [word]="word" [history]="history"></side-bar-menu>
+<!-- page content -->
+<div class="right_col" role="main" style="min-height: 819px;">
+    <!-- top tiles -->
+    <div class="row tile_count" style="height: 15px;">
+
+    </div>
+    <!-- /top tiles -->
+    <div class="row tile_count main-container-jeuxdemots" >
+      <section id="search-word-section" class="search-word">
+        <div class="col-md-12 col-xs-12">
+          <div class="x_panel-jeuxdemots">
+            <div >
+                <div class="text-center">
+                  <h2><i class="fa fa-search"></i> {{title}} <small>{{word}}</small></h2> 
+                </div>
+                
+                <div class="col-sm-12" style="padding-left: 0px; padding-right: 0px;">
+                  <div class="input-group">
+                    <ng2-completer 
+                      [(ngModel)]="word"
+                      (keyup)="typingEvent($event)"
+                      [dataService]="dataService" 
+                      [textNoResults]="'Pas des resultats'"
+                      [textSearching]="'En cherchant'"
+                      [placeholder]="'Tapez un mot'"
+                      [minSearchLength]="3"
+                      >
+                      </ng2-completer>
+                    
+                    <span class="input-group-btn">
+                      <!-- (submit) -->
+                      <button (click)="getSearchResult()" class="btn btn-default btn-primary" type="button"><i class="fa fa-search"></i> Chercher</button>
+                    </span>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <list-search-result-detail-component [listResult]="resultsParent" [word]="word" (newWord)="updateSearchResult($event)" ></list-search-result-detail-component>
+      </section>
+    </div>
+</div>
+<!-- /page content -->
+
+  
+						
+			
+
+
+
