@@ -16,7 +16,9 @@ export class WordService {
   private searchUrl = 'application/index/search';  // URL to web api
   private history: string[] = [];
   private findUrl: string = "application/index/autocompleteword";
+  //private baseUrl: string = "/Applications/XAMPP/xamppfiles/htdocs/jeuxdemots/zendfk/appcordova/www/";
   private baseUrl: string = "/";
+  //private useRemote: boolean = true;//Jimmy (Cordova -> Remote) true Remote, false: Local
   private useRemote: boolean = false;//Jimmy (Cordova -> Remote) true Remote, false: Local
 
   constructor(private http: Http) {
