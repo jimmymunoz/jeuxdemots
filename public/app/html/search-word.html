@@ -1,36 +1,52 @@
-<div class="col-md-12 col-xs-12">
-  <div class="x_panel">
-    <div class="">
-        <h1> {{title}} <small>({{word}})</small></h1> 
-        <div class="col-sm-5">
-          <div class="input-group">
-            <input  ng2-auto-complete
-              placeholder="Start typing a Word"     
-              [(ngModel)]="word" 
-              [source]="wordService.findWords"  
-              [list-formatter]="leftAligned"
-              (ngModelChange)="completeCallBack($event)"
-              path-to-data="data"
-              min-chars="3" 
-              type="text"
-              class="form-control"
-              style="min-width: 300px; z-index: 1;" 
-            />
-            <span class="input-group-btn">
-              <button (click)="getSearchResult()" class="btn btn-default btn-primary" type="button">Search</button>
-            </span>
+<side-bar-menu [listResult]="resultsParent" [word]="word" [history]="history"></side-bar-menu>
+<!-- page content -->
+<div class="right_col" role="main" style="min-height: 819px;">
+    <!-- top tiles -->
+    <div class="row tile_count" style="height: 15px;">
+
+    </div>
+    <!-- /top tiles -->
+    <div class="row tile_count main-container-jeuxdemots" >
+      <section id="search-word-section" class="search-word">
+        <div class="col-md-12 col-xs-12">
+          <div class="x_panel-jeuxdemots">
+            <div >
+                <div class="text-center">
+                  <h2><i class="fa fa-search"></i> {{title}} <small>{{word}}</small></h2> 
+                </div>
+                
+                <div class="col-sm-12" style="padding-left: 0px; padding-right: 0px;">
+                  <div class="input-group">
+                    <ng2-completer 
+                      [(ngModel)]="word"
+                      (keyup)="typingEvent($event)"
+                      [dataService]="dataService" 
+                      [textNoResults]="'Pas des resultats'"
+                      [textSearching]="'En cherchant'"
+                      [placeholder]="'Tapez un mot'"
+                      [minSearchLength]="3"
+                      >
+                      </ng2-completer>
+                    
+                    <span class="input-group-btn">
+                      <!-- (submit) -->
+                      <button (click)="getSearchResult()" class="btn btn-default btn-primary" type="button"><i class="fa fa-search"></i> Chercher</button>
+                    </span>
+                  </div>
+                </div>
+            </div>
           </div>
         </div>
+      </section>
+
+      <section>
+        <list-search-result-detail-component [listResult]="resultsParent" [word]="word"></list-search-result-detail-component>
+      </section>
     </div>
-  </div>
 </div>
+<!-- /page content -->
 
-
-<div class="col-md-12">
-  <list-search-result-detail-component [listResult]="resultsParent"></list-search-result-detail-component>
-</div>
-
-    
+  
 						
 			
 

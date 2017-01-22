@@ -4,9 +4,17 @@ import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
 import { AppComponent }  from './app.component';
 import { SearchWordComponet }  from './search-word-component';
+import { Historique }  from './history.component';
 import { ListSearchResultDetailComponent }  from './list-search-result-detail-component';
+import { SideBarMenuComponent }  from './side-bar-menu.component';
+import { FilterListComponent }  from './filter-list.component';
 import { WordService }    from './word.service';
-import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
+//import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
+import { Ng2CompleterModule } from "ng2-completer";
+//import { CompleterSearchWord } from "./completer-search-word";
+import { Ng2PageScrollModule } from 'ng2-page-scroll'; //https://www.npmjs.com/package/ng2-page-scroll#example-app
+import { OrderBy } from './orderby';
+import { PopoverModule }  from "ng2-popover";
 
 
 @NgModule({
@@ -14,12 +22,21 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
     BrowserModule,
     HttpModule,
     FormsModule,
-    Ng2AutoCompleteModule
+//    Ng2AutoCompleteModule,
+    Ng2CompleterModule,
+    Ng2PageScrollModule,
+  
+    PopoverModule
   ],
   declarations: [
     SearchWordComponet,
     ListSearchResultDetailComponent,
-    AppComponent
+    Historique,
+    AppComponent,
+    OrderBy,
+    SideBarMenuComponent,
+//    CompleterSearchWord,
+    FilterListComponent
   ],
   providers: [
     WordService,
