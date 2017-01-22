@@ -17,8 +17,8 @@ import { WordService }   from './word.service';
     ng2-auto-complete input {
       display: inline-block; position: relative; width: 100%;
     }
-  `],
-   providers : [WordService]
+  `]
+   //,providers : [WordService]
 })
 
 export class SearchWordComponet {

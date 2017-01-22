@@ -83,8 +83,7 @@ SearchWordComponet = __decorate([
     core_1.Component({
         selector: 'search-word-component',
         templateUrl: 'app/html/search-word.html',
-        styles: ["\n    ng2-auto-complete {\n      display: inline-block; position: relative; width: 100% !important;\n    }\n    ng2-auto-complete input {\n      display: inline-block; position: relative; width: 100%;\n    }\n  "],
-        providers: [word_service_1.WordService]
+        styles: ["\n    ng2-auto-complete {\n      display: inline-block; position: relative; width: 100% !important;\n    }\n    ng2-auto-complete input {\n      display: inline-block; position: relative; width: 100%;\n    }\n  "]
     }),
     __metadata("design:paramtypes", [word_service_1.WordService,
         platform_browser_1.DomSanitizer,
