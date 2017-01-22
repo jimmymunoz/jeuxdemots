@@ -16,7 +16,7 @@
 					  	<div *ngFor="let key of keys(listResult.data)" style="display: inline-block; " class="">
 						  <div *ngIf="listResult.data[key].data.length" class="input-append" style="margin-right: 3px;" >
 
-					  			<a class="label category_button not_margin color-{{key}} " pageScroll [pageScrollOffset]="60" href="#section_{{key}}">{{key}}</a>
+					  			<a class="label category_button not_margin color-{{key}} " pageScroll [pageScrollOffset]="60" href="#section_{{key}}">{{listResult.data[key].display_value}}</a>
 					  			<!-- 
 				         		<span class="add-on label btn-default not_margin" style="cursor: pointer; "> <i class="fa fa-eye"></i> </span>
 					  			-->
@@ -34,8 +34,10 @@
 	  <div class="x_panel-jeuxdemots">
 		<div class="x_content">
 			<div class="text-center">
-	    		<h2><i class="fa fa-book"></i> Resultats <strong>{{word}}</strong> <div class="push-left polarite_neg" style="width: 80px; height: 20px; color: #FFF; ">Polarité</div>
-						</h2> 
+	    		<h2><i class="fa fa-book"></i> Resultats <strong>{{word}}</strong></h2> 
+				<!-- 
+	    		<div class="push-left polarite_neg" style="width: 80px; height: 20px; color: #FFF; ">Polarité</div>
+				-->
 			</div>
 
 			<ul class="list-unstyled timeline widget">

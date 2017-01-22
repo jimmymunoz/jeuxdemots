@@ -12,6 +12,7 @@ export class CompleterSearchWord extends Subject<CompleterItem[]> implements Com
         this.http.get(this.url + term + "")
             .map((res: Response) => {
                 // Convert the result to CompleterItem[]
+                // dat
                 let data = res.json();
                 let matches: CompleterItem[] = data.data.map((item: any) => {
                     return {

@@ -55,12 +55,12 @@ export class WordService {
       listResult['data'][key]['sort_dir'] = "-";// + -> asc, - -> desc
       listResult['data'][key]['visible'] = 1;// 1 - 0
     }
-    console.log(listResult);
+    //console.log(listResult);
     return listResult;
   }
 
   private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
+    //console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
 

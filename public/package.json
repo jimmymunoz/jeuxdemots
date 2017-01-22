@@ -21,6 +21,7 @@
     "angular2-in-memory-web-api": "0.0.20",
     "bootstrap": "^3.3.6",
     "core-js": "^2.4.1",
+    "ng2-completer": "^0.4.0",
     "ng2-page-scroll": "^3.2.0",
     "ng2-popover": "0.0.11",
     "reflect-metadata": "^0.1.3",

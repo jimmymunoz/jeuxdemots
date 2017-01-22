@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Inject } from '@angular/core';
 import { Http, Response } from "@angular/http";
-import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
+import { DOCUMENT, DomSanitizer, SafeHtml } from "@angular/platform-browser";
+import {PageScrollService, PageScrollInstance} from 'ng2-page-scroll';
 //import { Word } from './words';
 import { CompleterService, CompleterData } from 'ng2-completer';
 import { CompleterSearchWord } from "./completer-search-word";
@@ -22,7 +23,7 @@ import { WordService }   from './word.service';
 })
 
 export class SearchWordComponet {
-	title = 'Search a Word';
+	title = 'Mot à chercher';
 	word = "";
 	wordObjet = { id: "test", value: "test"};
 	public  history: string[] = [];
@@ -31,6 +32,8 @@ export class SearchWordComponet {
 	//private dataService: CompleterData;
 
 	constructor(
+		private pageScrollService: PageScrollService, 
+		@Inject(DOCUMENT) private document: Document,
 	    private wordService: WordService,
 		private _sanitizer: DomSanitizer,
 		private completerService: CompleterService,
@@ -42,6 +45,17 @@ export class SearchWordComponet {
 	    this.dataService = new CompleterSearchWord(http, wordService.getfindWordsUrl() + '?word=');
 	    //this.dataService = completerService.remote(wordService.getfindWordsUrl() + '?word=', 'data', 'value');
 	 }
+
+	public goToHead2(): void {
+		let pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, '#search-word-section');
+		this.pageScrollService.start(pageScrollInstance);
+	};  
+
+	updateSearchResult(word: string){
+		this.word = word;
+		this.goToHead2();
+		this.getSearchResult();
+	}
 
 	getSearchResult(): void {
 		this.setHistory(this.getWord());
@@ -70,7 +84,6 @@ export class SearchWordComponet {
 	{
 		return this.history;
 	}
-
 
 	clearResults(): void {
 		this.resultsParent  = {
