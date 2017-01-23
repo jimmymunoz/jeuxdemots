@@ -1,0 +1,7 @@
+<li><a class="fix-style-side-bar-a"><i class="fa fa-clock-o"></i> Mon historique <span class="fa fa-chevron-down"></span></a>
+	<ul class="nav child_menu">
+		<li *ngFor="let key of history">
+			<a href="#section_{{key}}">{{key}}</a>
+		</li>
+	</ul>
+</li>
