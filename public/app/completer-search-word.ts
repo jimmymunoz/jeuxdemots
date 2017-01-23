@@ -9,19 +9,19 @@ export class CompleterSearchWord extends Subject<CompleterItem[]> implements Com
       super();
    }
    public search(term: string): void {
-        this.http.get(this.url + term + "")
-            .map((res: Response) => {
-                // Convert the result to CompleterItem[]
-                // dat
-                let data = res.json();
-                let matches: CompleterItem[] = data.data.map((item: any) => {
-                    return {
-                        title: item.value
-                    }
-                });
-                this.next(matches);
-            })
-            .subscribe();
+      this.http.get(this.url + term + "")
+          .map((res: Response) => {
+              // Convert the result to CompleterItem[]
+              // dat
+              let data = res.json();
+              let matches: CompleterItem[] = data.data.map((item: any) => {
+                  return {
+                      title: item.value
+                  }
+              });
+              this.next(matches);
+          })
+          .subscribe();
     }
     public cancel() {
        // Handle cancel

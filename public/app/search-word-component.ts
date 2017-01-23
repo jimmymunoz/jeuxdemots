@@ -1,8 +1,7 @@
 import { Component, Input, Inject } from '@angular/core';
 import { Http, Response } from "@angular/http";
 import { DOCUMENT, DomSanitizer, SafeHtml } from "@angular/platform-browser";
-import {PageScrollService, PageScrollInstance} from 'ng2-page-scroll';
-//import { Word } from './words';
+import { PageScrollService, PageScrollInstance} from 'ng2-page-scroll';
 import { CompleterService, CompleterData } from 'ng2-completer';
 import { CompleterSearchWord } from "./completer-search-word";
 import { ResultDetail } from './result-detail';
@@ -19,7 +18,6 @@ import { WordService }   from './word.service';
       display: inline-block; position: relative; width: 100%;
     }
   `]
-   //,providers : [WordService]
 })
 
 export class SearchWordComponet {
@@ -29,8 +27,7 @@ export class SearchWordComponet {
 	public  history: string[] = [];
 	public resultsParent : any;
 	private dataService: CompleterSearchWord;
-	//private dataService: CompleterData;
-
+	
 	constructor(
 		private pageScrollService: PageScrollService, 
 		@Inject(DOCUMENT) private document: Document,
@@ -43,10 +40,9 @@ export class SearchWordComponet {
 	    	"data": []
 	    };
 	    this.dataService = new CompleterSearchWord(http, wordService.getfindWordsUrl() + '?word=');
-	    //this.dataService = completerService.remote(wordService.getfindWordsUrl() + '?word=', 'data', 'value');
 	 }
 
-	public goToHead2(): void {
+	goToHead2(): void {
 		let pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, '#search-word-section');
 		this.pageScrollService.start(pageScrollInstance);
 	};  
@@ -67,21 +63,17 @@ export class SearchWordComponet {
 		   
 	}
 
-	getWord():any
-	{
+	getWord(): any {
 		return this.word;
 	}
 
-	setHistory(word: string)
-	{
-	    if (this.history.indexOf(word) === -1) 
-	    {
+	setHistory(word: string) {
+	    if (this.history.indexOf(word) === -1) {
 	    	this.history.push(word);
 	    }  
 		
 	}
-	getHistory(word: string): any
-	{
+	getHistory(word: string): any {
 		return this.history;
 	}
 
@@ -91,26 +83,21 @@ export class SearchWordComponet {
 	    };
 	}
 
-	typingEvent(event: any){
-	    //console.log("event:" + event.target.value);
+	typingEvent(event: any) {
 	    if( event.target.value != this.word ){
 	    	this.clearResults();
 	    }
 	    this.word = event.target.value;
 	}
 
-	
 	leftAligned = (data: any) : SafeHtml => {
     	let html = `<div style="text-align:left">${data.value}</div>`;
     	return this._sanitizer.bypassSecurityTrustHtml(html);
   	}
   	completeCallBack(event: any): void {
-  		//console.log(event);
   		this.clearResults();
   		this.word = event.value;
-  		console.log(this.word);
-	   	//this.getSearchResult();	
-	}
+  	}
 
 	json(obj: any) {
 		return JSON.stringify(obj);

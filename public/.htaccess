@@ -16,6 +16,6 @@ RewriteRule ^(.*) - [E=BASE:%1]
 RewriteRule ^(.*)$ %{ENV:BASE}index.php [NC,L]
 
 #Jimmy: Cross domain -> Cordova
-<IfModule mod_headers.c>    
-    Header set Access-Control-Allow-Origin *
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
 </IfModule>

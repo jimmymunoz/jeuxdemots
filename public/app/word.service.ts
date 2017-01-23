@@ -16,8 +16,9 @@ export class WordService {
   private searchUrl = 'application/index/search';  // URL to web api
   private history: string[] = [];
   private findUrl: string = "application/index/autocompleteword";
-  private baseUrl: string = "/";
-  private useRemote: boolean = false;//Jimmy (Cordova -> Remote) true Remote, false: Local
+  //private baseUrl: string = "/";
+  private baseUrl: string = "http://46.101.40.23/jeuxdemots/public/";
+  private useRemote: boolean = true;//Jimmy (Cordova -> Remote) true Remote, false: Local
 
   constructor(private http: Http) {
      if(this.useRemote){ 

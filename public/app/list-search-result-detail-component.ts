@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter, Pipe } from '@angular/core';
 import { ResultDetail } from './result-detail';
-//import { OrderBy } from './orderby'; //http://www.fueltravel.com/blog/migrating-from-angular-1-to-2-part-1-pipes/
 import { PopoverModule } from "ng2-popover"; //https://github.com/pleerock/ng2-popover
 import { WordService }   from './word.service';
 
@@ -13,31 +12,25 @@ import { WordService }   from './word.service';
     }
   `],
   inputs: ['listResult', 'word']
-//  ,outputs: ['word'] 
-  //,pipes: [ OrderBy ]
 })
-
 
 export class ListSearchResultDetailComponent {
   public myname : String;
   public word : String;
   public listResult : any;
-  @Output("newWord") wordEvent: EventEmitter<string> = new EventEmitter();
- 
-  titre = "Result Details";
-  orderByDir = "-";//Descending
-  orderByField = "w";//weight
-  
   public maxHeight: number = 35;
   public maxHeightDefinitions: number = 80;
-  
+  public titre = "Result Details";
+  public orderByDir = "-";//Descending
+  public orderByField = "w";//weight
+  @Output("newWord") wordEvent: EventEmitter<string> = new EventEmitter<string>();
+ 
   constructor(
     private wordService: WordService
   ){
-    console.log("List result : " + this.listResult);
   }
   
-  searchNewWord(newword: String){
+  searchNewWord(newword: string){
     this.sendWord(newword);
   }
 
@@ -53,7 +46,6 @@ export class ListSearchResultDetailComponent {
     var size = Math.floor(w / distance);
     return "font_size-1-" + size;
   }
-
   
   sortListData(listData: any, sort_field: String, sort_dir: String){
     listData.sort_field = sort_field;

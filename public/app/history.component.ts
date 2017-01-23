@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 //import { Word } from './words';
 //import { WordService }   from './word.service';
-
+import { WordService }   from './word.service';
 
 @Component({
   selector: 'historique',
@@ -15,10 +15,18 @@ export class Historique{
     //historys = ['chat','Bonjour','salut'];
 
     constructor(
+      private wordService: WordService
     )
     {
-      console.log(history);
-    	
+      //console.log(history);
+    }
+    getSearchResult(word: string): void {
+      this.wordService
+        .searchResults(word)
+        .then(
+          //resultsParent => this.resultsParent = resultsParent
+        );
+         
     }
 }
 
