@@ -1,165 +1,118 @@
-#Dictionaire Jeux de mots
-=======
-@jimmymunoz @ekebal - 2017
+ZendSkeletonApplication
+=======================
+
+Introduction
+------------
+This is a simple, skeleton application using the ZF2 MVC layer and module
+systems. This application is meant to be used as a starting place for those
+looking to get their feet wet with ZF2.
+
+Installation using Composer
+---------------------------
+
+The easiest way to create a new ZF2 project is to use [Composer](https://getcomposer.org/). If you don't have it already installed, then please install as per the [documentation](https://getcomposer.org/doc/00-intro.md).
 
 
-Navigateur des mots en français sur une base de données orienté au graphs.
+Create your new ZF2 project:
 
-Application web pour rechercher des mots, avec plusiurs assosiations semantiques.
-
-
-##Architecture:
-
-* Angular2
-* Neo4j
-* Zend Framework (PHP 7)
-* Memcached 
-* Cordova 
-
-Application MVC - Single One Page - Orienté Composants - Web Mobile
-
-![General-Architecture](images/General-Architecture.png?raw=true "General-Architecture")
-
-###BD:
-![Db](images/db.png?raw=true "Db")
-###Code Source à Diagrame Activité:
-![query](images/db-query.png?raw=true "query")
-###Metamodèle UML Diagrame d'activité:
-
-##Interface:
-###Autocomplete:
-![autocomplete.png](images/autocomplete.png?raw=true "autocomplete.png")
-###Filtrage:
-![filters.png](images/filters.png?raw=true "filters.png")
-###Historique:
-![history.png](images/history.png?raw=true "history.png")
-###Media-queries:
-![responsive-media.png](images/responsive-media.png?raw=true "responsive-media.png")
-###Navigation:
-![go-up.png](images/go-up.png?raw=true "go-up.png")
-###Tablet:
-![ipad.png](images/ipad.png?raw=true "ipad.png")
-###Portable:
-![iphone.png](images/iphone.png?raw=true "iphone.png")
-
-##Mobile:
-
-###Android:
-Download apk Android:
-appcordova/platforms/android/build/outputs/apk/android-debug.apk
-####Android portable:
-![sony-z3.png](images/sony-z3.png?raw=true "sony-z3.png")
-####Android tablet:
-![tablet-samsumg.png](images/tablet-samsumg.png?raw=true "tablet-samsumg.png")
+    composer create-project -n -sdev zendframework/skeleton-application path/to/install
 
 
-###Examples code
 
-Example composant search word (Angular2):
-```typescript
-import { Component, Input, Inject } from '@angular/core';
-import { Http, Response } from "@angular/http";
-import { DOCUMENT, DomSanitizer, SafeHtml } from "@angular/platform-browser";
-import { PageScrollService, PageScrollInstance} from 'ng2-page-scroll';
-import { CompleterService, CompleterData } from 'ng2-completer';
-import { CompleterSearchWord } from "./completer-search-word";
-import { ResultDetail } from './result-detail';
-import { WordService }   from './word.service';
+### Installation using a tarball with a local Composer
 
-@Component({
-  selector: 'search-word-component',
-  templateUrl: 'app/html/search-word.html',
-  styles: [`
-    ng2-auto-complete {
-      display: inline-block; position: relative; width: 100% !important;
-    }
-    ng2-auto-complete input {
-      display: inline-block; position: relative; width: 100%;
-    }
-  `]
-})
+If you don't have composer installed globally then another way to create a new ZF2 project is to download the tarball and install it:
 
-export class SearchWordComponet {
-    title = 'Mot à chercher';
-    word = "";
-    wordObjet = { id: "test", value: "test"};
-    public  history: string[] = [];
-    public resultsParent : any;
-    private dataService: CompleterSearchWord;
+1. Download the [tarball](https://github.com/zendframework/ZendSkeletonApplication/tarball/master), extract it and then install the dependencies with a locally installed Composer:
+
+        cd my/project/dir
+        curl -#L https://github.com/zendframework/ZendSkeletonApplication/tarball/master | tar xz --strip-components=1
     
-    constructor(
-        private pageScrollService: PageScrollService, 
-        @Inject(DOCUMENT) private document: Document,
-        private wordService: WordService,
-        private _sanitizer: DomSanitizer,
-        private completerService: CompleterService,
-        private http: Http
-    ) {
-        this.resultsParent  = {
-            "data": []
-        };
-        this.dataService = new CompleterSearchWord(http, wordService.getfindWordsUrl() + '?word=');
-     }
 
-    goToHead2(): void {
-        let pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, '#search-word-section');
-        this.pageScrollService.start(pageScrollInstance);
-    };  
+2. Download composer into your project directory and install the dependencies:
 
-    updateSearchResult(word: string){
-        this.word = word;
-        this.goToHead2();
-        this.getSearchResult();
+        curl -s https://getcomposer.org/installer | php
+        php composer.phar install
+
+If you don't have access to curl, then install Composer into your project as per the [documentation](https://getcomposer.org/doc/00-intro.md).
+
+Web server setup
+----------------
+
+### PHP CLI server
+
+The simplest way to get started if you are using PHP 5.4 or above is to start the internal PHP cli-server in the root
+directory:
+
+    php -S 0.0.0.0:8080 -t public/ public/index.php
+
+This will start the cli-server on port 8080, and bind it to all network
+interfaces.
+
+**Note:** The built-in CLI server is *for development only*.
+
+### Vagrant server
+
+This project supports a basic [Vagrant](http://docs.vagrantup.com/v2/getting-started/index.html) configuration with an inline shell provisioner to run the Skeleton Application in a [VirtualBox](https://www.virtualbox.org/wiki/Downloads).
+
+1. Run vagrant up command
+
+    vagrant up
+
+2. Visit [http://localhost:8085](http://localhost:8085) in your browser
+
+Look in [Vagrantfile](Vagrantfile) for configuration details.
+
+### Apache setup
+
+To setup apache, setup a virtual host to point to the public/ directory of the
+project and you should be ready to go! It should look something like below:
+
+    <VirtualHost *:80>
+        ServerName zf2-app.localhost
+        DocumentRoot /path/to/zf2-app/public
+        <Directory /path/to/zf2-app/public>
+            DirectoryIndex index.php
+            AllowOverride All
+            Order allow,deny
+            Allow from all
+            <IfModule mod_authz_core.c>
+            Require all granted
+            </IfModule>
+        </Directory>
+    </VirtualHost>
+
+### Nginx setup
+
+To setup nginx, open your `/path/to/nginx/nginx.conf` and add an
+[include directive](http://nginx.org/en/docs/ngx_core_module.html#include) below
+into `http` block if it does not already exist:
+
+    http {
+        # ...
+        include sites-enabled/*.conf;
     }
 
-    getSearchResult(): void {
-        this.setHistory(this.getWord());
-        this.wordService
-            .searchResults(this.word)
-            .then(
-                resultsParent => this.resultsParent = resultsParent
-            );
-           
-    }
 
-    getWord(): any {
-        return this.word;
-    }
+Create a virtual host configuration file for your project under `/path/to/nginx/sites-enabled/zf2-app.localhost.conf`
+it should look something like below:
 
-    setHistory(word: string) {
-        if (this.history.indexOf(word) === -1) {
-            this.history.push(word);
-        }  
-        
-    }
-    getHistory(word: string): any {
-        return this.history;
-    }
+    server {
+        listen       80;
+        server_name  zf2-app.localhost;
+        root         /path/to/zf2-app/public;
 
-    clearResults(): void {
-        this.resultsParent  = {
-            "data": []
-        };
-    }
-
-    typingEvent(event: any) {
-        if( event.target.value != this.word ){
-            this.clearResults();
+        location / {
+            index index.php;
+            try_files $uri $uri/ @php;
         }
-        this.word = event.target.value;
+
+        location @php {
+            # Pass the PHP requests to FastCGI server (php-fpm) on 127.0.0.1:9000
+            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_param  SCRIPT_FILENAME /path/to/zf2-app/public/index.php;
+            include fastcgi_params;
+        }
     }
 
-    leftAligned = (data: any) : SafeHtml => {
-        let html = `<div style="text-align:left">${data.value}</div>`;
-        return this._sanitizer.bypassSecurityTrustHtml(html);
-    }
-    completeCallBack(event: any): void {
-        this.clearResults();
-        this.word = event.value;
-    }
-
-    json(obj: any) {
-        return JSON.stringify(obj);
-    }
-}
-```
+Restart the nginx, now you should be ready to go!
