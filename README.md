@@ -1,12 +1,9 @@
 #Dictionaire Jeux de mots
 =======
-@jimmymunoz @ekebal - 2017
+@jimmymunoz @ekebal (2016 - 2017)
 
-
-Navigateur des mots en français sur une base de données orienté au graphs.
-
+Navigateur des mots en français sur une base de données orienté aux graphs.
 Application web pour rechercher des mots, avec plusiurs assosiations semantiques.
-
 
 ##Architecture:
 
@@ -16,17 +13,19 @@ Application web pour rechercher des mots, avec plusiurs assosiations semantiques
 * Memcached 
 * Cordova 
 
-Application MVC - Single One Page - Orienté Composants - Web Mobile
+Single One Page - MVC - Orienté Composants - Web Mobile - Android / IOS
 
 ![General-Architecture](images/General-Architecture.png?raw=true "General-Architecture")
 
-###BD:
+###BD Neo4j:
 ![Db](images/db.png?raw=true "Db")
-###Code Source à Diagrame Activité:
+
+###Example requête:
 ![query](images/db-query.png?raw=true "query")
 ###Metamodèle UML Diagrame d'activité:
 
 ##Interface:
+
 ###Autocomplete:
 ![autocomplete.png](images/autocomplete.png?raw=true "autocomplete.png")
 ###Filtrage:
@@ -37,20 +36,19 @@ Application MVC - Single One Page - Orienté Composants - Web Mobile
 ![responsive-media.png](images/responsive-media.png?raw=true "responsive-media.png")
 ###Navigation:
 ![go-up.png](images/go-up.png?raw=true "go-up.png")
-###Tablet:
-![ipad.png](images/ipad.png?raw=true "ipad.png")
-###Portable:
-![iphone.png](images/iphone.png?raw=true "iphone.png")
 
 ##Mobile:
 
 ###Android:
 Download apk Android:
 appcordova/platforms/android/build/outputs/apk/android-debug.apk
+
 ####Android portable:
-![sony-z3.png](images/sony-z3.png?raw=true "sony-z3.png")
+![iphone.png](images/iphone.png?raw=true "iphone.png")
 ####Android tablet:
 ![tablet-samsumg.png](images/tablet-samsumg.png?raw=true "tablet-samsumg.png")
+###Ipad:
+![ipad.png](images/ipad.png?raw=true "ipad.png")
 
 
 ###Examples code
