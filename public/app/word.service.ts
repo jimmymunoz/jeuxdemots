@@ -16,9 +16,8 @@ export class WordService {
   private searchUrl = 'application/index/search';  // URL to web api
   private history: string[] = [];
   private findUrl: string = "application/index/autocompleteword";
-  //private baseUrl: string = "/";
-  private baseUrl: string = "http://46.101.40.23/jeuxdemots/public/";
-  private useRemote: boolean = true;//Jimmy (Cordova -> Remote) true Remote, false: Local
+  private baseUrl: string = "/";
+  private useRemote: boolean = false;//Jimmy (Cordova -> Remote) true Remote, false: Local
 
   constructor(private http: Http) {
      if(this.useRemote){ 
@@ -56,20 +55,16 @@ export class WordService {
       listResult['data'][key]['sort_dir'] = "-";// + -> asc, - -> desc
       listResult['data'][key]['visible'] = 1;// 1 - 0
     }
-    //console.log(listResult);
     return listResult;
   }
 
   private handleError(error: any): Promise<any> {
-    //console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
 
   findWords = (startsWith: string): Observable<any[]> => {
       return this.http.get(this.getfindWordsUrl() + `?word=${startsWith}`)
-        //return this._http.get(`${this.marvelBase}characters?nameStartsWith=${startsWith}&apikey=${this.marvelPublicKey}`)
         .map(h => h.json());
-        //.catch(e => console.error(e));
     } 
 
 }
